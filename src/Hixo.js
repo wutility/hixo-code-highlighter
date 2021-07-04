@@ -4,10 +4,10 @@ class Hixo {
     this.htmlEscapes = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
     this.rules = [
-      { regex: /\b(int|namespace|static|using|implements|case|import|constructor|try|catch|let|const|export|return|private|new|public|var|if|do|function|while|switch|for|foreach|in|continue|break)(?=[^\w])/g, replacement: keywords },
+      { regex: /\b(def|int|namespace|static|using|implements|case|import|constructor|try|catch|let|const|export|return|private|new|public|var|if|do|function|while|switch|for|foreach|in|continue|break)(?=[^\w])/g, replacement: keywords },
       { regex: /\b(class|void)(?=[^\w])/g, replacement: methodName },
 
-      { regex: /\s(=|\-|%|^|>>|<<|<|>)\s/g, replacement: keywords }, // operators
+      { regex: /\s(=|\-|%|^|>>|<<|<|>|\*=|\+=|\+)\s/g, replacement: keywords }, // operators
 
       { regex: /\.\w+/g, replacement: methodName },
 
@@ -18,9 +18,9 @@ class Hixo {
       { regex: /\b(false|true|undefined|null)\b/g, replacement: num },
 
       { regex: /\s+(this)\./g, replacement: keywords },
-
-
       { regex: /"[^"]*"|'[^']*'|`[^`]*`/g, replacement: quotes },
+
+
       { regex: /\/\*[\s\S]*?\*\//g, replacement: comments }, // multi comment
       { regex: /(\/\/.*)/g, replacement: comments }, // single comment      
     ];
@@ -70,11 +70,7 @@ class Hixo {
     }
   }
 
-  addRule (regex, replacement) {
-    regex.global = true;
-    regex.multiline = false;
-    this.rules.push({ regex, replacement });
-  }
+
 
   codeToHtml (text) {
     text = text.replace(/>/g, '&gt;').replace(/</g, '&lt;')

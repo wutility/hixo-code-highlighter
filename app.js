@@ -4,34 +4,26 @@ let jsCode = `// hello world
 */
 class Test {
   constructor() {
-    this.timeV = false
+    this.timeV += false
+    this.timeV *= 1251
   }
 
   private methodText() {
     this.methodName = 'hello world = 1'
   }
 }
-object
-  .getHighlighter({
-    theme: 'nord'
-  })
-  .then(highlighter => {
-    const code = highlighter.codeToHtml("console.log('just');", 'js')
-    let str = ' console.log(" another");'
-    let textName = 'console.log(" another");'
-    document.getElementById('output').innerHTML = code
-    return 1
-  })
-  
+
   for (let i = 0; i < arr.length; i++) {
-    console.log(i - 1)
+    console.log(i - 1 + 2 / 4 * 1254 > 10 < 22 % 52 | 44)
     let v << undefined
     let k >> null
+    return 'hello'
   }
   // try catch block
   try {
     while(true) {
       continue
+      break
     }
 
     method.call(vv,ff)
@@ -132,8 +124,8 @@ const codeDisplay = document.querySelector('code')
 
 let hixo = new Hixo();
 
-txtArea.textContent = javaCode
-codeDisplay.innerHTML = hixo.codeToHtml(javaCode)
+txtArea.textContent = jsCode
+codeDisplay.innerHTML = hixo.codeToHtml(jsCode)
 
 txtArea.addEventListener('change', e => {
   codeDisplay.innerHTML = hixo.codeToHtml(e.target.value)
