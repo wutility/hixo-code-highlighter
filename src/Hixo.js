@@ -1,17 +1,17 @@
 class Hixo {
   constructor () {
     this.rules = [
-      { regex: /\b(implements|case|import|constructor|try|catch|let|const|export|return|private|new|public|var|if|do|function|while|switch|for|foreach|in|continue|break)(?=[^\w])/g, replacement: keywords },
-      { regex: /\b(class|void)(?=[^\w])/g, replacement: usedMethod },
+     { regex: /\b(int|namespace|static|using|implements|case|import|constructor|try|catch|let|const|export|return|private|new|public|var|if|do|function|while|switch|for|foreach|in|continue|break)(?=[^\w])/g, replacement: keywords },
+     { regex: /\b(class|void)(?=[^\w])/g, replacement: usedMethod },
 
       { regex: /\s(=|\-|%|^|>>|<<|<|>)\s/g, replacement: keywords }, // operators
 
-      { regex: /\.\w+/g, replacement: usedMethod },
+       { regex: /\.\w+/g, replacement: usedMethod },
 
       { regex: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/g, replacement: usedMethod },
 
 
-      { regex: /\d+/g, replacement: num },
+      { regex: /\s\d+\s/g, replacement: num },
       { regex: /\s+(this)\./g, replacement: keywords },
       
 

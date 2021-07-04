@@ -10,12 +10,22 @@
 </head>
 
 <body>
-  <pre id="code-js" class="mb-3"><code></code></pre>
 
-  <pre id="code-java" class="mb-3"><code></code></pre>
+  <select name="language" id="language">
+    <option value="javascript">javascript</option>
+    <option value="java">java</option>
+    <option value="csharp">csharp</option>
+  </select>
 
-  <script src="Hixo.js"></script>
+  <div class="container">
+    <textarea name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
+    <pre><code></code></pre>
+  </div>
+
+  <script src="src/Hixo.js"></script>
   <script src="app.js"></script>
+
+
 </body>
 
 </html>

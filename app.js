@@ -17,7 +17,7 @@ object
   })
   .then(highlighter => {
     const code = highlighter.codeToHtml("console.log('just');", 'js')
-    let str = ' <span>hello</span>'
+    let str = ' console.log(" another");'
     let textName = 'console.log(" another");'
     document.getElementById('output').innerHTML = code
     return 1
@@ -272,6 +272,85 @@ public class Calculatrice extends JFrame {
   }      
 }`;
 
+let csharpCode = `using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-document.getElementById('code-js').innerHTML = new Hixo().render(jsCode);
-document.getElementById('code-java').innerHTML = new Hixo().render(javaCode);
+namespace CommonInsertion_Sort
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] numbers = new int[10] {2, 5, -4, 11, 0, 18, 22, 67, 51, 6};
+            Console.WriteLine("\nOriginal Array Elements :");
+			PrintIntegerArray(numbers);
+            Console.WriteLine("\nSorted Array Elements :");
+            PrintIntegerArray(InsertionSort(numbers));
+			Console.WriteLine("\n");
+            }
+
+        static int[] InsertionSort(int[] inputArray)
+        {
+            for (int i = 0; i < inputArray.Length - 1; i++)
+            {
+                for (int j = i + 1; j > 0; j--)
+                {
+                    if (inputArray[j - 1] > inputArray[j])
+                    {
+                        int temp = inputArray[j - 1];
+                        inputArray[j - 1] = inputArray[j];
+                        inputArray[j] = temp;
+                    }
+                  }
+            }
+            return inputArray;         
+        }
+        public static void PrintIntegerArray(int[] array)
+        {
+            foreach (int i in array)
+            {
+                Console.Write(i.ToString() + "  ");
+            }
+         }
+
+       
+        public static int[] InsertionSortByShift(int[] inputArray)
+        {
+            for (int i = 0; i < inputArray.Length - 1; i++)
+            {
+                int j;
+                var insertionValue = inputArray[i];
+                for (j = i; j > 0; j--)
+                {
+                    if (inputArray[j - 1] > insertionValue)
+                    {
+                        inputArray[j] = inputArray[j - 1];
+                    }
+                }
+                inputArray[j] = insertionValue;
+            }
+            return inputArray;
+        }
+
+     }
+}`;
+
+const langs = { javascript: jsCode, java: javaCode, csharp: csharpCode };
+
+const txtArea = document.getElementById('txtcode')
+const codeDisplay = document.querySelector('code')
+
+let hixo = new Hixo();
+
+txtArea.textContent = jsCode
+codeDisplay.innerHTML = hixo.render(jsCode)
+
+txtArea.addEventListener('change', e => {
+  codeDisplay.innerHTML = hixo.render(e.target.value)
+})
+
+document.getElementById('language').addEventListener('change', e => {
+  codeDisplay.innerHTML = hixo.render(langs[e.target.value])
+});
