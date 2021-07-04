@@ -1,0 +1,20 @@
+{
+  "name": "hixo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haikelfazzani/hixo-code-highlighter.git"
+  },
+  "keywords": [],
+  "author": "Haikel Fazzani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haikelfazzani/hixo-code-highlighter/issues"
+  },
+  "homepage": "https://github.com/haikelfazzani/hixo-code-highlighter#readme"
+}

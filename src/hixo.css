@@ -1,3 +1,18 @@
+pre {
+  background-color: #061628;
+  color: #eeedff;
+  overflow: auto;
+  overflow-wrap: break-word;
+  padding: 1rem 2rem;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+pre code {
+  white-space: pre-wrap;
+  font-family: Consolas;
+}
+
 .hixo-blue {color: #8fcdff}
 .hixo-green {color: #A3BE8C !important;}
 .hixo-red {color: #ff7b72;}
@@ -5,4 +20,4 @@
 .hixo-yellow {color: #f3e880;}
 .hixo-gray {color: #ae81ff;}
 .hixo-rose {color: #f92672;}
-.hixo-muted {color: #b1b1b1;}
+.hixo-muted {color: #b1b1b1 !important;}

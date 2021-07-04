@@ -22,13 +22,13 @@ class Hixo {
 
 
       { regex: /\/\*[\s\S]*?\*\//g, replacement: comments }, // multi comment
-      { regex: /(\/\/.*)/g, replacement: comments }, // single comment      
+      { regex: /'''[\s\S]*?'''/g, replacement: comments }, // multi comment python
 
+      { regex: /(\/\/.*)/g, replacement: comments }, // single comment  
       { regex: /(#.*)/g, replacement: comments }, // single comment python, ruby 
     ];
 
     function stripHtml (text) {
-      // text.replace(/(&nbsp;|<([^>]+)>)/ig,'')
       let tmp = document.createElement("DIV");
       tmp.innerHTML = text;
       return tmp.textContent || tmp.innerText || "";
@@ -50,7 +50,6 @@ class Hixo {
     function quotes (text) {
       text = stripHtml(text)
       return '<span style=[hixo-yellow]>' + text + '</span>'
-
     }
 
     function methodName (text) {
@@ -65,7 +64,6 @@ class Hixo {
     function generic (text) {
       console.log(text);
       if (text !== '</span>') {
-
         return '<span style=[hixo-violet]>' + text + '</span>'
       }
       return text

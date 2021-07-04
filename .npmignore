@@ -1,0 +1,10 @@
+node_modules/
+src/
+
+regex.txt
+
+style.css
+app.js
+index.html
+
+.gitignore

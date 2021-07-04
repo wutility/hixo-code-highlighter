@@ -118,8 +118,10 @@ namespace CommonInsertion_Sort
 }`;
 
 let pythonCode = `# Return the sum of
-# square of first n
-# natural numbers
+'''Statistical median to demonstrate doctest.
+  >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
+  7
+'''
 def squaresum(n) :
   
     # Iterate i from 1 

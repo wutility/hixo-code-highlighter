@@ -5,26 +5,32 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Hixo - Code highlighter</title>
   <link rel="stylesheet" href="src/hixo.css">
   <link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
   <header>
-
+    <h1>Hixo Code Highlighter</h1>
   </header>
 
-  <select name="language" id="language">
-    <option value="javascript">javascript</option>
-    <option value="java">java</option>
-    <option value="csharp">csharp</option>
-    <option value="python">python</option>
-  </select>
-
   <div class="container">
-    <textarea name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
+    <div>
+      <select name="language" id="language">
+        <option value="javascript">javascript</option>
+        <option value="java">java</option>
+        <option value="csharp">csharp</option>
+        <option value="python">python</option>
+      </select>
+      <textarea name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
+    </div>
     <pre><code></code></pre>
   </div>
 
