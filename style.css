@@ -34,12 +34,14 @@ pre code {
     font-family: Consolas;
 }
 
-.blue {color: #8fcdff}
-.green {color: #A3BE8C !important;}
-.red {color: #ff7b72;}
-.violet {color: #d2a8ff;}
-.yellow {color: #ded269;}
-.gray {color: #6c6f92;}
+.hixo-blue {color: #8fcdff}
+.hixo-green {color: #A3BE8C !important;}
+.hixo-red {color: #ff7b72;}
+.hixo-violet {color: #d2a8ff;}
+.hixo-yellow {color: #f3e880;}
+.hixo-gray {color: #ae81ff;}
+.hixo-rose {color: #f92672;}
+.hixo-muted {color: #b1b1b1;}
 
 
 .mb-3 {margin-bottom: 30px;}
