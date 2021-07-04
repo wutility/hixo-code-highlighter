@@ -23,6 +23,8 @@ class Hixo {
 
       { regex: /\/\*[\s\S]*?\*\//g, replacement: comments }, // multi comment
       { regex: /(\/\/.*)/g, replacement: comments }, // single comment      
+
+      { regex: /(#.*)/g, replacement: comments }, // single comment python, ruby 
     ];
 
     function stripHtml (text) {
@@ -69,8 +71,6 @@ class Hixo {
       return text
     }
   }
-
-
 
   codeToHtml (text) {
     text = text.replace(/>/g, '&gt;').replace(/</g, '&lt;')

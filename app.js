@@ -5,7 +5,7 @@ let jsCode = `// hello world
 class Test {
   constructor() {
     this.timeV += false
-    this.timeV *= 1251
+    this.timeV *= /^#/g
   }
 
   private methodText() {
@@ -117,14 +117,35 @@ namespace CommonInsertion_Sort
      }
 }`;
 
-const langs = { javascript: jsCode, java: javaCode, csharp: csharpCode };
+let pythonCode = `# Return the sum of
+# square of first n
+# natural numbers
+def squaresum(n) :
+  
+    # Iterate i from 1 
+    # and n finding 
+    # square of i and
+    # add to sum.
+    sm = 0
+    for i in range(1, n+1) :
+        sm = sm + (i * i)
+      
+    return sm
+  
+# Driven Program
+n = 4
+print(squaresum(n))
+  
+# This code is contributed by Nikita Tiwari.`
+
+const langs = { javascript: jsCode, java: javaCode, csharp: csharpCode, python: pythonCode };
 
 const txtArea = document.getElementById('txtcode')
 const codeDisplay = document.querySelector('code')
 
 let hixo = new Hixo();
 
-txtArea.textContent = jsCode
+txtArea.value = jsCode
 codeDisplay.innerHTML = hixo.codeToHtml(jsCode)
 
 txtArea.addEventListener('change', e => {
@@ -132,5 +153,7 @@ txtArea.addEventListener('change', e => {
 })
 
 document.getElementById('language').addEventListener('change', e => {
-  codeDisplay.innerHTML = hixo.codeToHtml(langs[e.target.value])
+  let selectLang = langs[e.target.value]
+  txtArea.value = selectLang
+  codeDisplay.innerHTML = hixo.codeToHtml(selectLang)
 });
