@@ -8,18 +8,19 @@ body {
   width: 100vw;
   padding: 15px;
   overflow: auto;
-  font-size: 14px;
-  background-color: #f3f3f3;
+  font-size: 16px;
+  background-color: #061628;
+  color: #fff;
   font-family: 'Noto San';
 }
 
-h1 {margin: 0; font-family: 'Poppins';}
+h1 {margin-top: 0; font-family: 'Poppins'; text-align: center; text-transform: uppercase;}
 
 .container {
   width: 100%; 
   height: 90%;  
   display: flex;
-  background-color: #fff;
+  background-color: #0f253e;
   padding: 10px;
   box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
 }
@@ -36,7 +37,13 @@ pre, textarea {width: 100%; height: 100%; border: 0;}
 
 select {padding: 10px 15px; outline: none; cursor: pointer;}
 
-textarea {border: 1px dotted #dbdbdb; resize: none; outline: none;}
+textarea {background-color: #061628; 
+  color: rgb(233, 233, 233);
+  border-right: 2px solid #0f253e; 
+  resize: none; 
+  outline: none;
+  font-size: 16px;
+}
 
 .mb-3 {margin-bottom: 30px;}
 
@@ -51,4 +58,10 @@ textarea {border: 1px dotted #dbdbdb; resize: none; outline: none;}
 
 ::-webkit-scrollbar-thumb:hover {
   background: #061628;
+}
+
+@media screen and (max-width: 900px) {
+  .container {display: flex; flex-direction: column;}
+  
+  textarea { border-bottom: 2px solid #0f253e; }
 }

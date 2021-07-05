@@ -4,4 +4,6 @@
 - [x] Javascript
 - [x] Java
 - [x] Csharp
+- [x] PHP
 - [ ] Python (partial)
+- [ ] Perl (partial)

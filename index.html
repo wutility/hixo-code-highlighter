@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body spellcheck="true">
 
   <header>
     <h1>Hixo Code Highlighter</h1>
@@ -28,8 +28,10 @@
         <option value="java">java</option>
         <option value="csharp">csharp</option>
         <option value="python">python</option>
+        <option value="perl">perl</option>
+        <option value="php">php</option>
       </select>
-      <textarea name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
+      <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
     </div>
     <pre><code></code></pre>
   </div>
@@ -38,6 +40,7 @@
 
   </footer>
 
+  <script src="langs-test.js"></script>
   <script src="src/Hixo.js"></script>
   <script src="app.js"></script>
 </body>
