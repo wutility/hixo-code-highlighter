@@ -1,5 +1,7 @@
-class Hixo {
+import regex from './regex';
+import './hixo.css'
 
+export default class Hixo {
   options = {};
 
   constructor ({ language }) {
@@ -57,6 +59,7 @@ class Hixo {
         rule.pattern,
         match => {
           if (rule.stripHtml) {
+            console.log(match);
             match = this.stripHtml(match)
           }
           

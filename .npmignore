@@ -1,10 +1,14 @@
+examples/
+example/
 node_modules/
 src/
-
-regex.txt
-
-style.css
-app.js
-index.html
+dist/
+tests/
+lib/
 
 .gitignore
+.cache
+.vscode
+.babelrc
+
+rollup.config.js

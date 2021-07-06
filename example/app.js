@@ -1,7 +1,7 @@
 const txtArea = document.getElementById('txtcode')
 const codeDisplay = document.querySelector('code')
 
-let hixo = new Hixo({ language: 'java' });
+let hixo = new window.Hixo({ language: 'java' });
 
 txtArea.value = langsTest['javascript'].code
 codeDisplay.innerHTML = hixo.codeToHtml(langsTest['javascript'].code)

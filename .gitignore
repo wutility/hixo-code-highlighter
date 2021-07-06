@@ -3,3 +3,4 @@ dist/
 build/
 
 regex.txt
+package-lock.json
