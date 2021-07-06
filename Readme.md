@@ -6,6 +6,5 @@
 - [x] Csharp
 - [x] PHP
 - [x] C++ / C
-- [ ] SQL
-- [ ] Python
-- [ ] Perl
+- [x] SQL
+- [x] Python

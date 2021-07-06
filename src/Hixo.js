@@ -1,81 +1,31 @@
 class Hixo {
-  constructor () {
-    this.rules = [
-      { regex: /\b(default|use|def|int|namespace|static|using|implements|case|import|from|constructor|try|catch|let|const|export|return|private|protected|new|public|var|if|do|function|while|switch|for|foreach|in|continue|break)(?=[^\w])/g, replacement: keywords },
-      { regex: /\b(echo|void|String|package|Long)(?=[^\w])/g, replacement: methodName },
 
-      { regex: /\$\w+/g, replacement: variable }, // $variable
+  options = {};
 
-      { regex: /(?=[^.])(\w+)(?=\(.)/g, replacement: methodName },
+  constructor ({ language }) {
+    this.setLanguage(language);
+  }
 
-      { regex: /(class)(?=\s\w+)/g, replacement: methodName },
-      { regex: /(this)(?=\.\w+)/g, replacement: methodName },
-
-      { regex: /\s(=|\+|\/|\-|%|^|>>|<<|<|>|\*=|\+=|\-=|\+)\s/g, replacement: keywords }, // operators
-      { regex: /(\+|\-|\*|\:){2}/g, replacement: keywords }, // operators       
-
-      // { regex: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/g, replacement: methodName },
-      // { regex: /&lt;\/?[\w\s="/.':;#-\/]+&gt;/gi, replacement: generic }, // <Node> <Object, Long>
-
-      //{ regex: /\(\d*?\)/g, replacement: num }, // numbers 1 2 3 497
-      { regex: /\b(false|true|undefined|True|False|null)\b/gi, replacement: num },
-
-      { regex: /&#39;(.*)&#39;/g, replacement: quotes }, // '
-      { regex: /&quot;(.*)&quot;/g, replacement: quotes }, // "      
-
-      { regex: /^\/\/.*/g, replacement: comments }, // single comment  
-      { regex: /\s+\/\/.*/g, replacement: comments }, // single comment  
-      { regex: /(\/\*[\s\S]*?\*\/)/g, replacement: comments }, // multi comment /* */
-    ];
-
-    function stripHtml (text) {
-      let tmp = document.createElement("div");
-      tmp.innerHTML = text;
-      return tmp.textContent || tmp.innerText || "";
+  setLanguage (language) {
+    if (language && ['java', 'csharp', 'cpp', 'c'].includes(language)) {
+      this.options.language = 'javascript'
     }
-
-    function replaceSpanTag (text) {
-      return text.replace(/<\/?span[^>]*>/ig, "")
-    }
-
-    function variable (text) {
-      text = stripHtml(text)
-      return '<span style=[hixo-orange]>' + text + '</span>'
-    }
-
-    function keywords (text) {
-      return '<span style=[hixo-pink]>' + text + '</span>'
-    }
-
-    function comments (text) {
-      text = stripHtml(text)
-      return '<span style=[hixo-gray]>' + text + '</span>'
-    }
-
-    function quotes (text) {
-      console.log(text);
-      text = stripHtml(text)
-      return '<span style=[hixo-yellow]>' + text + '</span>'
-    }
-
-    function methodName (text) {
-      return '<span style=[hixo-blue]>' + text + '</span>'
-    }
-
-    function num (text) {
-      text = stripHtml(text)
-      return '<span style=[hixo-violet]>' + text + '</span>'
-    }
-
-    function generic (text) {
-      if (text !== '</span>') {
-        return '<span style=[hixo-blue]>' + text + '</span>'
-      }
-      return text
+    else {
+      this.options.language = language || '';
     }
   }
 
-  codeToHtml (text) {
+  stripHtml (text) {
+    let tmp = document.createElement("div");
+    tmp.innerHTML = text;
+    return tmp.textContent || tmp.innerText || "";
+  }
+
+  replaceSpanTag (text) {
+    return text.replace(/<\/?span[^>]*>/ig, "")
+  }
+
+  htmlEscapes (text) {
     const htmlEscapes = {
       '&': '&amp;',
       '<': '&lt;',
@@ -84,10 +34,37 @@ class Hixo {
       "'": '&#39;'
     };
 
-    text = text.replace(/[&<>"']/g, chr => htmlEscapes[chr])
+    return text.replace(/[&<>"']/g, chr => htmlEscapes[chr]);
+  }
 
-    this.rules.forEach((rule) => {
-      text = text.replace(rule.regex, rule.replacement);
+  codeToHtml (text) {
+    text = this.htmlEscapes(text);
+
+    // reserved words /\b()(?=[^\w])/g
+    let rw = regex.common.reserved;
+    rw += '|' + regex[this.options.language].reserved;
+
+    text = text.replace(
+      new RegExp('\\b(' + rw + ')(?=[^\w+])\\b', 'gi'),
+      '<span style=[hixo-pink]>$1</span>'
+    );
+
+    // apply regex rules
+    const rules = regex.common.rules.concat(regex[this.options.language].rules);
+
+    rules.forEach(rule => {
+      text = text.replace(
+        rule.pattern,
+        match => {
+          if (rule.stripHtml) {
+            match = this.stripHtml(match)
+            console.log(match);
+          }
+          
+          let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
+          return `<span style=[hixo-${classN}]>${match}</span>`
+        }
+      );
     });
 
     text = text.replace(/style=(\[([^\][]*)])/g, v => {

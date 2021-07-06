@@ -8,7 +8,7 @@ class Test {
   constructor() {
     this.timeV += false
     this.timeV *= /^#/g
-    this.NumTst = 1a23
+    this.NumTst = #1a23
   }
 
   private methodText() {
@@ -58,47 +58,6 @@ n = 4
 print(squaresum(n))
   
 # This code is contributed by Nikita Tiwari.`},
-  perl: {
-    code: `#!/usr/bin/perl
-
-use strict;
-use warnings;
-
-# first, create your message
-
-use Email::MIME;
-
-my $message = Email::MIME->create(
-
-  header_str => [
-
-    From    => 'you@example.com',
-
-    To      => 'friend@example.com',
-
-    Subject => 'Happy birthday!',
-
-  ],
-
-for( $a = 10; $a < 20; $a = $a + 1 ) {
-  print "value of a: $a\n";
-}
-
-package Person;
-sub new {
-    my $class = shift;
-    my $self = {
-      _firstName => shift,
-      _lastName  => shift,
-      _ssn       => shift,
-    };
-    # Print all the values just for clarification.
-    print "First Name is $self->{_firstName}";
-    print "Last Name is $self->{_lastName}";
-    print "SSN is $self->{_ssn}";
-    bless $self, $class;
-    return $self;
-}`},
   java: {
     code: `import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener; 
@@ -170,7 +129,7 @@ int main() {
     code: `<?php
 class Fruit {
   // Properties
-  public $name = " color $po";
+  public $name = " color $po" . "tester <br/>";
   public $color = 1235;
 
   // Methods
@@ -186,7 +145,14 @@ sql: {
   code: `-- Select all:
 SELECT * FROM Customers;
 SELECT column_name(s)
-FROM table1
+FROM table1 -- comment
 RIGHT JOIN table2
-ON table1.column_name = table2.column_name;`}
+ON table1.column_name = table2.column_name;
+
+CREATE TABLE Persons (
+  ID int NOT NULL UNIQUE,
+  LastName varchar(255) NOT NULL,
+  FirstName varchar(255),
+  Age int
+);`}
 }
