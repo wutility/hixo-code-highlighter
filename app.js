@@ -6,9 +6,13 @@ let hixo = new Hixo();
 txtArea.value = langsTest['javascript'].code
 codeDisplay.innerHTML = hixo.codeToHtml(langsTest['javascript'].code)
 
+txtArea.addEventListener('keyup', e => {
+  codeDisplay.innerHTML = hixo.codeToHtml(e.target.value)
+});
+
 txtArea.addEventListener('change', e => {
   codeDisplay.innerHTML = hixo.codeToHtml(e.target.value)
-})
+});
 
 document.getElementById('language').addEventListener('change', e => {
   let selectLang = langsTest[e.target.value].code

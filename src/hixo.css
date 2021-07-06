@@ -7,7 +7,7 @@
   --red:#ff7b72;
   --yellow:#f3e880;
   --gray:#b1b1b1;
-  --rose:#f92672;
+  --pink:#f92672;
   --orange:#dc7c23;
 }
 
@@ -20,7 +20,7 @@
   --red:#000000;
   --yellow: #0000ff;
   --gray:#008200;
-  --rose:#000000;
+  --pink:#000000;
 }
 
 pre {  
@@ -39,12 +39,10 @@ pre code {
 }
 
 .hixo-blue {color:var(--blue)}
-.hixo-green {color: var(--green);}
-.hixo-red {color: var(--red);}
 .hixo-violet {color: var(--violet);}
 .hixo-yellow {color: var(--yellow);}
 
-.hixo-rose {color: var(--rose);}
+.hixo-pink {color: var(--pink);}
 .hixo-gray {color: var(--gray);}
 .hixo-orange {color: var(--orange);}
 

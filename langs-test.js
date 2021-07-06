@@ -5,14 +5,16 @@ const langsTest = {
 this is a multi comments
 */
 class Test {
-constructor() {
-  this.timeV += false
-  this.timeV *= /^#/g
-}
+  constructor() {
+    this.timeV += false
+    this.timeV *= /^#/g
+    this.NumTst = 1a23
+  }
 
-private methodText() {
-  this.methodName = 'hello world = 1'
-}
+  private methodText() {
+    this.methodName = "hello world = 1"
+    const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+  }
 }
 
 for (let i = 0; i < arr.length; i++) {
@@ -27,8 +29,8 @@ try {
     continue
     break
   }
-
-  method.call(vv,ff)
+  console.log('ok', "152 dfdf")
+  method.call(vv, 1000)
 }
 catch(Exception e) {
 
@@ -39,7 +41,7 @@ catch(Exception e) {
   >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
   7
 '''
-def squaresum(n) :
+def squaresum(n) : # comment
   
     # Iterate i from 1 
     # and n finding 
@@ -91,9 +93,9 @@ sub new {
       _ssn       => shift,
     };
     # Print all the values just for clarification.
-    print "First Name is $self->{_firstName}\n";
-    print "Last Name is $self->{_lastName}\n";
-    print "SSN is $self->{_ssn}\n";
+    print "First Name is $self->{_firstName}";
+    print "Last Name is $self->{_lastName}";
+    print "SSN is $self->{_ssn}";
     bless $self, $class;
     return $self;
 }`},
@@ -105,10 +107,10 @@ import java.awt.event.ActionListener;
   <Object, Long>
   nodes.add(nodeA);
 */
-public class Graph {
+public class Graph { /* Commnet */
 
-  private Node node;
-
+  static Node node; // another comment
+  protected String str = "hello Java";
   private Set<Node> nodes = new HashSet<Object, Long>();
   
   public void addNode(Node nodeA) {
@@ -119,75 +121,57 @@ public class Graph {
 }`},
   csharp: {
     code: `using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace CommonInsertion_Sort
+// Create a Car class
+class Car
 {
-    class Program<Object, Long>
-    {
-        static void Main(string[] args)
-        {
-          int[] numbers = new int[10] {2, 5, -4, 11, 0, 18, 22, 67, 51, 6};
-          Console.WriteLine("\nOriginal Array Elements :");
-      PrintIntegerArray(numbers);
-          Console.WriteLine("\nSorted Array Elements :");
-          PrintIntegerArray(InsertionSort(numbers));
-      Console.WriteLine("\n");
-            }
+  public string model;  // Create a field
 
-        static int[] InsertionSort(int[] inputArray)
-        {
-            for (int i = 0; i < inputArray.Length - 1; i++)
-            {
-              for (int j = i + 1; j > 0; j--)
-              {
-                  if (inputArray[j - 1] > inputArray[j])
-                  {
-                      int temp = inputArray[j - 1];
-                      inputArray[j - 1] = inputArray[j];
-                      inputArray[j] = temp;
-                  }
-                }
-            }
-            return inputArray;         
-        }
-        public static void PrintIntegerArray(int[] array)
-        {
-          foreach (int i in array)
-          {
-              Console.Write(i.ToString() + "  ");
-          }
-        }
+  // Create a class constructor for the Car class
+  public Car()
+  {
+    model = "Mustang"; // Set the initial value for model
+  }
 
-        
-        public static int[] InsertionSortByShift(int[] inputArray)
-        {
-          for (int i = 0; i < inputArray.Length - 1; i++)
-          {
-            int j;
-            var insertionValue = inputArray[i];
-            for (j = i; j > 0; j--)
-            {
-              if (inputArray[j - 1] > insertionValue)
-              {
-                  inputArray[j] = inputArray[j - 1];
-              }
-            }
-            inputArray[j] = insertionValue;
-          }
-          return inputArray;
-        }
+  static void Main(string[] args)
+  {
+    Car Ford = new Car();  // Create an object of the Car Class (this will call the constructor)
+    Console.WriteLine(Ford.model);  // Print the value of model
+  }
+}
 
-      }
+// Outputs "Mustang"`},
+cpp: {
+  code: `#include <iostream>
+using namespace std;
+
+class Employee {
+  private:
+    // Private attribute
+    int salary;
+
+  public:
+    // Setter
+    void setSalary(int s) {
+      salary = s;
+    }
+    // Getter
+    int getSalary() {
+      return salary;
+    }
+};
+
+int main() {
+  Employee myObj;
+  myObj.setSalary(50000);
+  cout << myObj.getSalary();
+  return 0;
 }`},
   php: {
     code: `<?php
 class Fruit {
   // Properties
-  public $name;
-  public $color;
+  public $name = " color $po";
+  public $color = 1235;
 
   // Methods
   function set_name($name) {
@@ -197,5 +181,12 @@ class Fruit {
     return $this->name;
   }
 }
-?>`}
+?>`},
+sql: {
+  code: `-- Select all:
+SELECT * FROM Customers;
+SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name = table2.column_name;`}
 }
