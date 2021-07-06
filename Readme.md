@@ -8,3 +8,9 @@
 - [x] C++ / C
 - [x] SQL
 - [x] Python
+
+### Todo
+- [] match regexp: /anything/g
+
+# License
+MIT

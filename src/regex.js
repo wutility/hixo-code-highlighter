@@ -17,18 +17,18 @@ const classicComments = [
 ];
 
 const quotes = {
-  pattern: /((?<![\\])(&#39;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,
+  pattern: /((?<![\\])(&apos;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,
   color: 'yellow',
   stripHtml: true
 };
 
 const regex = {
   sql: {
-    reserved: 'create|select|update|delete|table|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
+    reserved: 'TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     rules: [
       quotes,
-      { // comment
-        pattern: /--.*?\n/g,
+      { // match: -- any comment
+        pattern: /(--.*?\n)|(\/\*[\s\S]*?\*\/)/g,
         color: 'gray',
         stripHtml: true
       }
@@ -38,8 +38,13 @@ const regex = {
     reserved: 'def|False|True',
     rules: [
       quotes,
-      { // comment
+      { // match: # any comment
         pattern: /#.*/g,
+        color: 'gray',
+        stripHtml: true
+      },
+      { // match: ''' any comment '''
+        pattern: /(\'\'\'[\s\S]*?\'\'\')/g,
         color: 'gray',
         stripHtml: true
       }
@@ -48,11 +53,11 @@ const regex = {
   php: {
     reserved: 'insteadof|yield from|__CLASS__',
     rules: [
-      { // $variable
+      { // match: $variable
         pattern: /\$\w+/g,
         color: 'orange'
       },
-      { // <?php  ?>
+      { // match: <?php  ?>
         pattern: /(&lt;\?php|\?&gt;)/g,
         color: 'gray'
       },
@@ -63,11 +68,7 @@ const regex = {
   javascript: { // rules for: javascript - java - cpp/c - csharp
     reserved: 'signed|sizeof|volatile|typedef|goto|let|export|constructor|var',
     rules: [
-      { // operators: ++ -- ** ::
-        pattern: /(\+|\-|\*|\:){2}/g,
-        color: 'pink'
-      },
-      { // backticks
+      { // match: ` any string here `
         pattern: /`[^`]*`/g,
         color: 'yellow',
         stripHtml: true
@@ -76,12 +77,13 @@ const regex = {
       ...classicComments
     ]
   },
-  common: {
-    reserved: 'throw|default|use|int|namespace|static|using|implements|case|import|from|try|catch|const|return|private|protected|new|public|if|do|function|while|switch|for|foreach|in|continue|break',
+  common: { // comment regexp for all languages
+    reserved: 'default|use|int|namespace|static|using|implements|case|import|from|try|catch|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     rules: [
       {
         pattern: /\b(echo|void|String|package|Long)(?=[^\w])/gi,
-        color: 'blue'
+        color: 'blue',
+        italic: true
       },
       {
         pattern: /(?=[^.])(\w+)(?=\(.)/g,
@@ -97,12 +99,24 @@ const regex = {
         italic: true
       },
       { // operators
-        pattern: /\s(=|\+|\/|\-|%|^|>>|<<|<|>|\*=|\+=|\-=|\+)\s/g,
+        pattern: /\s+[:|%^\=]{1}\s+/g,
         color: 'pink'
+      },
+      { // double operators
+        pattern: /(\=|\+|\*|\:|\||&lt;|&gt;){2,3}/g,
+        color: 'pink'
+      },
+      { // match number
+        pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/gi,
+        color: 'violet'
       },
       {
         pattern: /\b(false|true|undefined|True|False|nil|null)\b/gi,
         color: 'violet'
+      },
+      { // match regexp: /.*/g
+        pattern: /[\(|\s+]\/.*\/[gim\)]\b/gi,
+        color: 'gray'
       }
     ]
   }

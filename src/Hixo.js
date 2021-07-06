@@ -31,7 +31,7 @@ class Hixo {
       '<': '&lt;',
       '>': '&gt;',
       '"': '&quot;',
-      "'": '&#39;'
+      "'": '&apos;'
     };
 
     return text.replace(/[&<>"']/g, chr => htmlEscapes[chr]);
@@ -58,7 +58,6 @@ class Hixo {
         match => {
           if (rule.stripHtml) {
             match = this.stripHtml(match)
-            console.log(match);
           }
           
           let classN = rule.color + (rule.italic ? ' hixo-italic' : '');

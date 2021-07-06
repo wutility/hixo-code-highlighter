@@ -8,17 +8,21 @@ class Test {
   constructor() {
     this.timeV += false
     this.timeV *= /^#/g
-    this.NumTst = #1a23
+    this.NumTst = new RegExp(/^#/g)
   }
 
   private methodText() {
-    this.methodName = "hello world = 1"
-    const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
+    if(this.methodName === "hello world = 1"){
+
+    }
+    else const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
   }
 }
 
 for (let i = 0; i < arr.length; i++) {
   console.log(i - 1 + 2 / 4 * 1254 > 10 < 22 % 52 | 44)
+  i--
+  j /= 4
   let v << undefined
   let k >> null
   return 'hello'
@@ -147,12 +151,22 @@ SELECT * FROM Customers;
 SELECT column_name(s)
 FROM table1 -- comment
 RIGHT JOIN table2
-ON table1.column_name = table2.column_name;
+ON table1.column_name = table2.column_name
+WHERE column_name BETWEEN value1 AND value2;
 
-CREATE TABLE Persons (
+CREATE TABLE Persons ( /* comment */
   ID int NOT NULL UNIQUE,
   LastName varchar(255) NOT NULL,
   FirstName varchar(255),
   Age int
-);`}
+);
+/*
+  comment
+*/
+delete from persons
+update persons set name= 'hello'
+
+EXCEPTION 
+   Exception-handling-statements 
+END;`}
 }
