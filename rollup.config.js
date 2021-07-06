@@ -1,3 +1,4 @@
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 
@@ -30,6 +31,7 @@ export default {
       babelHelpers: 'runtime',
       extract: 'hixo.css'
     }),
+    nodeResolve(),
     terser()
   ]
 };

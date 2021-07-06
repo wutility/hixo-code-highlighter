@@ -1,6 +1,5 @@
 node_modules/
 dist/
-build/
 
 regex.txt
 package-lock.json
