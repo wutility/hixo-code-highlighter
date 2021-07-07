@@ -4,7 +4,7 @@ const selectThemes = document.getElementById('themes');
 const selectLanguages = document.getElementById('language');
 
 const themes = ['default', 'material','dracula', 'github-dark', 'hackpot', 'chroma', 'blackboard', 'eclipse'];
-const languages = ['javascript', 'java','go', 'csharp', 'cpp','python', 'php', 'sql'];
+const languages = ['javascript', 'java','go', 'rust','csharp', 'cpp','python', 'php', 'sql'];
 
 languages.forEach(lang => {
   const option = document.createElement('option')

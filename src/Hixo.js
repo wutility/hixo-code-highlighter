@@ -9,7 +9,7 @@ export default class Hixo {
   }
 
   setLanguage (language) {
-    if (language && ['java', 'go', 'csharp', 'cpp', 'c'].includes(language)) {
+    if (language && ['java', 'go','rust', 'csharp', 'cpp', 'c'].includes(language)) {
       this.options.language = 'javascript'
     }
     else {
