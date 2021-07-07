@@ -2,32 +2,19 @@
   box-sizing: border-box;
 }
 
-[data-theme="light"] {
-  --hixo-pre-bg: #fff;
-  --hixo-pre-color: #141414;
-  --hixo-blue: #6f42c1;
-  --hixo-violet: #005cc5;
-  --hixo-yellow: #17c700;
-  --hixo-gray: #6a737d;
-  --hixo-pink: #f92672;
-  --hixo-orange: #dc7c23;
-}
-
 body {
   margin: 0;
-  height: 100vh;
-  width: 100vw;
-  padding: 15px;
+  padding: 25px;
   overflow: auto;
   font-size: 14px;
-  background-color: #061628;
-  color: #fff;
   font-family: 'Noto San';
 }
 
 header {text-align: center; margin-bottom: 15px;}
 
-h1 {
+footer {text-align: center; padding: 20px;}
+
+h1,h4 {
   margin: 0;
   font-family: 'Poppins';
   text-transform: uppercase;
@@ -35,56 +22,64 @@ h1 {
 
 .container {
   width: 100%;
-  height: 85%;
-  display: flex;
-  background-color: #0f253e;
-  padding: 10px;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  height: 600px;
 }
+
 pre,
 textarea {
   width: 100%;
   height: 100%;
   border: 0;
+  border-radius: 7px;
+  box-shadow: 0px 6px 20px rgb(0 0 0 / 35%);
 }
 
 textarea {
-  background-color: #061628;
-  color: rgb(233, 233, 233);
-  border-right: 2px solid #0f253e;
+  background-color: inherit;
+  color: inherit;
+  padding: 1rem 2rem;
   resize: none;
   outline: none;
-  font-size: 16px;
 }
 
-button {text-transform: uppercase;}
+button,a {text-transform: uppercase;}
 
 button,select {outline: none; cursor: pointer; padding: 7px 15px;}
+
+a { text-decoration: none;}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  justify-items: stretch;
+}
 
 .mb-3 {
   margin-bottom: 30px;
 }
 
+.mb-1 {
+  margin-bottom: 10px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
-  height: 5px;
+  height: 5px;  
 }
 
 ::-webkit-scrollbar-thumb {
   background: #eeedff;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #061628;
+  background: #2d2d35;
 }
 
 @media screen and (max-width: 900px) {
   .container {
     display: flex;
     flex-direction: column;
-  }
-
-  textarea {
-    border-bottom: 2px solid #0f253e;
   }
 }

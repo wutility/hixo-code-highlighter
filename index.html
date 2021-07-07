@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hixo - Code highlighter</title>
   <link rel="stylesheet" href="build/hixo.css">
+  <link rel="stylesheet" href="themes/themes.css">
   <link rel="stylesheet" href="example/style.css">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -16,30 +17,22 @@
 </head>
 
 <body spellcheck="true">
-
   <header>
     <h1>Hixo Code Highlighter</h1>
-    <button class="btn-theme">change theme</button>
+    <h4 class="mb-1">Fast - Simple - Lightweight</h4>
     <button class="btn-hide-txtarea">hide textarea</button>
 
-    <select name="language" id="language">
-      <option value="javascript">javascript</option>
-      <option value="java">java</option>
-      <option value="cpp">cpp</option>
-      <option value="csharp">csharp</option>
-      <option value="python">python</option>
-      <option value="php">php</option>
-      <option value="sql">sql</option>
-    </select>
+    <select name="language" id="language"></select>
+    <select name="themes" id="themes"></select>
   </header>
 
-  <div class="container">
+  <div class="container grid-2">
     <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
     <pre><code></code></pre>
   </div>
 
   <footer>
-
+    <a href="https://github.com/wutility/hixo-code-highlighter">Github link</a>
   </footer>
 
   <script src="example/langs-test.js"></script>

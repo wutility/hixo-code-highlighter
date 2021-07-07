@@ -36,19 +36,23 @@ codeElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
 
 ### How to override the current theme
 ```css
-[data-theme="light"] {
-  --hixo-pre-bg: #fff;
-  --hixo-pre-color: #141414;
-  --hixo-blue: #6f42c1;
-  --hixo-violet: #005cc5;
-  --hixo-yellow: #17c700;
-  --hixo-gray: #6a737d;
-  --hixo-pink: #f92672;
-  --hixo-orange: #dc7c23;
+[data-theme="material"] {
+  --hixo-pre-bg: #263238;
+  --hixo-pre-color: #EEFFFF;
+
+  --hixo-method: #82AAFF;
+  --hixo-num: #FF5370;
+  --hixo-string: #C3E88D;
+  --hixo-comment: #6a737d;
+  --hixo-keyword: #C792EA;
+  --hixo-variable: #dc7c23;
+
+  --hixo-operator:#f92672;
+  --hixo-sp-keys:#d2a8ff;
 }
 ```
 ```js
-codeElement.parentElement.dataset.theme = 'light';
+codeElement.parentElement.dataset.theme = 'material';
 ```
 
 ### Notes

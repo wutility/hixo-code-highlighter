@@ -1,30 +1,30 @@
 const classicComments = [
   { // single comment
     pattern: /^\/\/.*/g,
-    color: 'gray',
+    color: 'comment',
     stripHtml: true
   },
   { // single comment
     pattern: /\s+\/\/.*/g,
-    color: 'gray',
+    color: 'comment',
     stripHtml: true
   },
   { // multi comment /* */
     pattern: /(\/\*[\s\S]*?\*\/)/g,
-    color: 'gray',
+    color: 'comment',
     stripHtml: true
   }
 ];
 
 const dashComment = { // match: # any comment
   pattern: /#.*/g,
-  color: 'gray',
+  color: 'comment',
   stripHtml: true
 };
 
 const quotes = {
   pattern: /((?<![\\])(&apos;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,
-  color: 'yellow',
+  color: 'string',
   stripHtml: true
 };
 
@@ -35,7 +35,7 @@ const regex = {
       quotes,
       { // match: -- any comment
         pattern: /(--.*?\n)|(\/\*[\s\S]*?\*\/)/g,
-        color: 'gray',
+        color: 'comment',
         stripHtml: true
       }
     ]
@@ -47,7 +47,7 @@ const regex = {
       dashComment,
       { // match: ''' any comment '''
         pattern: /(\'\'\'[\s\S]*?\'\'\')/g,
-        color: 'gray',
+        color: 'comment',
         stripHtml: true
       }
     ]
@@ -57,23 +57,23 @@ const regex = {
     rules: [
       { // match: $variable
         pattern: /\$\w+/g,
-        color: 'orange'
+        color: 'variable'
       },
       { // match: <?php  ?>
         pattern: /(&lt;\?php|\?&gt;)/g,
-        color: 'gray'
+        color: 'comment'
       },
       quotes,
       dashComment,
       ...classicComments
     ]
   },
-  javascript: { // rules for: javascript - java - cpp/c - csharp
-    reserved: 'signed|sizeof|volatile|typedef|goto|let|export|constructor|var',
+  javascript: { // rules for: javascript - java - cpp/c - csharp - go
+    reserved: 'defer|struct|signed|sizeof|volatile|type|typedef|goto|let|export|constructor|var',
     rules: [
       { // match: ` any string here `
         pattern: /`[^`]*`/g,
-        color: 'yellow',
+        color: 'string',
         stripHtml: true
       },
       quotes,
@@ -81,44 +81,44 @@ const regex = {
     ]
   },
   common: { // comment regexp for all languages
-    reserved: 'async|await|func|default|use|int|namespace|static|using|implements|case|import|from|try|catch|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+    reserved: 'range|async|await|func|default|use|int|namespace|static|using|implements|case|import|from|try|catch|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     rules: [
       {
         pattern: /\b(echo|void|String|package|Long)(?=[^\w])/gi,
-        color: 'blue'
+        color: 'sp-keys'
       },
       {
         pattern: /(?=[^.])(\w+)(?=\(.)/g,
-        color: 'blue'
+        color: 'method'
       },
       {
         pattern: /(class)(?=\s\w+)/g,
-        color: 'blue'
+        color: 'method'
       },
       {
         pattern: /(this)(?=\.\w+)/g,
-        color: 'blue',
+        color: 'method',
         italic: true
       },
       { // operators
         pattern: /\s+[:|%^\=]{1}\s+/g,
-        color: 'pink'
+        color: 'operator'
       },
       { // double operators
         pattern: /(\=|\+|\*|\:|\||&lt;|&gt;){2,3}/g,
-        color: 'pink'
+        color: 'operator'
       },
       { // match number
         pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/gi,
-        color: 'violet'
+        color: 'num'
       },
       {
         pattern: /\b(false|true|undefined|True|False|nil|null)\b/gi,
-        color: 'violet'
+        color: 'num'
       },
       { // match regexp: /.*/g
         pattern: /[\(|\s+]\/.*\/[gim\)]\b/gi,
-        color: 'gray'
+        color: 'comment'
       }
     ]
   }

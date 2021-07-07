@@ -9,7 +9,7 @@ export default class Hixo {
   }
 
   setLanguage (language) {
-    if (language && ['java', 'csharp', 'cpp', 'c'].includes(language)) {
+    if (language && ['java', 'go', 'csharp', 'cpp', 'c'].includes(language)) {
       this.options.language = 'javascript'
     }
     else {
@@ -48,7 +48,7 @@ export default class Hixo {
 
     text = text.replace(
       new RegExp('\\b(' + rw + ')(?=[^\w+])\\b', 'gi'),
-      '<span style=[hixo-pink]>$1</span>'
+      '<span style=[hixo-keyword]>$1</span>'
     );
 
     // apply regex rules
@@ -61,7 +61,7 @@ export default class Hixo {
           if (rule.stripHtml) {
             match = this.stripHtml(match)
           }
-          
+
           let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
           return `<span style=[hixo-${classN}]>${match}</span>`
         }

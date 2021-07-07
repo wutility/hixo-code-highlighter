@@ -1,12 +1,17 @@
 :root {
   --hixo-pre-bg:#061628;
   --hixo-pre-color:#eeedff;
-  --hixo-blue:#8fcdff;
-  --hixo-violet:#d2a8ff;
-  --hixo-yellow:#f3e880;
-  --hixo-gray:#b1b1b1;
-  --hixo-pink:#f92672;
-  --hixo-orange:#dc7c23;
+
+  --hixo-method:#8fcdff;
+  --hixo-num:#d2a8ff;
+  --hixo-string:#f3e880;
+  --hixo-comment:#b1b1b1;
+  --hixo-keyword:#f92672;
+  --hixo-variable:#dc7c23;
+
+  --hixo-operator:#f92672; /* + - / * ^ ..... */
+
+  --hixo-sp-keys:#d2a8ff; /* Long, String .... */
 }
 
 pre {  
@@ -24,12 +29,15 @@ pre code {
   font-family: Consolas;
 }
 
-.hixo-blue {color:var(--hixo-blue)}
-.hixo-violet {color: var(--hixo-violet);}
-.hixo-yellow {color: var(--hixo-yellow);}
+.hixo-method {color:var(--hixo-method)}
+.hixo-num {color: var(--hixo-num);}
+.hixo-string {color: var(--hixo-string);}
 
-.hixo-pink {color: var(--hixo-pink);}
-.hixo-gray {color: var(--hixo-gray);}
-.hixo-orange {color: var(--hixo-orange);}
+.hixo-keyword {color: var(--hixo-keyword);}
+.hixo-comment {color: var(--hixo-comment);}
+.hixo-variable {color: var(--hixo-variable);}
+
+.hixo-sp-keys {color: var(--hixo-sp-keys);}
+.hixo-operator {color: var(--hixo-operator);}
 
 .hixo-italic {font-style: italic;}
