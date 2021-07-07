@@ -2,50 +2,68 @@
   box-sizing: border-box;
 }
 
+[data-theme="light"] {
+  --hixo-pre-bg: #fff;
+  --hixo-pre-color: #141414;
+  --hixo-blue: #6f42c1;
+  --hixo-violet: #005cc5;
+  --hixo-yellow: #17c700;
+  --hixo-gray: #6a737d;
+  --hixo-pink: #f92672;
+  --hixo-orange: #dc7c23;
+}
+
 body {
   margin: 0;
   height: 100vh;
   width: 100vw;
   padding: 15px;
   overflow: auto;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #061628;
   color: #fff;
   font-family: 'Noto San';
 }
 
-h1 {margin-top: 0; font-family: 'Poppins'; text-align: center; text-transform: uppercase;}
+header {text-align: center; margin-bottom: 15px;}
+
+h1 {
+  margin: 0;
+  font-family: 'Poppins';
+  text-transform: uppercase;
+}
 
 .container {
-  width: 100%; 
-  height: 90%;  
+  width: 100%;
+  height: 85%;
   display: flex;
   background-color: #0f253e;
   padding: 10px;
-  box-shadow: 0 1px 2px 0 rgba(60,64,67,.3),0 1px 3px 1px rgba(60,64,67,.15);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15);
+}
+pre,
+textarea {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
-.container>div{width: 100%; height: 100%; position: relative;}
-
-#language {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-}
-
-pre, textarea {width: 100%; height: 100%; border: 0;}
-
-select {padding: 10px 15px; outline: none; cursor: pointer;}
-
-textarea {background-color: #061628; 
+textarea {
+  background-color: #061628;
   color: rgb(233, 233, 233);
-  border-right: 2px solid #0f253e; 
-  resize: none; 
+  border-right: 2px solid #0f253e;
+  resize: none;
   outline: none;
   font-size: 16px;
 }
 
-.mb-3 {margin-bottom: 30px;}
+button {text-transform: uppercase;}
+
+button,select {outline: none; cursor: pointer; padding: 7px 15px;}
+
+.mb-3 {
+  margin-bottom: 30px;
+}
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -61,7 +79,12 @@ textarea {background-color: #061628;
 }
 
 @media screen and (max-width: 900px) {
-  .container {display: flex; flex-direction: column;}
-  
-  textarea { border-bottom: 2px solid #0f253e; }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  textarea {
+    border-bottom: 2px solid #0f253e;
+  }
 }

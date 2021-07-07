@@ -1,31 +1,17 @@
 :root {
-  --pre-background:#061628;
-  --pre-color:#eeedff;
-  --blue:#8fcdff;
-  --violet:#d2a8ff;
-  --green:#A3BE8C;
-  --red:#ff7b72;
-  --yellow:#f3e880;
-  --gray:#b1b1b1;
-  --pink:#f92672;
-  --orange:#dc7c23;
-}
-
-[data-theme="light"] {
-  --pre-background:rgb(255, 255, 255);
-  --pre-color:#000000;
-  --blue:#000000;
-  --violet:#000000;
-  --green:#A3BE8C;
-  --red:#000000;
-  --yellow: #0000ff;
-  --gray:#008200;
-  --pink:#000000;
+  --hixo-pre-bg:#061628;
+  --hixo-pre-color:#eeedff;
+  --hixo-blue:#8fcdff;
+  --hixo-violet:#d2a8ff;
+  --hixo-yellow:#f3e880;
+  --hixo-gray:#b1b1b1;
+  --hixo-pink:#f92672;
+  --hixo-orange:#dc7c23;
 }
 
 pre {  
-  background-color: var(--pre-background);
-  color: var(--pre-color);
+  background-color: var(--hixo-pre-bg);
+  color: var(--hixo-pre-color);
   overflow: auto;
   overflow-wrap: break-word;
   padding: 1rem 2rem;
@@ -38,12 +24,12 @@ pre code {
   font-family: Consolas;
 }
 
-.hixo-blue {color:var(--blue)}
-.hixo-violet {color: var(--violet);}
-.hixo-yellow {color: var(--yellow);}
+.hixo-blue {color:var(--hixo-blue)}
+.hixo-violet {color: var(--hixo-violet);}
+.hixo-yellow {color: var(--hixo-yellow);}
 
-.hixo-pink {color: var(--pink);}
-.hixo-gray {color: var(--gray);}
-.hixo-orange {color: var(--orange);}
+.hixo-pink {color: var(--hixo-pink);}
+.hixo-gray {color: var(--hixo-gray);}
+.hixo-orange {color: var(--hixo-orange);}
 
 .hixo-italic {font-style: italic;}

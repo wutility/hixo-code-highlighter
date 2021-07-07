@@ -1,6 +1,9 @@
 const txtArea = document.getElementById('txtcode')
 const codeDisplay = document.querySelector('code')
 
+let currentTheme = 'dark';
+let isTextareaHide = false;
+
 let hixo = new window.Hixo({ language: 'java' });
 
 txtArea.value = langsTest['javascript'].code
@@ -20,6 +23,17 @@ document.getElementById('language').addEventListener('change', e => {
 
   hixo.setLanguage(e.target.value)
   codeDisplay.innerHTML = hixo.codeToHtml(selectLang)
+});
+
+document.querySelector('.btn-theme').addEventListener('click', () => {
+  currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+  codeDisplay.parentElement.dataset.theme = currentTheme === 'light' ? 'dark' : 'light';
+});
+
+document.querySelector('.btn-hide-txtarea').addEventListener('click', () => {
+  isTextareaHide = !isTextareaHide;
+  txtArea.style.display = isTextareaHide ? 'block' : 'none'  
+  codeDisplay.parentElement.dataset.theme = isTextareaHide;
 });
 
 //codeDisplay.parentElement.setAttribute('data-theme', 'light');

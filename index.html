@@ -19,21 +19,22 @@
 
   <header>
     <h1>Hixo Code Highlighter</h1>
+    <button class="btn-theme">change theme</button>
+    <button class="btn-hide-txtarea">hide textarea</button>
+
+    <select name="language" id="language">
+      <option value="javascript">javascript</option>
+      <option value="java">java</option>
+      <option value="cpp">cpp</option>
+      <option value="csharp">csharp</option>
+      <option value="python">python</option>
+      <option value="php">php</option>
+      <option value="sql">sql</option>
+    </select>
   </header>
 
   <div class="container">
-    <div>
-      <select name="language" id="language">
-        <option value="javascript">javascript</option>
-        <option value="java">java</option>
-        <option value="cpp">cpp</option>
-        <option value="csharp">csharp</option>
-        <option value="python">python</option>
-        <option value="php">php</option>
-        <option value="sql">sql</option>
-      </select>
-      <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
-    </div>
+    <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
     <pre><code></code></pre>
   </div>
 

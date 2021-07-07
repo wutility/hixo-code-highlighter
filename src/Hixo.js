@@ -59,7 +59,6 @@ export default class Hixo {
         rule.pattern,
         match => {
           if (rule.stripHtml) {
-            console.log(match);
             match = this.stripHtml(match)
           }
           

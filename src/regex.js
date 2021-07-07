@@ -16,6 +16,12 @@ const classicComments = [
   }
 ];
 
+const dashComment = { // match: # any comment
+  pattern: /#.*/g,
+  color: 'gray',
+  stripHtml: true
+};
+
 const quotes = {
   pattern: /((?<![\\])(&apos;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,
   color: 'yellow',
@@ -38,11 +44,7 @@ const regex = {
     reserved: 'def|False|True',
     rules: [
       quotes,
-      { // match: # any comment
-        pattern: /#.*/g,
-        color: 'gray',
-        stripHtml: true
-      },
+      dashComment,
       { // match: ''' any comment '''
         pattern: /(\'\'\'[\s\S]*?\'\'\')/g,
         color: 'gray',
@@ -62,6 +64,7 @@ const regex = {
         color: 'gray'
       },
       quotes,
+      dashComment,
       ...classicComments
     ]
   },
@@ -78,12 +81,11 @@ const regex = {
     ]
   },
   common: { // comment regexp for all languages
-    reserved: 'default|use|int|namespace|static|using|implements|case|import|from|try|catch|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+    reserved: 'async|await|func|default|use|int|namespace|static|using|implements|case|import|from|try|catch|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     rules: [
       {
         pattern: /\b(echo|void|String|package|Long)(?=[^\w])/gi,
-        color: 'blue',
-        italic: true
+        color: 'blue'
       },
       {
         pattern: /(?=[^.])(\w+)(?=\(.)/g,
