@@ -54,7 +54,6 @@
   --hixo-sp-keys:#D8DEE9; /* Long, String */
 }
 
-
 [data-theme="night"] {
   --hixo-pre-bg: #2e3440ff;
   --hixo-pre-color: #D8DEE9;
@@ -67,6 +66,20 @@
 
   --hixo-operator:#81A1C1;
   --hixo-sp-keys:#81A1C1; /* Long, String */
+}
+
+[data-theme="deepdark"] {
+  --hixo-pre-bg: #080808;
+  --hixo-pre-color: #f8f8f2;
+  --hixo-method: #ef5350;
+  --hixo-num: #d0d0d0;
+  --hixo-string: #69f0ae;
+  --hixo-comment: #808080;
+  --hixo-keyword: #e6e34a;
+  --hixo-variable: #69f0ae;
+
+  --hixo-operator:#ff5e5e;
+  --hixo-sp-keys:#69f0ae; /* Long, String */
 }
 
 [data-theme="hackpot"] {

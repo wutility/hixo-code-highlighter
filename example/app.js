@@ -10,7 +10,7 @@ const codeElement = document.getElementById('pre-editor')
 const selectThemes = document.getElementById('themes');
 const selectLanguages = document.getElementById('language');
 
-const themes = ['default', 'material','dracula', 'github-dark','vscode-dark','night', 'hackpot', 'chroma', 'blackboard','playpen', 'eclipse'];
+const themes = ['default', 'material','dracula', 'github-dark','vscode-dark','deepdark','night', 'hackpot', 'chroma', 'blackboard','playpen', 'eclipse'];
 const languages = ['javascript', 'java','go', 'rust','csharp', 'cpp','python', 'php', 'sql','plsql'];
 
 languages.forEach(lang => {

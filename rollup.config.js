@@ -32,6 +32,6 @@ export default {
       extract: 'hixo.css'
     }),
     nodeResolve(),
-    //terser()
+    terser()
   ]
 };

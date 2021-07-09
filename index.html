@@ -27,7 +27,7 @@
     <h4>Syntax Highlighter</h4>
     <h4 class="mb-2">Fast, Simple and Lightweight</h4>
 
-    <div class="mb-1">
+    <div>
       <label>Supported languages</label>
       <select name="language" id="language"></select>
     </div>
@@ -43,26 +43,27 @@
   <div class="container">
 
     <h1 class="m-0">Hixo</h1>
-    <p class="mt-0">is syntax highlighter, was created to be simple, lightweight and fast for simple usage like blogs.</p>
+    <p class="mt-0">is syntax highlighter, was created to be simple, lightweight and fast for simple usage like blogs (docs, etc..).
+    </p>
 
-    <h2>Installation</h2>
+    <h2># Installation</h2>
     <pre class="pre-doc mb-2">$ npm install hixo
 // or via yarn 
 $ yarn add hixo</pre>
 
-    <h2>Usage</h2>
+    <h2># Usage</h2>
     <pre class="pre-doc mb-2">const hixo = new Hixo({ language: 'java' }); 
 
 const preElement = document.querySelector('pre')
 preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string</pre>
 
-    <h2>Playground</h2>
+    <h2># Playground</h2>
     <div class="w-100 grid-2 mb-2">
       <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
       <pre id="pre-editor"><code></code></pre>
     </div>
 
-    <h2>How to override the current theme</h2>
+    <h2># How to override the current theme</h2>
     <pre class="pre-doc mb-2">// css code
 [data-theme="material"] {
   --hixo-pre-bg: #263238;
@@ -78,10 +79,15 @@ preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return
   --hixo-operator:#f92672;
   --hixo-sp-keys:#d2a8ff;
 }
+
 // javascript code
 codeElement.dataset.theme = 'material';</pre>
 
+    <h2># Notes</h2>
     <p>All pull requests are welcome, feel free.</p>
+
+    <h2># License</h2>
+    <p>MIT.</p>
   </div>
 
   <script src="example/langs-test.js"></script>

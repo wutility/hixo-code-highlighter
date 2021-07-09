@@ -109,13 +109,14 @@ const regex = {
         pattern: /\b(echo|void|int|Bool|Boolean|double|String|package|Long|u32)(?=[^\w])/gi,
         color: 'sp-keys'
       },
-      { // match: @Entity   @Get(
+      { // match: @Entity   @Get
         pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
         color: 'variable'
       },
       {
-        pattern: /(?=[^.])(\w+)(?=\s?\(.)/g,
-        color: 'method'
+        pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g,
+        color: 'method',
+        stripHtml: true
       },
       {
         pattern: /(class)(?=\s+\w+)/g,
@@ -127,7 +128,7 @@ const regex = {
         italic: true
       },
       { // double operators
-        pattern: /\s?(:=|&lt;-|-&gt;|\+=|\:\:)(?=[^\w])/g,
+        pattern: /\s?(:=|&lt;-|-&gt;|\+=)(?=[^\w])/g,
         color: 'operator'
       },
       { // double operators

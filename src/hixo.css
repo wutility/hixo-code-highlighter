@@ -4,12 +4,12 @@
   --hixo-string:#f3e880;
   --hixo-comment:#b1b1b1;
   --hixo-keyword:#f92672;
-  --hixo-variable:#dc7c23;
+  --hixo-variable:#ef9b51;
 
   --hixo-operator:#f92672; /* + - / * ^ ..... */
   --hixo-sp-keys:#d2a8ff; /* Long, String .... */
 
-  --hixo-pre-bg:#061628;
+  --hixo-pre-bg:#2d2d35;
   --hixo-pre-color:#eeedff;
 }
 

@@ -1,16 +1,7 @@
 # Hixo 
-Simple and Lightweight (<3K) code highlighter with 0 dependencies
+Simple and Lightweight (<4K) code highlighter with 0 dependencies
 
-### Supported Languages
-- [x] Javascript
-- [x] Java
-- [x] C#
-- [x] PHP
-- [x] C++ / C
-- [x] SQL
-- [x] Python
-- [x] Go
-- Css and HTML are not supported for now.
+Supported Languages check docs: [website](https://hixo.onrender.com/)
 
 ## Usage
 ```js
@@ -57,9 +48,6 @@ preElement.dataset.theme = 'material';
 
 ### Notes
 - All pull requests are welcome, feel free.
-
-### Todo
-- [ ] match regexp: /anything/g
 
 # License
 MIT

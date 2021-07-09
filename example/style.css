@@ -4,7 +4,6 @@
 
 body {
   margin: 0;
-  background: #f5f5f5;
   font-size: 14px;
   font-family: 'Noto San';
 }
@@ -15,19 +14,22 @@ header {
 }
 
 aside {
-  width: 250px;
+  width: 270px;
   height: 100%;
   position: fixed;
   left: 0;
   right: 0;
   background-color: #2d2d35;
   color: #eeedff;
+  display: flex;
+    flex-direction: column;
   padding: 10px;
+  box-shadow: 0px 3px 7px rgb(0 0 0 / 35%);
 }
 
 .container {
-  margin-left: 250px;
-  width: calc(100% - 250px);
+  margin-left: 270px;
+  width: calc(100% - 270px);
   height: 100%;
   padding: 20px;
 }
@@ -54,15 +56,14 @@ pre,
 textarea {
   width: 100%;  
   border: 0;
-  border-radius: 7px;
-  box-shadow: 0px 3px 7px rgb(0 0 0 / 35%);
+  border-radius: 7px; 
 }
 
-#pre-editor,textarea { height: 400px; }
+#pre-editor,textarea { height: 450px; border: 1px solid #2d2d35;}
 
 textarea {
   background-color: #fff;
-  color: inherit;
+  color: #000;  
   padding: 1rem 2rem;
   resize: none;
   outline: none;
@@ -81,6 +82,7 @@ select,input {
   appearance: none;
   outline: none;
   cursor: pointer;
+  text-align: center;
   text-transform: uppercase;
   transition: all .25s;
 }
