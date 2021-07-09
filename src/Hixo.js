@@ -17,26 +17,19 @@ export default class Hixo {
     }
   }
 
-  stripHtml (text) {
-    let tmp = document.createElement("div");
-    tmp.innerHTML = text;
-    return tmp.textContent || tmp.innerText || "";
-  }
-
-  replaceSpanTag (text) {
-    return text.replace(/<\/?span[^>]*>/ig, "")
+  replaceSpan (text) {
+    const rmSpanTag = /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/g;
+    return text.replace(rmSpanTag, "")
   }
 
   htmlEscapes (text) {
     const htmlEscapes = {
       '&': '&amp;',
       '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&apos;'
+      '>': '&gt;'
     };
 
-    return text.replace(/[&<>"']/g, chr => htmlEscapes[chr]);
+    return text.replace(/[&<>]/g, chr => htmlEscapes[chr]);
   }
 
   codeToHtml (text) {
@@ -66,7 +59,7 @@ export default class Hixo {
         rule.pattern,
         match => {
           if (rule.stripHtml) {
-            match = this.stripHtml(match)
+            match = this.replaceSpan(match)
           }
 
           if (rule.inside) {
@@ -77,6 +70,9 @@ export default class Hixo {
         }
       );
     }
+
+    // remove span wrapper from classname: < class=""></>     
+    text = text.replace(/<.* .*=".*">.*<\/.*>/g, match => this.stripHtml(match))
 
     text = text.replace(/style=(\[([^\][]*)])/g, v => {
       if (v.startsWith('style=[')) {

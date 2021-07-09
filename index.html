@@ -8,7 +8,7 @@
   <title>Hixo - Syntax Highlighter</title>
   <link rel="stylesheet" href="build/hixo.css">
   <link rel="stylesheet" href="themes/themes.css">
-  <link rel="stylesheet" href="example/style.css">
+  <link rel="stylesheet" href="website/style.css">
 
   <meta name="description" content="Syntax Highlighter">
   <meta name="keywords" content="Syntax, Highlighter, Java, C++, Python, Php, Rust, JavaScript">
@@ -65,7 +65,7 @@ preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return
 
     <h2># How to override the current theme</h2>
     <pre class="pre-doc mb-2">// css code
-[data-theme="material"] {
+[data-theme="material"] { // you can copy your favorite theme from the folder themes
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;
 
@@ -90,9 +90,9 @@ codeElement.dataset.theme = 'material';</pre>
     <p>MIT.</p>
   </div>
 
-  <script src="example/langs-test.js"></script>
+  <script src="website/langs-test.js"></script>
   <script src="build/hixo.umd.js"></script>
-  <script src="example/app.js"></script>
+  <script src="website/app.js"></script>
 </body>
 
 </html>

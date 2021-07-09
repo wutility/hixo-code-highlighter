@@ -5,10 +5,11 @@ const langsTest = {
 this is a multi comments
 */
 class Test {
+  obj = { name:'miky', num:1 }
   constructor() {
     this.timeV += false
     this.timeV *= /^#/g
-    this.NumTst = text.replace(/^#/g, "_")
+    this.NumTst = text.replace(/^#/g, "_")    
   }
 
   private methodText() {
@@ -105,9 +106,10 @@ fn fizzbuzz_to(n: u32) {
 }`},
   python: {
     code: `# Return the sum of
-'''Statistical median to demonstrate doctest.
-  >>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
-  7
+'''
+Statistical median to demonstrate doctest.
+>>> median([2, 9, 9, 7, 9, 2, 4, 5, 8])
+7
 '''
 def squaresum(n) : # comment
   print('hello')

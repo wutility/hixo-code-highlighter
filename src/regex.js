@@ -1,11 +1,6 @@
 const classicComments = [
   { // single comment
-    pattern: /^\/\/.*/g,
-    color: 'comment',
-    stripHtml: true
-  },
-  { // single comment
-    pattern: /\s+\/\/.*/g,
+    pattern: /^\/\/\s+.*|\s+\/\/\s+.*/g,
     color: 'comment',
     stripHtml: true
   },
@@ -29,7 +24,7 @@ const dashComment = { // match: -- any comment
 }
 
 const quotes = {
-  pattern: /((?<![\\])(&apos;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,
+  pattern: /((?<![\\])('|"))((?:.(?!(?<![\\])\1))*.?)\1/g,
   color: 'string',
   stripHtml: true
 };
@@ -57,7 +52,7 @@ const regex = {
       quotes,
       hashComment,
       { // match: ''' any comment '''
-        pattern: /(\'\'\'[\s\S]*?\'\'\')/g,
+        pattern: /("""|''')[\s\S]*?\1/g,
         color: 'comment',
         stripHtml: true
       }
@@ -106,7 +101,7 @@ const regex = {
     reserved: 'final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     rules: [
       {
-        pattern: /\b(echo|void|int|Bool|Boolean|double|String|package|Long|u32)(?=[^\w])/gi,
+        pattern: /\b(instanceof|echo|void|int|Bool|Boolean|double|String|package|Long|u32)(?=[^\w])/gi,
         color: 'sp-keys'
       },
       { // match: @Entity   @Get
@@ -128,7 +123,7 @@ const regex = {
         italic: true
       },
       { // double operators
-        pattern: /\s?(:=|&lt;-|-&gt;|\+=)(?=[^\w])/g,
+        pattern: /\s+(:=|&lt;-|-&gt;|\+=|\*=)(?=[^\w])/g,
         color: 'operator'
       },
       { // double operators

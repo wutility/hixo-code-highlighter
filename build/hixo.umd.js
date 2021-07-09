@@ -1,1 +1,241 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).Hixo=t()}(this,(function(){"use strict";const e=[{pattern:/^\/\/.*/g,color:"comment",stripHtml:!0},{pattern:/\s+\/\/.*/g,color:"comment",stripHtml:!0},{pattern:/(\/\*[\s\S]*?\*\/)/g,color:"comment",stripHtml:!0}],t={pattern:/(^#.*)|[^-'\(]#\s+[^\)'].*/g,color:"comment",stripHtml:!0},r={pattern:/(--.*?\n)|(\/\*[\s\S]*?\*\/)/g,color:"comment",stripHtml:!0},o={pattern:/((?<![\\])(&apos;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,color:"string",stripHtml:!0},n="TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE",s={sql:{reserved:n,rules:[o,r]},plsql:{reserved:"HIDDEN|OCICOLL|"+n,rules:[o,r]},python:{reserved:"def|False|True",rules:[o,t,{pattern:/(\'\'\'[\s\S]*?\'\'\')/g,color:"comment",stripHtml:!0}]},php:{reserved:"insteadof|yield from|__CLASS__|__DIR__",rules:[{pattern:/\$\w+/g,color:"variable"},{pattern:/(&lt;\?php|\?&gt;)/g,color:"comment"},o,t,...e]},rust:{reserved:"fn|become|macro",rules:[o,...e]},javascript:{reserved:"#include|defer|signed|sizeof|volatile|type|typedef|goto|export|constructor|var",rules:[{pattern:/`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/g,color:"string",stripHtml:!0,inside:{pattern:/\$\{.*\}/g,color:"pre-color"}},o,...e]},common:{reserved:"final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break",rules:[{pattern:/\b(echo|void|int|Bool|Boolean|double|String|package|Long|u32)(?=[^\w])/gi,color:"sp-keys"},{pattern:/(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,color:"variable"},{pattern:/(?![.])[:$]{0,2}(\w+)(?=\(.)/g,color:"method",stripHtml:!0},{pattern:/(class)(?=\s+\w+)/g,color:"method"},{pattern:/(this)(?=\.\w+)/g,color:"method",italic:!0},{pattern:/\s?(:=|&lt;-|-&gt;|\+=)(?=[^\w])/g,color:"operator"},{pattern:/\s+[\=\|]{2,3}\s+/g,color:"operator"},{pattern:/\b([0-9]+(?:\.[0-9]+)?)\b/g,color:"num"},{pattern:/\b(false|true|undefined|True|False|nil|null)\b/gi,color:"num"},{pattern:/[\(|\s+]\/.*\/[gim\)]\b/g,color:"comment"}]}};return class{options={};constructor({language:e}){this.setLanguage(e)}setLanguage(e){e&&["java","go","csharp","cpp","c"].includes(e)?this.options.language="javascript":this.options.language=e||""}stripHtml(e){let t=document.createElement("div");return t.innerHTML=e,t.textContent||t.innerText||""}replaceSpanTag(e){return e.replace(/<\/?span[^>]*>/gi,"")}htmlEscapes(e){const t={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"};return e.replace(/[&<>"']/g,(e=>t[e]))}codeToHtml(e){e=(e=this.htmlEscapes(e)).replace(/\\/,"\\\\");let t=s.common.reserved;t+="|"+s[this.options.language].reserved,e=e.replace(new RegExp("\\b("+t+")(?=[^w+])\\b","gi"),"<span style=[hixo-keyword]>$1</span>");const r=s.common.rules.concat(s[this.options.language].rules),o=(e,t)=>`<span style=[hixo-${e.color+(e.italic?" hixo-italic":"")}]>${t}</span>`;for(let t=0;t<r.length;t++){const n=r[t];e=e.replace(n.pattern,(e=>(n.stripHtml&&(e=this.stripHtml(e)),n.inside&&(e=e.replace(n.inside.pattern,(e=>o(n.inside,e)))),o(n,e))))}return`<code>${(e=e.replace(/style=(\[([^\][]*)])/g,(e=>{if(e.startsWith("style=["))return'class="'+(e=e.match(/\[([^}]*)\]/)[1])+'"'}))).trim()}</code>`}}}));
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Hixo = factory());
+}(this, (function () { 'use strict';
+
+  const classicComments = [
+    { // single comment
+      pattern: /^\/\/\s+.*|\s+\/\/\s+.*/g,
+      color: 'comment',
+      stripHtml: true
+    },
+    { // multi comment /* */
+      pattern: /(\/\*[\s\S]*?\*\/)/g,
+      color: 'comment',
+      stripHtml: true
+    }
+  ];
+
+  const hashComment = { // match: # any comment
+    pattern: /(^#.*)|[^-'\(]#\s+[^\)'].*/g,
+    color: 'comment',
+    stripHtml: true
+  };
+
+  const dashComment = { // match: -- any comment
+    pattern: /(--.*?\n)|(\/\*[\s\S]*?\*\/)/g,
+    color: 'comment',
+    stripHtml: true
+  };
+
+  const quotes = {
+    pattern: /((?<![\\])('|"))((?:.(?!(?<![\\])\1))*.?)\1/g,
+    color: 'string',
+    stripHtml: true
+  };
+
+  const sqlRvWords = 'TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE';
+
+  const regex = {
+    sql: {
+      reserved: sqlRvWords,
+      rules: [
+        quotes,
+        dashComment
+      ]
+    },
+    plsql: {
+      reserved: 'HIDDEN|OCICOLL|' + sqlRvWords,
+      rules: [
+        quotes,
+        dashComment
+      ]
+    },
+    python: {
+      reserved: 'def|False|True',
+      rules: [
+        quotes,
+        hashComment,
+        { // match: ''' any comment '''
+          pattern: /("""|''')[\s\S]*?\1/g,
+          color: 'comment',
+          stripHtml: true
+        }
+      ]
+    },
+    php: {
+      reserved: 'insteadof|yield from|__CLASS__|__DIR__',
+      rules: [
+        { // match: $variable
+          pattern: /\$\w+/g,
+          color: 'variable'
+        },
+        { // match: <?php  ?>
+          pattern: /(&lt;\?php|\?&gt;)/g,
+          color: 'comment'
+        },
+        quotes,
+        hashComment,
+        ...classicComments
+      ]
+    },
+    rust: {
+      reserved: 'fn|become|macro',
+      rules: [
+        quotes,
+        ...classicComments
+      ]
+    },
+    javascript: { // rules for: javascript - java - cpp/c - csharp - go
+      reserved: '#include|defer|signed|sizeof|volatile|type|typedef|goto|export|constructor|var',
+      rules: [
+        { // match: ` any string here `
+          pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/g,
+          color: 'string',
+          stripHtml: true,
+          inside: { // operators: ${ }
+            pattern: /\$\{.*\}/g,
+            color: 'pre-color'
+          },
+        },
+        quotes,
+        ...classicComments
+      ]
+    },
+    common: { // comment regexp for all languages
+      reserved: 'final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+      rules: [
+        {
+          pattern: /\b(instanceof|echo|void|int|Bool|Boolean|double|String|package|Long|u32)(?=[^\w])/gi,
+          color: 'sp-keys'
+        },
+        { // match: @Entity   @Get
+          pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
+          color: 'variable'
+        },
+        {
+          pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g,
+          color: 'method',
+          stripHtml: true
+        },
+        {
+          pattern: /(class)(?=\s+\w+)/g,
+          color: 'method'
+        },
+        {
+          pattern: /(this)(?=\.\w+)/g,
+          color: 'method',
+          italic: true
+        },
+        { // double operators
+          pattern: /\s+(:=|&lt;-|-&gt;|\+=|\*=)(?=[^\w])/g,
+          color: 'operator'
+        },
+        { // double operators
+          pattern: /\s+[\=\|]{2,3}\s+/g,
+          color: 'operator'
+        },
+        { // match number
+          pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/g,
+          color: 'num'
+        },
+        {
+          pattern: /\b(false|true|undefined|True|False|nil|null)\b/gi,
+          color: 'num'
+        },
+        { // match regexp: /.*/g
+          pattern: /[\(|\s+]\/.*\/[gim\)]\b/g,
+          color: 'comment'
+        }
+      ]
+    }
+  };
+
+  class Hixo {
+    options = {};
+
+    constructor ({ language }) {
+      this.setLanguage(language);
+    }
+
+    setLanguage (language) {
+      if (language && ['java', 'go', 'csharp', 'cpp', 'c'].includes(language)) {
+        this.options.language = 'javascript';
+      }
+      else {
+        this.options.language = language || '';
+      }
+    }
+
+    replaceSpan (text) {
+      const rmSpanTag = /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/g;
+      return text.replace(rmSpanTag, "")
+    }
+
+    htmlEscapes (text) {
+      const htmlEscapes = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;'
+      };
+
+      return text.replace(/[&<>]/g, chr => htmlEscapes[chr]);
+    }
+
+    codeToHtml (text) {
+      text = this.htmlEscapes(text);
+      text = text.replace(/\\/, "\\\\");
+
+      // reserved words /\b()(?=[^\w])/g
+      let rw = regex.common.reserved;
+      rw += '|' + regex[this.options.language].reserved;
+
+      text = text.replace(
+        new RegExp('\\b(' + rw + ')(?=[^\w+])\\b', 'gi'),
+        '<span style=[hixo-keyword]>$1</span>'
+      );
+
+      // apply regex rules
+      const rules = regex.common.rules.concat(regex[this.options.language].rules);
+
+      const setColor = (rule, match) => {
+        let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
+        return `<span style=[hixo-${classN}]>${match}</span>`
+      };
+
+      for (let i = 0; i < rules.length; i++) {
+        const rule = rules[i];
+        text = text.replace(
+          rule.pattern,
+          match => {
+            if (rule.stripHtml) {
+              match = this.replaceSpan(match);
+            }
+
+            if (rule.inside) {
+              match = match.replace(rule.inside.pattern, v => setColor(rule.inside, v));
+            }
+
+            return setColor(rule, match);
+          }
+        );
+      }
+
+      // remove span wrapper from classname: < class=""></>     
+      text = text.replace(/<.* .*=".*">.*<\/.*>/g, match => this.stripHtml(match));
+
+      text = text.replace(/style=(\[([^\][]*)])/g, v => {
+        if (v.startsWith('style=[')) {
+          v = v.match(/\[([^}]*)\]/)[1];
+          return 'class="' + v + '"'
+        }
+      });
+
+      return `<code>${text.trim()}</code>`;
+    }
+  }
+
+  return Hixo;
+
+})));
