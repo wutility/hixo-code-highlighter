@@ -1,7 +1,4 @@
-:root {
-  --hixo-pre-bg:#061628;
-  --hixo-pre-color:#eeedff;
-
+:root {  
   --hixo-method:#8fcdff;
   --hixo-num:#d2a8ff;
   --hixo-string:#f3e880;
@@ -10,8 +7,10 @@
   --hixo-variable:#dc7c23;
 
   --hixo-operator:#f92672; /* + - / * ^ ..... */
-
   --hixo-sp-keys:#d2a8ff; /* Long, String .... */
+
+  --hixo-pre-bg:#061628;
+  --hixo-pre-color:#eeedff;
 }
 
 pre {  
@@ -28,6 +27,8 @@ pre code {
   white-space: pre-wrap;
   font-family: Consolas;
 }
+
+.hixo-pre-color {color:var(--hixo-pre-color)}
 
 .hixo-method {color:var(--hixo-method)}
 .hixo-num {color: var(--hixo-num);}

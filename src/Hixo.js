@@ -9,7 +9,7 @@ export default class Hixo {
   }
 
   setLanguage (language) {
-    if (language && ['java', 'go','rust', 'csharp', 'cpp', 'c'].includes(language)) {
+    if (language && ['java', 'go', 'csharp', 'cpp', 'c'].includes(language)) {
       this.options.language = 'javascript'
     }
     else {
@@ -41,6 +41,7 @@ export default class Hixo {
 
   codeToHtml (text) {
     text = this.htmlEscapes(text);
+    text = text.replace(/\\/, "\\\\");
 
     // reserved words /\b()(?=[^\w])/g
     let rw = regex.common.reserved;
@@ -54,7 +55,13 @@ export default class Hixo {
     // apply regex rules
     const rules = regex.common.rules.concat(regex[this.options.language].rules);
 
-    rules.forEach(rule => {
+    const setColor = (rule, match) => {
+      let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
+      return `<span style=[hixo-${classN}]>${match}</span>`
+    }
+
+    for (let i = 0; i < rules.length; i++) {
+      const rule = rules[i];
       text = text.replace(
         rule.pattern,
         match => {
@@ -62,11 +69,14 @@ export default class Hixo {
             match = this.stripHtml(match)
           }
 
-          let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
-          return `<span style=[hixo-${classN}]>${match}</span>`
+          if (rule.inside) {
+            match = match.replace(rule.inside.pattern, v => setColor(rule.inside, v))
+          }
+
+          return setColor(rule, match);
         }
       );
-    });
+    }
 
     text = text.replace(/style=(\[([^\][]*)])/g, v => {
       if (v.startsWith('style=[')) {
@@ -75,6 +85,6 @@ export default class Hixo {
       }
     });
 
-    return text.trim();
+    return `<code>${text.trim()}</code>`;
   }
 }

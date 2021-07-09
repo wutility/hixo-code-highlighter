@@ -4,68 +4,123 @@
 
 body {
   margin: 0;
-  padding: 25px;
-  overflow: auto;
+  background: #f5f5f5;
   font-size: 14px;
   font-family: 'Noto San';
 }
 
-header {text-align: center; margin-bottom: 15px;}
+header {
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-footer {text-align: center; padding: 20px;}
-
-h1,h4 {
-  margin: 0;
-  font-family: 'Poppins';
-  text-transform: uppercase;
+aside {
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: #2d2d35;
+  color: #eeedff;
+  padding: 10px;
 }
 
 .container {
-  width: 100%;
-  height: 600px;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  height: 100%;
+  padding: 20px;
+}
+
+h1,
+h2,
+h4,
+label {  
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: 'Poppins';
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+p {font-family: 'Poppins'; font-size: 16px;}
+
+h1 {
+  color: #32cd31;
+  font-size: 45px;
 }
 
 pre,
 textarea {
-  width: 100%;
-  height: 100%;
+  width: 100%;  
   border: 0;
   border-radius: 7px;
-  box-shadow: 0px 6px 20px rgb(0 0 0 / 35%);
+  box-shadow: 0px 3px 7px rgb(0 0 0 / 35%);
 }
 
+#pre-editor,textarea { height: 400px; }
+
 textarea {
-  background-color: inherit;
+  background-color: #fff;
   color: inherit;
   padding: 1rem 2rem;
   resize: none;
   outline: none;
 }
 
-button,a {text-transform: uppercase;}
+.btn,button,
+select,input {
+  width: 100%;
+  background: #2d2d35;  
+  color: #fff;
+  border-radius: 4px;
+  border: solid 2px #666;  
+  padding: 10px;
+  line-height: 1.15;
+  margin-bottom: 15px;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .25s;
+}
 
-button,select {outline: none; cursor: pointer; padding: 7px 15px;}
+input,select {margin-top: 5px;}
 
-a { text-decoration: none;}
+a {
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #32cd31;
+}
 
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  justify-items: stretch;
+  grid-gap: 10px;
 }
 
 .mb-3 {
   margin-bottom: 30px;
 }
 
+.mb-2 {
+  margin-bottom: 20px;
+}
+
 .mb-1 {
   margin-bottom: 10px;
 }
 
+.m-0 {margin: 0;}
+.mt-0 {margin-top: 0;}
+
+.w-100 {width: 100%;}
+
 ::-webkit-scrollbar {
   width: 5px;
-  height: 5px;  
+  height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {

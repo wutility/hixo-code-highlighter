@@ -30,8 +30,8 @@ Or include it via jsDelivr CDN (UMD):
 ```js
 const hixo = new Hixo({ language: 'java' }); 
 
-const codeElement = document.querySelector('code')
-codeElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
+const preElement = document.querySelector('pre')
+preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
 ```
 
 ### How to override the current theme
@@ -52,7 +52,7 @@ codeElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
 }
 ```
 ```js
-codeElement.parentElement.dataset.theme = 'material';
+preElement.dataset.theme = 'material';
 ```
 
 ### Notes

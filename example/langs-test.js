@@ -8,7 +8,7 @@ class Test {
   constructor() {
     this.timeV += false
     this.timeV *= /^#/g
-    this.NumTst = new RegExp(/^#/g)
+    this.NumTst = text.replace(/^#/g, "_")
   }
 
   private methodText() {
@@ -38,8 +38,8 @@ try {
 catch(Exception e) {
 
 }`},
-go: {
-  code: `package animals
+  go: {
+    code: `package animals
 
 import "fmt"
 
@@ -69,34 +69,39 @@ func main() {
 	}
 	fmt.Println(true ? 1 : 0)
 }`},
-rust: {
-  code: `//declare a structure
-struct Employee {
-    name:String,
-    company:String,
-    age:u32
-}
+  rust: {
+    code: `// Unlike C/C++, there's no restriction on the order of function definitions
 fn main() {
-    //initialize a structure
-    let emp1 = Employee {
-      company:String::from("TutorialsPoint"),
-      name:String::from("Mohtashim"),
-      age:50
-    };
-    let emp2 = Employee{
-      company:String::from("TutorialsPoint"),
-      name:String::from("Kannan"),
-      age:32
-    };
-    //pass emp1 and emp2 to display()
-    display(emp1);
-    display(emp2);
+  fizzbuzz_to(100);
 }
-// fetch values of specific structure fields using the 
-// operator and print it to the console
-fn display( emp:Employee){
-    println!("Name is :{} company is {} age is 
-    {}",emp.name,emp.company,emp.age);
+
+// Function that returns a boolean value
+fn is_divisible_by(lhs: u32, rhs: u32) -> bool {
+  // Corner case, early return
+  if rhs == 0 {
+      return false;
+  }
+
+  lhs % rhs == 0
+}
+
+fn fizzbuzz(n: u32) -> () {
+  if is_divisible_by(n, 15) {
+      println!("fizzbuzz");
+  } else if is_divisible_by(n, 3) {
+      println!("fizz");
+  } else if is_divisible_by(n, 5) {
+      println!("buzz");
+  } else {
+      println!("{}", n);
+  }
+}
+
+// When a function returns (), the return type can be omitted from the
+fn fizzbuzz_to(n: u32) {
+  for n in 1..n + 1 {
+      fizzbuzz(n);
+  }
 }`},
   python: {
     code: `# Return the sum of
@@ -105,16 +110,16 @@ fn display( emp:Employee){
   7
 '''
 def squaresum(n) : # comment
-  
-    # Iterate i from 1 
-    # and n finding 
-    # square of i and
-    # add to sum.
-    sm = 0
-    for i in range(1, n+1) :
-        sm = sm + (i * i)
-      
-    return sm
+  print('hello')
+  # Iterate i from 1 
+  # and n finding 
+  # square of i and
+  # add to sum.
+  sm = 0
+  for i in range(1, n+1) :
+      sm = sm + (i * i)
+    
+  return sm
   
 # Driven Program
 n = 4
@@ -129,12 +134,14 @@ import java.awt.event.ActionListener;
   <Object, Long>
   nodes.add(nodeA);
 */
+@Entity
 public class Graph { /* Commnet */
 
   static Node node; // another comment
   protected String str = "hello Java";
   private Set<Node> nodes = new HashSet<Object, Long>();
   
+  @GetMapping('/url')
   public void addNode(Node nodeA) {
       nodes.add(nodeA);
   }
@@ -162,8 +169,8 @@ class Car
 }
 
 // Outputs "Mustang"`},
-cpp: {
-  code: `#include <iostream>
+  cpp: {
+    code: `#include <iostream>
 using namespace std;
 
 class Employee {
@@ -189,23 +196,60 @@ int main() {
   return 0;
 }`},
   php: {
-    code: `<?php
-class Fruit {
-  // Properties
-  public $name = " color $po" . "tester <br/>";
-  public $color = 1235;
+    code: `<?php declare(strict_types=1);
 
-  // Methods
-  function set_name($name) {
-    $this->name = $name;
+define('ROOT_DIR', dirname(__DIR__));
+
+require ROOT_DIR . '/vendor/autoload.php';
+
+\Tracy\Debugger::enable();
+
+$request = \Symfony\Component\HttpFoundation\Request::createFromGlobals();
+
+$dispatcher = \FastRoute\simpleDispatcher(
+  function (\FastRoute\RouteCollector $r) {
+    [$controllerName, $method] = explode('#', $routeInfo[1]);
+    $routes = include(ROOT_DIR . '/src/Routes.php');
+    foreach ($routes as $route) {
+        $r->addRoute(...$route);
+    }
   }
-  function get_name() {
-    return $this->name;
-  }
+);
+
+$routeInfo = $dispatcher->dispatch(
+  $request->getMethod(),
+  $request->getPathInfo()
+);
+
+switch ($routeInfo[0]) {
+  case \FastRoute\Dispatcher::NOT_FOUND:
+    $response = new \Symfony\Component\HttpFoundation\Response(
+        'Not found',
+        404
+    );
+    break;
+  case \FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
+    $response = new \Symfony\Component\HttpFoundation\Response(
+        'Method not allowed',
+        405
+    );
+    break;
+  case \FastRoute\Dispatcher::FOUND:    
+    $vars = $routeInfo[2];
+    $injector = include('Dependencies.php');
+    $controller = $injector->make($controllerName);
+    $response = $controller->$method($request, $vars);
+    break;
 }
-?>`},
-sql: {
-  code: `-- Select all:
+
+if (!$response instanceof \Symfony\Component\HttpFoundation\Response) {
+  throw new \Exception('Controller methods must return a Response object');
+}
+
+$response->prepare($request);
+$response->send();`},
+  sql: {
+    code: `-- Select all:
 SELECT * FROM Customers;
 SELECT column_name(s)
 FROM table1 -- comment
@@ -226,6 +270,20 @@ delete from persons
 update persons set name= 'hello'
 
 EXCEPTION 
-   Exception-handling-statements 
-END;`}
+  -- Exception-handling-statements 
+END;`},
+  plsql: {
+    code: `DECLARE  
+  total_rows number(2); 
+BEGIN 
+  UPDATE customers 
+  SET salary = salary + 500; 
+  IF sql%notfound THEN 
+     dbms_output.put_line('no customers selected'); 
+  ELSIF sql%found THEN 
+     total_rows := sql%rowcount;
+     dbms_output.put_line( total_rows || ' customers selected '); 
+  END IF;  
+END; 
+/`}
 }

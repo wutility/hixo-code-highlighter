@@ -16,11 +16,17 @@ const classicComments = [
   }
 ];
 
-const dashComment = { // match: # any comment
-  pattern: /#.*/g,
+const hashComment = { // match: # any comment
+  pattern: /(^#.*)|[^-'\(]#\s+[^\)'].*/g,
   color: 'comment',
   stripHtml: true
 };
+
+const dashComment = { // match: -- any comment
+  pattern: /(--.*?\n)|(\/\*[\s\S]*?\*\/)/g,
+  color: 'comment',
+  stripHtml: true
+}
 
 const quotes = {
   pattern: /((?<![\\])(&apos;|&quot;))((?:.(?!(?<![\\])\1))*.?)\1/g,
@@ -28,23 +34,28 @@ const quotes = {
   stripHtml: true
 };
 
+const sqlRvWords = 'TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE';
+
 const regex = {
   sql: {
-    reserved: 'TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
+    reserved: sqlRvWords,
     rules: [
       quotes,
-      { // match: -- any comment
-        pattern: /(--.*?\n)|(\/\*[\s\S]*?\*\/)/g,
-        color: 'comment',
-        stripHtml: true
-      }
+      dashComment
+    ]
+  },
+  plsql: {
+    reserved: 'HIDDEN|OCICOLL|' + sqlRvWords,
+    rules: [
+      quotes,
+      dashComment
     ]
   },
   python: {
     reserved: 'def|False|True',
     rules: [
       quotes,
-      dashComment,
+      hashComment,
       { // match: ''' any comment '''
         pattern: /(\'\'\'[\s\S]*?\'\'\')/g,
         color: 'comment',
@@ -53,7 +64,7 @@ const regex = {
     ]
   },
   php: {
-    reserved: 'insteadof|yield from|__CLASS__',
+    reserved: 'insteadof|yield from|__CLASS__|__DIR__',
     rules: [
       { // match: $variable
         pattern: /\$\w+/g,
@@ -64,35 +75,50 @@ const regex = {
         color: 'comment'
       },
       quotes,
-      dashComment,
+      hashComment,
+      ...classicComments
+    ]
+  },
+  rust: {
+    reserved: 'fn|become|macro',
+    rules: [
+      quotes,
       ...classicComments
     ]
   },
   javascript: { // rules for: javascript - java - cpp/c - csharp - go
-    reserved: 'defer|struct|signed|sizeof|volatile|type|typedef|goto|let|export|constructor|var',
+    reserved: '#include|defer|signed|sizeof|volatile|type|typedef|goto|export|constructor|var',
     rules: [
       { // match: ` any string here `
-        pattern: /`[^`]*`/g,
+        pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/g,
         color: 'string',
-        stripHtml: true
+        stripHtml: true,
+        inside: { // operators: ${ }
+          pattern: /\$\{.*\}/g,
+          color: 'pre-color'
+        },
       },
       quotes,
       ...classicComments
     ]
   },
   common: { // comment regexp for all languages
-    reserved: 'range|async|await|func|default|use|int|namespace|static|using|implements|case|import|from|try|catch|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+    reserved: 'final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     rules: [
       {
-        pattern: /\b(echo|void|String|package|Long)(?=[^\w])/gi,
+        pattern: /\b(echo|void|int|Bool|Boolean|double|String|package|Long|u32)(?=[^\w])/gi,
         color: 'sp-keys'
       },
+      { // match: @Entity   @Get(
+        pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
+        color: 'variable'
+      },
       {
-        pattern: /(?=[^.])(\w+)(?=\(.)/g,
+        pattern: /(?=[^.])(\w+)(?=\s?\(.)/g,
         color: 'method'
       },
       {
-        pattern: /(class)(?=\s\w+)/g,
+        pattern: /(class)(?=\s+\w+)/g,
         color: 'method'
       },
       {
@@ -100,16 +126,16 @@ const regex = {
         color: 'method',
         italic: true
       },
-      { // operators
-        pattern: /\s+[:|%^\=]{1}\s+/g,
+      { // double operators
+        pattern: /\s?(:=|&lt;-|-&gt;|\+=|\:\:)(?=[^\w])/g,
         color: 'operator'
       },
       { // double operators
-        pattern: /(\=|\+|\*|\:|\||&lt;|&gt;){2,3}/g,
+        pattern: /\s+[\=\|]{2,3}\s+/g,
         color: 'operator'
       },
       { // match number
-        pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/gi,
+        pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/g,
         color: 'num'
       },
       {
@@ -117,11 +143,11 @@ const regex = {
         color: 'num'
       },
       { // match regexp: /.*/g
-        pattern: /[\(|\s+]\/.*\/[gim\)]\b/gi,
+        pattern: /[\(|\s+]\/.*\/[gim\)]\b/g,
         color: 'comment'
       }
     ]
   }
-}
+};
 
 export default regex;

@@ -5,10 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hixo - Code highlighter</title>
+  <title>Hixo - Syntax Highlighter</title>
   <link rel="stylesheet" href="build/hixo.css">
   <link rel="stylesheet" href="themes/themes.css">
   <link rel="stylesheet" href="example/style.css">
+
+  <meta name="description" content="Syntax Highlighter">
+  <meta name="keywords" content="Syntax, Highlighter, Java, C++, Python, Php, Rust, JavaScript">
+  <meta name="author" content="Haikel Fazzani">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -17,23 +21,68 @@
 </head>
 
 <body spellcheck="true">
-  <header>
-    <h1>Hixo Code Highlighter</h1>
-    <h4 class="mb-1">Fast - Simple - Lightweight</h4>
-    <button class="btn-hide-txtarea">hide textarea</button>
 
-    <select name="language" id="language"></select>
-    <select name="themes" id="themes"></select>
-  </header>
+  <aside>
+    <h1>Hixo&gt;</h1>
+    <h4>Syntax Highlighter</h4>
+    <h4 class="mb-2">Fast, Simple and Lightweight</h4>
 
-  <div class="container grid-2">
-    <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
-    <pre><code></code></pre>
+    <div class="mb-1">
+      <label>Supported languages</label>
+      <select name="language" id="language"></select>
+    </div>
+
+    <div class="mb-1">
+      <label>Themes</label>
+      <select name="themes" id="themes"></select>
+    </div>
+
+    <a class="btn" href="https://github.com/wutility/hixo-code-highlighter">Github link</a>
+  </aside>
+
+  <div class="container">
+
+    <h1 class="m-0">Hixo</h1>
+    <p class="mt-0">is syntax highlighter, was created to be simple, lightweight and fast for simple usage like blogs.</p>
+
+    <h2>Installation</h2>
+    <pre class="pre-doc mb-2">$ npm install hixo
+// or via yarn 
+$ yarn add hixo</pre>
+
+    <h2>Usage</h2>
+    <pre class="pre-doc mb-2">const hixo = new Hixo({ language: 'java' }); 
+
+const preElement = document.querySelector('pre')
+preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string</pre>
+
+    <h2>Playground</h2>
+    <div class="w-100 grid-2 mb-2">
+      <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
+      <pre id="pre-editor"><code></code></pre>
+    </div>
+
+    <h2>How to override the current theme</h2>
+    <pre class="pre-doc mb-2">// css code
+[data-theme="material"] {
+  --hixo-pre-bg: #263238;
+  --hixo-pre-color: #EEFFFF;
+
+  --hixo-method: #82AAFF;
+  --hixo-num: #FF5370;
+  --hixo-string: #C3E88D;
+  --hixo-comment: #6a737d;
+  --hixo-keyword: #C792EA;
+  --hixo-variable: #dc7c23;
+
+  --hixo-operator:#f92672;
+  --hixo-sp-keys:#d2a8ff;
+}
+// javascript code
+codeElement.dataset.theme = 'material';</pre>
+
+    <p>All pull requests are welcome, feel free.</p>
   </div>
-
-  <footer>
-    <a href="https://github.com/wutility/hixo-code-highlighter">Github link</a>
-  </footer>
 
   <script src="example/langs-test.js"></script>
   <script src="build/hixo.umd.js"></script>
