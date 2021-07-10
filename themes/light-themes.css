@@ -1,0 +1,44 @@
+[data-theme="eclipse"] {
+  --hixo-pre-bg: #fff;
+  --hixo-pre-color: #141414;
+  --hixo-method: #6f42c1;
+  --hixo-sp-key:#6f42c1; /* instanceof echo void .... */
+  --hixo-num: #005cc5;
+  --hixo-string: #17c700;
+  --hixo-comment: #6a737d;
+  --hixo-keyword: #f92672;
+  --hixo-variable: #dc7c23;
+
+  --hixo-operator:#f92672;  
+  --hixo-data-type:#009688; /* Long, String, int .... */
+}
+
+[data-theme="chrome"] {
+  --hixo-pre-bg: #f1f3f4;
+  --hixo-pre-color: #37474f;
+  --hixo-method: #9c27b0;
+
+  --hixo-sp-key:#9c27b0;
+  --hixo-num: #c53929;
+  --hixo-string: #0d904f;
+  --hixo-comment: #d81b60;
+  --hixo-keyword: #3b78e7;
+  --hixo-variable: #c53929;
+
+  --hixo-operator:#f92672;  
+  --hixo-data-type:#3b78e7;
+}
+
+[data-theme="playpen"] {
+  --hixo-pre-bg: #f1f1f1;
+  --hixo-pre-color: #333;
+  --hixo-method: #6684e1;
+  --hixo-sp-key:#6684e1;
+  --hixo-data-type:#b65611;
+  --hixo-num: #b65611;
+  --hixo-string: #60ac39;
+  --hixo-comment: #AAA;
+  --hixo-keyword: #b854d4;
+  --hixo-variable: #333;
+  --hixo-operator:#333;  
+}

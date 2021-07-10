@@ -21,19 +21,36 @@ Or include it via jsDelivr CDN (UMD):
 ```js
 const hixo = new Hixo({ language: 'java' }); 
 
-const preElement = document.querySelector('pre')
-preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
+const preElement = document.querySelector('pre');
+preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");');
 ```
 
-- **addKeys(String)**
+- **addKeys(String): void**
 ```js
 // Add new keywords
-hixo.addKeys('final|struct|range|async')
+hixo.addKeys('final|struct|range|async');
+```
+
+- **setLanguage(String): void**
+```js
+hixo.setLanguage('java');
+```
+
+- **addRegex(Object): void**
+```js
+// Add new regular expression
+hixo.addRegex({
+  pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g, // required
+  color: 'method', // required
+  italic: true, // optional
+  bold: true, // optional
+  stripHtml: true // optional: remove any html tag
+});
 ```
 
 ### How to override the current theme
 ```css
-// css code
+/* css code */
 [data-theme="material"] {
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;

@@ -23,15 +23,15 @@ export default class Hixo {
   }
 
   replaceChar (text) {
-    const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '\\': '\\\\' };
-    return text.replace(/[&<>]/g, chr => chars[chr]);
+    const chars = { '+': '&plus;', '&': '&amp;', '<': '&lt;', '>': '&gt;', '\\': '\\\\' };
+    return text.replace(/[+&<>\\]/g, chr => chars[chr]);
   }
 
   /**
    * @param {Object} regex 
    */
-  addRegex(regex){
-    regex.common.rules.unshift(regex);
+  addRegex (rule) {
+    regex.common.rules.unshift(rule);
   }
 
   /**
@@ -43,7 +43,9 @@ export default class Hixo {
 
   codeToHtml (text) {
     const setColor = (rule, match) => {
-      let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
+      let bold = rule.bold ? ' hixo-bold' : '',
+        italic = rule.italic ? ' hixo-italic' : '',
+        classN = rule.color + italic + bold;
       return `<span hixo=[hixo-${classN}]>${match}</span>`
     }
 
@@ -78,9 +80,7 @@ export default class Hixo {
         }
 
         if (grp) {
-          console.log(grp);
-          let rgx = new RegExp(grp, 'g')
-          console.log(rgx);
+          grp = this.replaceSpan(grp);
           return match.replace(new RegExp(grp, 'g'), v => setColor(rule, v))
         }
         else {

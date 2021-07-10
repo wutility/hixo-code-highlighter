@@ -33,8 +33,9 @@ const regex = (function () {
   };
 
   const matchRegx = { // match regexp: /.*/g
-    pattern: /[\(|\s+]\/.*\/[gim\)]\b/g,
-    color: 'regex'
+    pattern: /\s+\/.*\/[gim\)]\s+/g,
+    color: 'sp-key',
+    stripHtml:true
   };
 
   // sql/plsql reseved words
@@ -117,7 +118,7 @@ const regex = (function () {
         },
         {
           pattern: /\b(class|package|instanceof|echo|void)(?=\s+\w+)/gi,
-          color: 'sp-keys'
+          color: 'sp-key'
         },
         { // match: @Entity   @Get
           pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
@@ -138,9 +139,9 @@ const regex = (function () {
           color: 'operator'
         },
         { // operators: %
-          pattern: /(\w+|\s+)(%|\\+)(\w+|\s+)/g,
+          pattern: /\w+(\-|&plus;){2}/g,
           color: 'operator',
-          group: 2
+          group: 1
         },
         { // match number: 12 15.2
           pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/g,
@@ -178,17 +179,29 @@ class Hixo {
   }
 
   replaceChar (text) {
-    const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '\\': '\\\\' };
-    return text.replace(/[&<>]/g, chr => chars[chr]);
+    const chars = { '+': '&plus;', '&': '&amp;', '<': '&lt;', '>': '&gt;', '\\': '\\\\' };
+    return text.replace(/[+&<>\\]/g, chr => chars[chr]);
   }
 
+  /**
+   * @param {Object} regex 
+   */
+  addRegex (rule) {
+    regex.common.rules.unshift(rule);
+  }
+
+  /**
+   * @param {String} keys 
+   */
   addKeys (keys) {
     regex.common.reserved += '|' + keys;
   }
 
   codeToHtml (text) {
     const setColor = (rule, match) => {
-      let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
+      let bold = rule.bold ? ' hixo-bold' : '',
+        italic = rule.italic ? ' hixo-italic' : '',
+        classN = rule.color + italic + bold;
       return `<span hixo=[hixo-${classN}]>${match}</span>`
     };
 
@@ -223,9 +236,7 @@ class Hixo {
         }
 
         if (grp) {
-          console.log(grp);
-          let rgx = new RegExp(grp, 'g');
-          console.log(rgx);
+          grp = this.replaceSpan(grp);
           return match.replace(new RegExp(grp, 'g'), v => setColor(rule, v))
         }
         else {

@@ -147,25 +147,30 @@ public class Graph { /* Commnet */
 }`},
   csharp: {
     code: `using System;
-// Create a Car class
-class Car
+// Declare the generic class.
+public class GenericList<T>
 {
-  public string model;  // Create a field
-
-  // Create a class constructor for the Car class
-  public Car()
-  {
-    model = "Mustang"; // Set the initial value for model
-  }
-
-  static void Main(string[] args)
-  {
-    Car Ford = new Car();  // Create an object of the Car Class (this will call the constructor)
-    Console.WriteLine(Ford.model);  // Print the value of model
-  }
+  public void Add(T input) { }
 }
 
-// Outputs "Mustang"`},
+class TestGenericList
+{
+  private class ExampleClass { }
+  static void Main()
+  {
+    // Declare a list of type int.
+    GenericList<int> list1 = new GenericList<int>();
+    list1.Add(1);
+
+    // Declare a list of type string.
+    GenericList<string> list2 = new GenericList<string>();
+    list2.Add("");
+
+    // Declare a list of type ExampleClass.
+    GenericList<ExampleClass> list3 = new GenericList<ExampleClass>();
+    list3.Add(new ExampleClass());
+  }
+}`},
   cpp: {
     code: `#include <iostream>
 using namespace std;

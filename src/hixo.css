@@ -1,6 +1,6 @@
 :root {  
   --hixo-method:#8fcdff;
-  --hixo-sp-keys:#8fcdff; /* instanceof echo void .... */
+  --hixo-sp-key:#8fcdff; /* instanceof echo void .... */
 
   --hixo-num:#d2a8ff;
 
@@ -43,9 +43,10 @@ pre code {
 .hixo-comment {color: var(--hixo-comment);}
 .hixo-variable {color: var(--hixo-variable);}
 
-.hixo-sp-keys {color: var(--hixo-sp-keys);}
+.hixo-sp-key {color: var(--hixo-sp-key);}
 .hixo-operator {color: var(--hixo-operator);}
 
 .hixo-data-type {color: var(--hixo-data-type);}
 
 .hixo-italic {font-style: italic;}
+.hixo-bold {font-weight: bold;}

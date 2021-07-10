@@ -92,14 +92,15 @@ button:hover {
 .editor { height: 520px; }
 
 pre,
-textarea {
+textarea,
+.bloc {
   font-size: 16px;
   width: 100%;  
-  border: 0;
+  border: 0;  
 }
 
 .pre-container {background-color: var(--hixo-pre-bg);}
-.pre-container,textarea { height: 100%; }
+.pre-container,textarea { height: 100%; box-shadow: 0 1px 2px 0 rgba(60,64,67,.3); }
 
 textarea {
   background-color: #fff;
@@ -114,10 +115,17 @@ textarea {
   width: 100%;
   border-bottom: 1px solid #3b424e;
   display: flex;
-  align-items: center;
-  padding: 14px;
+  align-items: center;  
+}
+
+.bloc,.pre-header{ padding: 14px; }
+
+.bloc {
+  background-color: #fff;
+  color: #000;  
 }
 /***********************/
+.gutter:hover {background-color: #545463; cursor: col-resize !important;}
 
 .d-flex{display: flex; align-items: center;}
 .justify-between { justify-content:space-between;}

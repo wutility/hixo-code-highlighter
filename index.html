@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hixo - Syntax Highlighter</title>
   <link rel="stylesheet" href="build/hixo.css">
-  <link rel="stylesheet" href="themes/themes.css">
+  <link rel="stylesheet" href="themes/dark-themes.css">
+  <link rel="stylesheet" href="themes/light-themes.css">
   <link rel="stylesheet" href="website/style.css">
 
   <meta name="description" content="Syntax Highlighter">
@@ -56,19 +57,31 @@ $ yarn add hixo</pre>
 
     <section>
       <h2># Usage</h2>
-
-
-
-      <pre class="pre-doc">import Hixo from 'Hixo';
+      <pre class="pre-doc mb-2">import Hixo from 'Hixo';
 import 'hixo/build/hixo.css';
 
 const hixo = new Hixo({ language: 'java' }); 
 
 const preElement = document.querySelector('pre')
-preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string
+preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string</pre>
+    </section>
+
+    <section>
+      <h2># Methods</h2>
+<pre class="pre-doc">// code to html string
+hixo.codeToHtml('System.out.println("Hello");')
 
 // add new keywords
-hixo.addKeys('final|struct|range|async')</pre>
+hixo.addKeys('final|struct|range|async');
+
+// add new regular expression
+hixo.addRegex({ 
+  pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g, // required
+  color: 'method', // required
+  italic: true, // optional
+  bold: true, // optional
+  stripHtml: true // optional: remove any html tag
+});</pre>
     </section>
 
     <section>
@@ -107,7 +120,7 @@ hixo.addKeys('final|struct|range|async')</pre>
 
     <section>
       <h2># How to override the current theme</h2>
-      <pre class="pre-doc">// css code
+      <pre class="bloc">// css code
 [data-theme="material"] { // you can copy your favorite theme from the folder themes
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;

@@ -31,8 +31,9 @@ const regex = (function () {
   };
 
   const matchRegx = { // match regexp: /.*/g
-    pattern: /[\(|\s+]\/.*\/[gim\)]\b/g,
-    color: 'regex'
+    pattern: /\s+\/.*\/[gim\)]\s+/g,
+    color: 'sp-key',
+    stripHtml:true
   }
 
   // sql/plsql reseved words
@@ -115,7 +116,7 @@ const regex = (function () {
         },
         {
           pattern: /\b(class|package|instanceof|echo|void)(?=\s+\w+)/gi,
-          color: 'sp-keys'
+          color: 'sp-key'
         },
         { // match: @Entity   @Get
           pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
@@ -136,9 +137,9 @@ const regex = (function () {
           color: 'operator'
         },
         { // operators: %
-          pattern: /(\w+|\s+)(%|\\+)(\w+|\s+)/g,
+          pattern: /\w+(\-|&plus;){2}/g,
           color: 'operator',
-          group: 2
+          group: 1
         },
         { // match number: 12 15.2
           pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/g,
