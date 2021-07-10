@@ -27,6 +27,16 @@ export default class Hixo {
     return text.replace(/[&<>]/g, chr => chars[chr]);
   }
 
+  /**
+   * @param {Object} regex 
+   */
+  addRegex(regex){
+    regex.common.rules.unshift(regex);
+  }
+
+  /**
+   * @param {String} keys 
+   */
   addKeys (keys) {
     regex.common.reserved += '|' + keys
   }
