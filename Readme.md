@@ -25,8 +25,15 @@ const preElement = document.querySelector('pre')
 preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
 ```
 
+- **addKeys(String)**
+```js
+// Add new keywords
+hixo.addKeys('final|struct|range|async')
+```
+
 ### How to override the current theme
 ```css
+// css code
 [data-theme="material"] {
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;
@@ -40,9 +47,11 @@ preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')
 
   --hixo-operator:#f92672;
   --hixo-sp-keys:#d2a8ff;
+  --hixo-data-type:#b65611;
 }
 ```
 ```js
+// javascript code
 preElement.dataset.theme = 'material';
 ```
 

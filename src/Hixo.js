@@ -22,19 +22,22 @@ export default class Hixo {
     return text.replace(rmSpanTag, "")
   }
 
-  htmlEscapes (text) {
-    const htmlEscapes = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;'
-    };
+  replaceChar (text) {
+    const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '\\': '\\\\' };
+    return text.replace(/[&<>]/g, chr => chars[chr]);
+  }
 
-    return text.replace(/[&<>]/g, chr => htmlEscapes[chr]);
+  addKeys (keys) {
+    regex.common.reserved += '|' + keys
   }
 
   codeToHtml (text) {
-    text = this.htmlEscapes(text);
-    text = text.replace(/\\/, "\\\\");
+    const setColor = (rule, match) => {
+      let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
+      return `<span hixo=[hixo-${classN}]>${match}</span>`
+    }
+
+    text = this.replaceChar(text);
 
     // reserved words /\b()(?=[^\w])/g
     let rw = regex.common.reserved;
@@ -42,40 +45,46 @@ export default class Hixo {
 
     text = text.replace(
       new RegExp('\\b(' + rw + ')(?=[^\w+])\\b', 'gi'),
-      '<span style=[hixo-keyword]>$1</span>'
+      '<span hixo=[hixo-keyword]>$1</span>'
     );
 
     // apply regex rules
     const rules = regex.common.rules.concat(regex[this.options.language].rules);
 
-    const setColor = (rule, match) => {
-      let classN = rule.color + (rule.italic ? ' hixo-italic' : '');
-      return `<span style=[hixo-${classN}]>${match}</span>`
-    }
-
     for (let i = 0; i < rules.length; i++) {
       const rule = rules[i];
-      text = text.replace(
-        rule.pattern,
-        match => {
-          if (rule.stripHtml) {
-            match = this.replaceSpan(match)
-          }
+      text = text.replace(rule.pattern, (...args) => {
 
-          if (rule.inside) {
-            match = match.replace(rule.inside.pattern, v => setColor(rule.inside, v))
-          }
+        const matches = Array.from(args);
+        let match = matches[0];
+        let grp = matches[rule.group];
 
+        if (rule.stripHtml) {
+          match = this.replaceSpan(match)
+        }
+
+        if (rule.inside) {
+          match = match.replace(rule.inside.pattern, v => setColor(rule.inside, v))
+        }
+
+        if (grp) {
+          console.log(grp);
+          let rgx = new RegExp(grp, 'g')
+          console.log(rgx);
+          return match.replace(new RegExp(grp, 'g'), v => setColor(rule, v))
+        }
+        else {
           return setColor(rule, match);
         }
-      );
+      }
+      );;
     }
 
     // remove span wrapper from classname: < class=""></>     
     text = text.replace(/<.* .*=".*">.*<\/.*>/g, match => this.stripHtml(match))
 
-    text = text.replace(/style=(\[([^\][]*)])/g, v => {
-      if (v.startsWith('style=[')) {
+    text = text.replace(/hixo=(\[([^\][]*)])/g, v => {
+      if (v.startsWith('hixo=[')) {
         v = v.match(/\[([^}]*)\]/)[1]
         return 'class="' + v + '"'
       }

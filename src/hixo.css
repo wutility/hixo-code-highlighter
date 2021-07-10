@@ -1,13 +1,18 @@
 :root {  
   --hixo-method:#8fcdff;
+  --hixo-sp-keys:#8fcdff; /* instanceof echo void .... */
+
   --hixo-num:#d2a8ff;
-  --hixo-string:#f3e880;
-  --hixo-comment:#b1b1b1;
-  --hixo-keyword:#f92672;
+
+  --hixo-comment:#b1b1b1; 
+
+  --hixo-string:#f3e880;  
   --hixo-variable:#ef9b51;
 
-  --hixo-operator:#f92672; /* + - / * ^ ..... */
-  --hixo-sp-keys:#d2a8ff; /* Long, String .... */
+  --hixo-keyword:#f92672;
+  --hixo-operator:#f92672;
+  
+  --hixo-data-type:#d2a8ff; /* Long, String, int .... */
 
   --hixo-pre-bg:#2d2d35;
   --hixo-pre-color:#eeedff;
@@ -18,7 +23,7 @@ pre {
   color: var(--hixo-pre-color);
   overflow: auto;
   overflow-wrap: break-word;
-  padding: 1rem 2rem;
+  padding: 16px;
   margin: 0;
   white-space: pre-wrap;
 }
@@ -40,5 +45,7 @@ pre code {
 
 .hixo-sp-keys {color: var(--hixo-sp-keys);}
 .hixo-operator {color: var(--hixo-operator);}
+
+.hixo-data-type {color: var(--hixo-data-type);}
 
 .hixo-italic {font-style: italic;}

@@ -2,152 +2,167 @@
   --hixo-pre-bg: #fff;
   --hixo-pre-color: #141414;
   --hixo-method: #6f42c1;
+  --hixo-sp-keys:#6f42c1; /* instanceof echo void .... */
   --hixo-num: #005cc5;
   --hixo-string: #17c700;
   --hixo-comment: #6a737d;
   --hixo-keyword: #f92672;
   --hixo-variable: #dc7c23;
 
-  --hixo-operator:#f92672;
-  --hixo-sp-keys:#009688; /* Long, String */
+  --hixo-operator:#f92672;  
+  --hixo-data-type:#009688; /* Long, String, int .... */
+}
+
+[data-theme="onedark"] {
+  --hixo-pre-bg: #383b40;
+  --hixo-pre-color: #d5d5d5;
+  --hixo-method: #61aeee;
+  --hixo-sp-keys:#61aeee;
+  --hixo-num: #d19a66;
+  --hixo-string: #98c379;
+  --hixo-comment: #ad937c;
+  --hixo-keyword: #c678dd;
+  --hixo-variable: #e6c07b;
+  --hixo-operator:#d5d5d5;  
+  --hixo-data-type:#c678dd;
 }
 
 [data-theme="material"] {
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;
   --hixo-method: #82AAFF;
+  --hixo-sp-keys:#82AAFF;
   --hixo-num: #FF5370;
   --hixo-string: #C3E88D;
   --hixo-comment: #6a737d;
   --hixo-keyword: #C792EA;
   --hixo-variable: #dc7c23;
-
-  --hixo-operator:#f92672;
-  --hixo-sp-keys:#d2a8ff; /* Long, String */
+  --hixo-operator:#f92672;  
+  --hixo-data-type:#d2a8ff;
 }
 
 [data-theme="github-dark"] {
   --hixo-pre-bg: #0d1117;
   --hixo-pre-color: #c9d1d9;
   --hixo-method: #d2a8ff;
+  --hixo-sp-keys:#d2a8ff;
   --hixo-num: #79c0ff;
   --hixo-string: #a5d6ff;
   --hixo-comment: #8b949e;
   --hixo-keyword: #ff7b72;
   --hixo-variable: #c9d1d9;
-
-  --hixo-operator:#c9d1d9;
-  --hixo-sp-keys:#79c0ff; /* Long, String */
+  --hixo-operator:#c9d1d9;  
+  --hixo-data-type:#79c0ff;
 }
 
 [data-theme="vscode-dark"] {
   --hixo-pre-bg: #1e1e1e;
   --hixo-pre-color: #D8DEE9;
   --hixo-method: #569cd6;
+  --hixo-sp-keys:#569cd6;
   --hixo-num: #b5cea8;
   --hixo-string: #ce9178;
   --hixo-comment: #7caf3d;
   --hixo-keyword: #569cd6;
   --hixo-variable: #88C0D0;
-
-  --hixo-operator:#D8DEE9;
-  --hixo-sp-keys:#D8DEE9; /* Long, String */
+  --hixo-operator:#D8DEE9;  
+  --hixo-data-type:#D8DEE9;
 }
 
 [data-theme="night"] {
   --hixo-pre-bg: #2e3440ff;
   --hixo-pre-color: #D8DEE9;
   --hixo-method: #88C0D0;
+  --hixo-sp-keys:#88C0D0;
   --hixo-num: #B48EAD;
   --hixo-string: #A3BE8C;
   --hixo-comment: #616E88;
   --hixo-keyword: #81A1C1;
   --hixo-variable: #88C0D0;
-
-  --hixo-operator:#81A1C1;
-  --hixo-sp-keys:#81A1C1; /* Long, String */
+  --hixo-operator:#81A1C1;  
+  --hixo-data-type:#81A1C1;
 }
 
 [data-theme="deepdark"] {
   --hixo-pre-bg: #080808;
   --hixo-pre-color: #f8f8f2;
   --hixo-method: #ef5350;
+  --hixo-sp-keys:#ef5350;
   --hixo-num: #d0d0d0;
   --hixo-string: #69f0ae;
   --hixo-comment: #808080;
   --hixo-keyword: #e6e34a;
   --hixo-variable: #69f0ae;
-
-  --hixo-operator:#ff5e5e;
-  --hixo-sp-keys:#69f0ae; /* Long, String */
+  --hixo-operator:#ff5e5e;  
+  --hixo-data-type:#69f0ae;
 }
 
 [data-theme="hackpot"] {
   --hixo-pre-bg: #003030;
   --hixo-pre-color: #b1e7b1;
   --hixo-method: #32cd32;
+  --hixo-sp-keys:#32cd32;
   --hixo-num: #e56697;
   --hixo-string: #1fada6;
   --hixo-comment: #1e621e;
   --hixo-keyword: #9f6934;
   --hixo-variable: #b1e7b1;
-
-  --hixo-operator:#ffb84d;
-  --hixo-sp-keys:#1fada6; /* Long, String */
+  --hixo-operator:#ffb84d;  
+  --hixo-data-type:#1fada6;
 }
 
 [data-theme="dracula"] {
   --hixo-pre-bg: #21222c;
   --hixo-pre-color: #f8f8f2;
   --hixo-method: #8be9fd;
+  --hixo-sp-keys:#8be9fd;
   --hixo-num: #bd93f9;
   --hixo-string: #f1fa8c;
   --hixo-comment: #6272a4;
   --hixo-keyword: #ff79c6;
   --hixo-variable: #ff79c6;
-
-  --hixo-operator:#ff79c6;
-  --hixo-sp-keys:#bd93f9; /* Long, String */
+  --hixo-operator:#ff79c6;  
+  --hixo-data-type:#bd93f9;
 }
 
 [data-theme="chroma"] {
   --hixo-pre-bg: #202020;
   --hixo-pre-color: #d0d0d0;
   --hixo-method: #447fcf;
+  --hixo-sp-keys:#447fcf;
   --hixo-num: #d0d0d0;
   --hixo-string: #ed9d13;
   --hixo-comment: #6a737d;
   --hixo-keyword: #6ab825;
   --hixo-variable: #ffffff;
-
-  --hixo-operator:#f92672;
-  --hixo-sp-keys:#d2a8ff; /* Long, String */
+  --hixo-operator:#f92672;  
+  --hixo-data-type:#bd93f9;
 }
 
 [data-theme="blackboard"] {
   --hixo-pre-bg: #0C1021;
   --hixo-pre-color: #F8F8F8;
   --hixo-method: #8DA6CE;
+  --hixo-sp-keys:#8DA6CE;
   --hixo-num: #D8FA3C;
   --hixo-string: #61CE3C;
   --hixo-comment: #6a737d;
   --hixo-keyword: #FBDE2D;
   --hixo-variable: #ffffff;
-
   --hixo-operator:#FBDE2D;
-  --hixo-sp-keys:#D8FA3C; /* Long, String */
+  --hixo-data-type:#D8FA3C;
 }
 
 [data-theme="playpen"] {
   --hixo-pre-bg: #f1f1f1;
   --hixo-pre-color: #333;
   --hixo-method: #6684e1;
+  --hixo-sp-keys:#6684e1;
+  --hixo-data-type:#b65611;
   --hixo-num: #b65611;
   --hixo-string: #60ac39;
   --hixo-comment: #AAA;
   --hixo-keyword: #b854d4;
   --hixo-variable: #333;
-
-  --hixo-operator:#333;
-  --hixo-sp-keys:#b65611; /* Long, String */
+  --hixo-operator:#333;  
 }

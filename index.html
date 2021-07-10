@@ -18,53 +18,96 @@
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/split-views@1.0.6/build/index.css" />
 </head>
 
 <body spellcheck="true">
 
-  <aside>
-    <h1>Hixo&gt;</h1>
-    <h4>Syntax Highlighter</h4>
-    <h4 class="mb-2">Fast, Simple and Lightweight</h4>
+  <nav class="d-flex justify-between">
+    <ul>
+      <li>
+        <h1 class="m-0">Hixo&gt;</h1>
+        <h4 class="m-0">Syntax Highlighter</h4>
+      </li>
+    </ul>
 
-    <div>
-      <label>Supported languages</label>
-      <select name="language" id="language"></select>
-    </div>
-
-    <div class="mb-1">
-      <label>Themes</label>
-      <select name="themes" id="themes"></select>
-    </div>
-
-    <a class="btn" href="https://github.com/wutility/hixo-code-highlighter">Github link</a>
-  </aside>
+    <ul>
+      <li>
+        <a class="btn" href="https://github.com/wutility/hixo-code-highlighter">Github link</a>
+      </li>
+    </ul>
+  </nav>
 
   <div class="container">
 
-    <h1 class="m-0">Hixo</h1>
-    <p class="mt-0">is syntax highlighter, was created to be simple, lightweight and fast for simple usage like blogs (docs, etc..).
-    </p>
+    <section>
+      <h1 class="m-0">Hixo</h1>
+      <p class="mt-0">is syntax highlighter, was created to be simple, lightweight and fast for simple usage like blogs
+        (docs, etc..).
+      </p>
+    </section>
 
-    <h2># Installation</h2>
-    <pre class="pre-doc mb-2">$ npm install hixo
+    <section>
+      <h2># Installation</h2>
+      <pre class="pre-doc">$ npm install hixo
 // or via yarn 
 $ yarn add hixo</pre>
+    </section>
 
-    <h2># Usage</h2>
-    <pre class="pre-doc mb-2">const hixo = new Hixo({ language: 'java' }); 
+    <section>
+      <h2># Usage</h2>
+
+
+
+      <pre class="pre-doc">import Hixo from 'Hixo';
+import 'hixo/build/hixo.css';
+
+const hixo = new Hixo({ language: 'java' }); 
 
 const preElement = document.querySelector('pre')
-preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string</pre>
+preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string
 
-    <h2># Playground</h2>
-    <div class="w-100 grid-2 mb-2">
-      <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
-      <pre id="pre-editor"><code></code></pre>
-    </div>
+// add new keywords
+hixo.addKeys('final|struct|range|async')</pre>
+    </section>
 
-    <h2># How to override the current theme</h2>
-    <pre class="pre-doc mb-2">// css code
+    <section>
+      <div class="d-flex justify-between">
+        <h2># Playground</h2>
+
+        <div class="d-flex">
+          <div class="mr-2">
+            <label>Supported languages</label>
+            <select name="language" id="language"></select>
+          </div>
+
+          <div>
+            <label>Themes</label>
+            <select name="themes" id="themes"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-100 d-flex editor">
+        <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
+        <div class="pre-container d-flex flex-column">
+          <div class="pre-header">
+            <svg xmlns="http://www.w3.org/2000/svg" width="54" height="16" viewBox="0 0 54 14">
+              <g fill="none" transform="translate(1 1)">
+                <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".6"></circle>
+                <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".6"></circle>
+                <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".6"></circle>
+              </g>
+            </svg>
+          </div>
+          <pre id="pre-editor"></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2># How to override the current theme</h2>
+      <pre class="pre-doc">// css code
 [data-theme="material"] { // you can copy your favorite theme from the folder themes
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;
@@ -78,20 +121,27 @@ preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return
 
   --hixo-operator:#f92672;
   --hixo-sp-keys:#d2a8ff;
+  --hixo-data-type:#b65611;
 }
 
 // javascript code
 codeElement.dataset.theme = 'material';</pre>
+    </section>
 
-    <h2># Notes</h2>
-    <p>All pull requests are welcome, feel free.</p>
+    <section>
+      <h2># Notes</h2>
+      <p>All pull requests are welcome, feel free.</p>
+    </section>
 
-    <h2># License</h2>
-    <p>MIT.</p>
+    <section>
+      <h2># License</h2>
+      <p>MIT.</p>
+    </section>
   </div>
 
   <script src="website/langs-test.js"></script>
   <script src="build/hixo.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/split.js@1.6.4/dist/split.min.js"></script>
   <script src="website/app.js"></script>
 </body>
 

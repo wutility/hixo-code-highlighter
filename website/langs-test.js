@@ -13,7 +13,7 @@ class Test {
   }
 
   private methodText() {
-    if(this.methodName === "hello world = 1"){
+    if(this.methodName === "hello world = 1" && 7 >= 1 || v <= 1){
     }
     else const url = 'https://www.google.com/search?q=' + encodeURIComponent(name);
   }
@@ -112,11 +112,8 @@ Statistical median to demonstrate doctest.
 7
 '''
 def squaresum(n) : # comment
-  print('hello')
-  # Iterate i from 1 
-  # and n finding 
-  # square of i and
-  # add to sum.
+  print('https://000hello.com')
+  # Iterate i from 1 //
   sm = 0
   for i in range(1, n+1) :
       sm = sm + (i * i)
@@ -125,9 +122,7 @@ def squaresum(n) : # comment
   
 # Driven Program
 n = 4
-print(squaresum(n))
-  
-# This code is contributed by Nikita Tiwari.`},
+print(squaresum(n))`},
   java: {
     code: `import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener; 
@@ -175,28 +170,45 @@ class Car
     code: `#include <iostream>
 using namespace std;
 
-class Employee {
-  private:
-    // Private attribute
-    int salary;
+struct student
+{
+  char name[50];
+  int roll;
+  float marks;
+} s[10];
 
-  public:
-    // Setter
-    void setSalary(int s) {
-      salary = s;
-    }
-    // Getter
-    int getSalary() {
-      return salary;
-    }
-};
+int main()
+{
+  cout << "Enter information of students: " << endl;
 
-int main() {
-  Employee myObj;
-  myObj.setSalary(50000);
-  cout << myObj.getSalary();
+  // storing information
+  for(int i = 0; i < 10; ++i)
+  {
+      s[i].roll = i+1;
+      cout << "For roll number" << s[i].roll << "," << endl;
+
+      cout << "Enter name: ";
+      cin >> s[i].name;
+
+      cout << "Enter marks: ";
+      cin >> s[i].marks;
+
+      cout << endl;
+  }
+
+  cout << "Displaying Information: " << endl;
+
+  // Displaying information
+  for(int i = 0; i < 10; ++i)
+  {
+      cout << "\nRoll number: " << i+1 << endl;
+      cout << "Name: " << s[i].name << endl;
+      cout << "Marks: " << s[i].marks << endl;
+  }
+
   return 0;
-}`},
+}
+`},
   php: {
     code: `<?php declare(strict_types=1);
 

@@ -3,14 +3,15 @@ const preDoc = document.querySelectorAll('.pre-doc')
 Array.from(preDoc).forEach(pre =>{
   let hixo = new window.Hixo({ language:'javascript' });
   pre.innerHTML = hixo.codeToHtml(pre.textContent)
-})
+});
 
+const preContainer = document.querySelector('.pre-container')
 const txtArea = document.getElementById('txtcode')
-const codeElement = document.getElementById('pre-editor')
+const preElement = document.getElementById('pre-editor')
 const selectThemes = document.getElementById('themes');
 const selectLanguages = document.getElementById('language');
 
-const themes = ['default', 'material','dracula', 'github-dark','vscode-dark','deepdark','night', 'hackpot', 'chroma', 'blackboard','playpen', 'eclipse'];
+const themes = ['default', 'material','dracula', 'github-dark','vscode-dark','onedark','deepdark','night', 'hackpot', 'chroma', 'blackboard','playpen', 'eclipse'];
 const languages = ['javascript', 'java','go', 'rust','csharp', 'cpp','python', 'php', 'sql','plsql'];
 
 languages.forEach(lang => {
@@ -29,14 +30,15 @@ themes.forEach(theme => {
 
 let language = 'javascript';
 let languageCode = langsTest[language].code;
-
 let hixo = new window.Hixo({ language });
 
+window.Split(['#txtcode', '.pre-container'])
+
 txtArea.value = languageCode
-codeElement.innerHTML = hixo.codeToHtml(languageCode)
+preElement.innerHTML = hixo.codeToHtml(languageCode)
 
 txtArea.addEventListener('keyup', e => {
-  codeElement.innerHTML = hixo.codeToHtml(e.target.value)
+  preElement.innerHTML = hixo.codeToHtml(e.target.value)
 });
 
 selectLanguages.addEventListener('change', e => {
@@ -45,9 +47,11 @@ selectLanguages.addEventListener('change', e => {
   txtArea.value = languageCode;
 
   hixo.setLanguage(language)
-  codeElement.innerHTML = hixo.codeToHtml(languageCode)
+  preElement.innerHTML = hixo.codeToHtml(languageCode)
 });
 
 selectThemes.addEventListener('change', e => {
-  codeElement.dataset.theme = e.target.value
+  let theme = e.target.value;
+  preElement.dataset.theme = theme
+  preContainer.dataset.theme = theme
 });
