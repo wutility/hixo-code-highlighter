@@ -13,7 +13,7 @@
 }
 
 [data-theme="material"] {
-  --hixo-pre-bg: #263238;
+  --hixo-pre-bg: #1f2937;
   --hixo-pre-color: #EEFFFF;
   --hixo-method: #82AAFF;
   --hixo-sp-key:#82AAFF;
@@ -22,7 +22,7 @@
   --hixo-comment: #6a737d;
   --hixo-keyword: #C792EA;
   --hixo-variable: #dc7c23;
-  --hixo-operator:#f92672;  
+  --hixo-operator:#b4c0ff;  
   --hixo-data-type:#d2a8ff;
 }
 

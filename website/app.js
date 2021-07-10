@@ -1,7 +1,7 @@
 const preDoc = document.querySelectorAll('.pre-doc')
 
-Array.from(preDoc).forEach(pre =>{
-  let hixo = new window.Hixo({ language:'javascript' });
+Array.from(preDoc).forEach(pre => {
+  let hixo = new window.Hixo({ language: 'javascript' });
   pre.innerHTML = hixo.codeToHtml(pre.textContent)
 });
 
@@ -11,9 +11,24 @@ const preElement = document.getElementById('pre-editor')
 const selectThemes = document.getElementById('themes');
 const selectLanguages = document.getElementById('language');
 
-const themes = ['default', 'material','dracula', 'github-dark','vscode-dark','onedark','deepdark',
-'night', 'hackpot', 'chroma', 'blackboard','playpen', 'eclipse', 'chrome'];
-const languages = ['javascript', 'java','go', 'rust','csharp', 'cpp','python', 'php', 'sql','plsql'];
+const themes = [
+  { name: 'default', type: 'dark' },
+  { name: 'material', type: 'dark' },
+  { name: 'dracula', type: 'dark' },
+  { name: 'github-dark', type: 'dark' },
+  { name: 'vscode-dark', type: 'dark' },
+  { name: 'onedark', type: 'dark' },
+  { name: 'deepdark', type: 'dark' },
+  { name: 'night', type: 'dark' },
+  { name: 'hackpot', type: 'dark' },
+  { name: 'chroma', type: 'dark' },
+  { name: 'blackboard', type: 'dark' },
+  { name: 'playpen', type: 'light' },
+  { name: 'eclipse', type: 'light' },
+  { name: 'chrome', type: 'light' }
+];
+
+const languages = ['javascript', 'java', 'go', 'rust', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql'];
 
 languages.forEach(lang => {
   const option = document.createElement('option')
@@ -22,18 +37,36 @@ languages.forEach(lang => {
   selectLanguages.appendChild(option);
 });
 
+// select element of themes
+const optgroupD = document.createElement('optgroup');
+const optgroupL = document.createElement('optgroup');
+optgroupD.label = 'dark themes';
+optgroupL.label = 'light themes';
+
 themes.forEach(theme => {
-  const option = document.createElement('option')
-  option.value = theme;
-  option.textContent = theme;
-  selectThemes.appendChild(option);
+  const option = document.createElement('option');
+  option.value = theme.name;
+  option.textContent = theme.name;
+  
+  if(theme.type === 'dark') optgroupD.appendChild(option)
+  else optgroupL.appendChild(option)
 });
 
+selectThemes.appendChild(optgroupD);
+selectThemes.appendChild(optgroupL);
+
+// 
 let language = 'javascript';
 let languageCode = langsTest[language].code;
-let hixo = new window.Hixo({ language });
+let hixo = new window.Hixo({ language, lineNum:true });
 
-window.Split(['#txtcode', '.pre-container'])
+window.SplitViews({
+  parent: 'editor',
+  direction: 'vertical',
+  gutterSize: 10,
+  minSize: 10,
+  sizes: [50, 50]
+});
 
 txtArea.value = languageCode
 preElement.innerHTML = hixo.codeToHtml(languageCode)

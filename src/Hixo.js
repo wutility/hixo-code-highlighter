@@ -4,13 +4,14 @@ import './hixo.css'
 export default class Hixo {
   options = {};
 
-  constructor ({ language }) {
+  constructor ({ language, lineNum }) {
+    this.options.lineNum = lineNum || false;
     this.setLanguage(language);
   }
 
   setLanguage (language) {
     if (language && ['java', 'go', 'csharp', 'cpp', 'c'].includes(language)) {
-      this.options.language = 'javascript'
+      this.options.language = 'clike'
     }
     else {
       this.options.language = language || '';
@@ -42,7 +43,7 @@ export default class Hixo {
   }
 
   codeToHtml (text) {
-    const setColor = (rule, match) => {
+    const setStyle = (rule, match) => {
       let bold = rule.bold ? ' hixo-bold' : '',
         italic = rule.italic ? ' hixo-italic' : '',
         classN = rule.color + italic + bold;
@@ -76,15 +77,15 @@ export default class Hixo {
         }
 
         if (rule.inside) {
-          match = match.replace(rule.inside.pattern, v => setColor(rule.inside, v))
+          match = match.replace(rule.inside.pattern, v => setStyle(rule.inside, v))
         }
 
         if (grp) {
           grp = this.replaceSpan(grp);
-          return match.replace(new RegExp(grp, 'g'), v => setColor(rule, v))
+          return match.replace(new RegExp(grp, 'g'), v => setStyle(rule, v))
         }
         else {
-          return setColor(rule, match);
+          return setStyle(rule, match);
         }
       }
       );;
@@ -99,6 +100,15 @@ export default class Hixo {
         return 'class="' + v + '"'
       }
     });
+
+    // set line number
+    if (this.options.lineNum) {
+      text = text.split(/\n/g).map((line, i) => {
+        i = i + 1;
+        return `<span class="hixo-line-num mr-${('' + i).length}">${i}</span>${line}`
+      })
+        .join('\n');
+    }
 
     return `<code>${text.trim()}</code>`;
   }

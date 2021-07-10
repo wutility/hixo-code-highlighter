@@ -1,11 +1,11 @@
 # Hixo 
-Simple and Lightweight (<4K) code highlighter with 0 dependencies
+Simple and Lightweight (<4K) code highlighter with 0 dependencies for modern browsers
 
 Supported Languages check docs: [website](https://hixo.onrender.com/)
 
 ## Usage
 ```js
-import Hixo from 'Hixo';
+import Hixo from 'hixo';
 import 'hixo/build/hixo.css';
 ```
 
@@ -19,7 +19,7 @@ Or include it via jsDelivr CDN (UMD):
 ### Methods && Examples
 - **codeToHtml(String): HTMLString**
 ```js
-const hixo = new Hixo({ language: 'java' }); 
+const hixo = new Hixo({ language: 'java', lineNum: true }); 
 
 const preElement = document.querySelector('pre');
 preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");');

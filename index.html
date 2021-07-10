@@ -19,11 +19,11 @@
     integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/split-views@1.0.6/build/index.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/split-views@1.0.7/build/index.css" />
 </head>
 
 <body spellcheck="true">
-
+  <script src="https://cdn.jsdelivr.net/npm/split-views@1.0.7/build/index.umd.min.js"></script>
   <nav class="d-flex justify-between">
     <ul>
       <li>
@@ -57,10 +57,10 @@ $ yarn add hixo</pre>
 
     <section>
       <h2># Usage</h2>
-      <pre class="pre-doc mb-2">import Hixo from 'Hixo';
+      <pre class="pre-doc mb-2">import Hixo from 'hixo';
 import 'hixo/build/hixo.css';
 
-const hixo = new Hixo({ language: 'java' }); 
+const hixo = new Hixo({ language: 'java', lineNum: true }); 
 
 const preElement = document.querySelector('pre')
 preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string</pre>
@@ -101,7 +101,7 @@ hixo.addRegex({
         </div>
       </div>
 
-      <div class="w-100 d-flex editor">
+      <div class="w-100 d-flex editor" id="editor">
         <textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea>
         <div class="pre-container d-flex flex-column">
           <div class="pre-header">
@@ -154,7 +154,6 @@ codeElement.dataset.theme = 'material';</pre>
 
   <script src="website/langs-test.js"></script>
   <script src="build/hixo.umd.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/split.js@1.6.4/dist/split.min.js"></script>
   <script src="website/app.js"></script>
 </body>
 

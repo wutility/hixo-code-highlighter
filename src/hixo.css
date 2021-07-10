@@ -1,19 +1,13 @@
 :root {  
   --hixo-method:#8fcdff;
   --hixo-sp-key:#8fcdff; /* instanceof echo void .... */
-
   --hixo-num:#d2a8ff;
-
   --hixo-comment:#b1b1b1; 
-
   --hixo-string:#f3e880;  
   --hixo-variable:#ef9b51;
-
   --hixo-keyword:#f92672;
   --hixo-operator:#f92672;
-  
   --hixo-data-type:#d2a8ff; /* Long, String, int .... */
-
   --hixo-pre-bg:#2d2d35;
   --hixo-pre-color:#eeedff;
 }
@@ -33,6 +27,8 @@ pre code {
   font-family: Consolas;
 }
 
+.hixo-line-num {color: #b1b1b1 !important;}
+
 .hixo-pre-color {color:var(--hixo-pre-color)}
 
 .hixo-method {color:var(--hixo-method)}
@@ -50,3 +46,7 @@ pre code {
 
 .hixo-italic {font-style: italic;}
 .hixo-bold {font-weight: bold;}
+
+.mr-1 {margin-right: 17px !important;}
+.mr-2 {margin-right: 12px !important;}
+.mr-3 {margin-right: 7px !important;}

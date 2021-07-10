@@ -37,7 +37,7 @@ const regex = (function () {
   };
 
   // sql/plsql reseved words
-  const commonRvWords = 'endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break';
+  const commonRvWords = 'as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break';
   const sqlRvWords = 'TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE';
 
   return {
@@ -90,19 +90,26 @@ const regex = (function () {
         quotes,
         ...classicComments
       ]
-    },
-    javascript: { // rules for: javascript - java - cpp/c - csharp - go
-      reserved: '#include|defer|signed|sizeof|volatile|type|typedef|goto|export|constructor|var',
+    },    
+    javascript: {
+      reserved: 'defer|type|export|constructor|var',
       rules: [
         { // match: ` any string here `
           pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/g,
           color: 'string',
           stripHtml: true,
-          inside: { // operators: ${ }
-            pattern: /[\$\#]\{.*\}/g,
+          inside: { // operators: ${ } #{ }
+            pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/g,
             color: 'pre-color'
           },
         },
+        quotes,
+        ...classicComments
+      ]
+    },
+    clike: { // rules for: java - cpp/c - csharp - go
+      reserved: '#include|defer|signed|sizeof|volatile|typedef|goto|export|var',
+      rules: [
         quotes,
         ...classicComments
       ]
@@ -158,13 +165,14 @@ const regex = (function () {
 class Hixo {
   options = {};
 
-  constructor ({ language }) {
+  constructor ({ language, lineNum }) {
+    this.options.lineNum = lineNum || false;
     this.setLanguage(language);
   }
 
   setLanguage (language) {
     if (language && ['java', 'go', 'csharp', 'cpp', 'c'].includes(language)) {
-      this.options.language = 'javascript';
+      this.options.language = 'clike';
     }
     else {
       this.options.language = language || '';
@@ -196,7 +204,7 @@ class Hixo {
   }
 
   codeToHtml (text) {
-    const setColor = (rule, match) => {
+    const setStyle = (rule, match) => {
       let bold = rule.bold ? ' hixo-bold' : '',
         italic = rule.italic ? ' hixo-italic' : '',
         classN = rule.color + italic + bold;
@@ -230,15 +238,15 @@ class Hixo {
         }
 
         if (rule.inside) {
-          match = match.replace(rule.inside.pattern, v => setColor(rule.inside, v));
+          match = match.replace(rule.inside.pattern, v => setStyle(rule.inside, v));
         }
 
         if (grp) {
           grp = this.replaceSpan(grp);
-          return match.replace(new RegExp(grp, 'g'), v => setColor(rule, v))
+          return match.replace(new RegExp(grp, 'g'), v => setStyle(rule, v))
         }
         else {
-          return setColor(rule, match);
+          return setStyle(rule, match);
         }
       }
       );    }
@@ -252,6 +260,15 @@ class Hixo {
         return 'class="' + v + '"'
       }
     });
+
+    // set line number
+    if (this.options.lineNum) {
+      text = text.split(/\n/g).map((line, i) => {
+        i = i + 1;
+        return `<span class="hixo-line-num mr-${('' + i).length}">${i}</span>${line}`
+      })
+        .join('\n');
+    }
 
     return `<code>${text.trim()}</code>`;
   }

@@ -81,6 +81,9 @@ select,input {
 
 input,select {margin-top: 5px;}
 
+optgroup {color: #32cd31;}
+option {color: #fff;}
+
 a {
   text-decoration: none;
 }
