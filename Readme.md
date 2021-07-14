@@ -1,5 +1,5 @@
 # Hixo 
-Simple and Lightweight code highlighter with 0 dependencies for modern browsers
+Simple and Lightweight code highlighter with 0 dependencies for modern browsers.
 
 <div align="center" style="width:100%; text-align:center;">
 <img src="https://badgen.net/bundlephobia/minzip/hixo" alt="hixo" />
@@ -9,8 +9,6 @@ Simple and Lightweight code highlighter with 0 dependencies for modern browsers
   <img src="https://data.jsdelivr.com/v1/package/npm/hixo/badge" alt="hixo"/>
 </div> 
 
-Supported Languages check docs: [website](https://hixo.onrender.com/)
-
 ## Usage
 ```js
 import Hixo from 'hixo';
@@ -19,8 +17,8 @@ import 'hixo/build/hixo.css';
 
 Or include it via jsDelivr CDN (UMD):
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.0/build/index.css" />
-<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.0/build/index.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.1/build/index.css" />
+<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.1/build/index.min.js"></script>
 <!-- Access via global object : window.Hixo -->
 ```
 
@@ -64,9 +62,10 @@ hixo.highlightAll()
 ```
 
 ### Notes
-- All pull requests are welcome, feel free.
+- Supported Languages check docs: [website](https://hixo.onrender.com/)
 - [Example](https://hixo.onrender.com) of how to override the current theme.
 - Css [themes](https://github.com/wutility/hixo-code-highlighter/tree/main/themes) are not built-in.
+- All pull requests are welcome, feel free.
 
 # License
 MIT

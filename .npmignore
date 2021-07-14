@@ -1,16 +1,18 @@
-examples/
-example/
 node_modules/
 src/
 dist/
 tests/
-lib/
+themes/
+website/
 
 .gitignore
 .cache
 .vscode
 .babelrc
 
+index.html
 regex.txt
+
+package-lock.json
 
 rollup.config.js
