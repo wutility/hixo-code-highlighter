@@ -64,7 +64,7 @@ window.SplitViews({
   parent: 'editor',
   direction: 'vertical',
   gutterSize: 10,
-  minSize: 10,
+  minSize: 1,
   sizes: [50, 50]
 });
 
