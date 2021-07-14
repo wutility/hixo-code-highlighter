@@ -9,16 +9,19 @@ Simple and Lightweight code highlighter with 0 dependencies for modern browsers.
   <img src="https://data.jsdelivr.com/v1/package/npm/hixo/badge" alt="hixo"/>
 </div> 
 
+[Official Website](https://hixo.onrender.com/)
+[Demo CodeSandbox](https://codesandbox.io/s/hixo-code-highlighter-cgddx)
+
 ## Usage
 ```js
-import Hixo from 'hixo';
-import 'hixo/build/hixo.css';
+import Hixo from "hixo";
+import "hixo/build/index.css";
 ```
 
 Or include it via jsDelivr CDN (UMD):
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.1/build/index.css" />
-<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.1/build/index.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.2/build/index.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.2/build/index.umd.min.js"></script>
 <!-- Access via global object : window.Hixo -->
 ```
 
