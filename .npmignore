@@ -11,4 +11,6 @@ lib/
 .vscode
 .babelrc
 
+regex.txt
+
 rollup.config.js

@@ -8,6 +8,9 @@
   --hixo-keyword:#f92672;
   --hixo-operator:#f92672;
   --hixo-data-type:#d2a8ff; /* Long, String, int .... */
+
+  --hixo-line-num:#b1b1b1;
+
   --hixo-pre-bg:#2d2d35;
   --hixo-pre-color:#eeedff;
 }
@@ -22,12 +25,10 @@ pre {
   white-space: pre-wrap;
 }
 
-pre code {
-  white-space: pre-wrap;
-  font-family: Consolas;
-}
+pre code { white-space: pre-wrap; font-family: Consolas; }
 
-.hixo-line-num {color: #b1b1b1 !important;}
+.hixo-line-num {color: var(--hixo-line-num);}
+.hixo-line-num:hover {color: #f3f3f3;}
 
 .hixo-pre-color {color:var(--hixo-pre-color)}
 

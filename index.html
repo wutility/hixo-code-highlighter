@@ -5,14 +5,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hixo - Syntax Highlighter</title>
+  <title>Hixo - Fastest Syntax Highlighter</title>
   <link rel="stylesheet" href="build/hixo.css">
   <link rel="stylesheet" href="themes/dark-themes.css">
   <link rel="stylesheet" href="themes/light-themes.css">
   <link rel="stylesheet" href="website/style.css">
 
   <meta name="description" content="Syntax Highlighter">
-  <meta name="keywords" content="Syntax, Highlighter, Java, C++, Python, Php, Rust, JavaScript">
+  <meta name="keywords" content="Syntax, Highlighter,Code,Golang Java, C++, Python, Php, Rust, JavaScript">
   <meta name="author" content="Haikel Fazzani">
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
@@ -42,33 +42,44 @@
   <div class="container">
 
     <section>
-      <h1 class="m-0">Hixo</h1>
-      <p class="mt-0">is syntax highlighter, was created to be simple, lightweight and fast for simple usage like blogs
-        (docs, etc..).
-      </p>
+      <h2 class="mt-0"># Why choosing Hixo SYNTAX HIGHLIGHTER?</h2>
+
+      <ul>
+        <li>Extensible.</li>
+        <li>Simple.</li>
+        <li>Lightweight.</li>
+        <li>Fast compared with others syntax highlighters.</li>
+        <li>Written in Javascript.</li>
+        <li>Zero dependencies.</li>      
+      </ul>
     </section>
 
     <section>
       <h2># Installation</h2>
-      <pre class="pre-doc">$ npm install hixo
+      <pre class="pre-doc" data-language="javascript">$ npm install hixo
 // or via yarn 
 $ yarn add hixo</pre>
     </section>
 
     <section>
       <h2># Usage</h2>
-      <pre class="pre-doc mb-2">import Hixo from 'hixo';
+      <pre class="pre-doc mb-2" data-language="javascript">import Hixo from 'hixo';
 import 'hixo/build/hixo.css';
 
-const hixo = new Hixo({ language: 'java', lineNum: true }); 
+const options = { 
+  language: 'java', 
+  lineNum: true 
+}
+
+const hixo = new Hixo(options); 
 
 const preElement = document.querySelector('pre')
-preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");') // return html string</pre>
+preElement.innerHTML = hixo.codeToHtml('System.out.println("Hello");')</pre>
     </section>
 
     <section>
       <h2># Methods</h2>
-      <pre class="pre-doc">// code to html string
+      <pre class="pre-doc" data-language="javascript">// code to html string
 hixo.codeToHtml('System.out.println("Hello");')
 
 // add new keywords
@@ -81,7 +92,11 @@ hixo.addRegex({
   italic: true, // optional
   bold: true, // optional
   stripHtml: true // optional: remove any html tag
-});</pre>
+});
+
+// highlight all pre elements
+// Html: &lt;pre data-language="javascript"&gt;&lt;/pre&gt;
+hixo.highlightAll()</pre>
     </section>
 
     <section>
@@ -120,10 +135,12 @@ hixo.addRegex({
 
     <section>
       <h2># How to override the current theme</h2>
-      <pre class="bloc">// css code
+      <pre class="pre-doc" data-language="plaintext">// css code
 [data-theme="material"] { // you can copy your favorite theme from the folder themes
   --hixo-pre-bg: #263238;
   --hixo-pre-color: #EEFFFF;
+
+  --hixo-line-num:#b1b1b1;
 
   --hixo-method: #82AAFF;
   --hixo-num: #FF5370;
@@ -138,12 +155,22 @@ hixo.addRegex({
 }
 
 // javascript code
-codeElement.dataset.theme = 'material';</pre>
+preElement.dataset.theme = 'material';</pre>
     </section>
 
     <section>
       <h2># Notes</h2>
-      <p>All pull requests are welcome, feel free.</p>
+      <ul>
+        <li>All pull requests are welcome, feel free.</li>
+        <li><a href="https://github.com/wutility/hixo-code-highlighter/tree/main/themes">Themes (are not built in)</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2># Author</h2>
+      <ul>
+        <li><a href="https://github.com/haikelfazzani">Haikel Fazzani</a></li>
+      </ul>
     </section>
 
     <section>

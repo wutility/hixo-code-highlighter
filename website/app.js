@@ -1,10 +1,3 @@
-const preDoc = document.querySelectorAll('.pre-doc')
-
-Array.from(preDoc).forEach(pre => {
-  let hixo = new window.Hixo({ language: 'javascript' });
-  pre.innerHTML = hixo.codeToHtml(pre.textContent)
-});
-
 const preContainer = document.querySelector('.pre-container')
 const txtArea = document.getElementById('txtcode')
 const preElement = document.getElementById('pre-editor')
@@ -28,7 +21,7 @@ const themes = [
   { name: 'chrome', type: 'light' }
 ];
 
-const languages = ['javascript', 'java', 'go', 'rust', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql'];
+const languages = ['plaintext','javascript', 'java', 'go', 'rust', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql'];
 
 languages.forEach(lang => {
   const option = document.createElement('option')
@@ -47,8 +40,8 @@ themes.forEach(theme => {
   const option = document.createElement('option');
   option.value = theme.name;
   option.textContent = theme.name;
-  
-  if(theme.type === 'dark') optgroupD.appendChild(option)
+
+  if (theme.type === 'dark') optgroupD.appendChild(option)
   else optgroupL.appendChild(option)
 });
 
@@ -56,9 +49,9 @@ selectThemes.appendChild(optgroupD);
 selectThemes.appendChild(optgroupL);
 
 // 
-let language = 'javascript';
+let language = 'plaintext';
 let languageCode = langsTest[language].code;
-let hixo = new window.Hixo({ language, lineNum:true });
+let hixo = new window.Hixo({ language, lineNum: true });
 
 window.SplitViews({
   parent: 'editor',
@@ -67,6 +60,8 @@ window.SplitViews({
   minSize: 1,
   sizes: [50, 50]
 });
+
+hixo.highlightAll()
 
 txtArea.value = languageCode
 preElement.innerHTML = hixo.codeToHtml(languageCode)

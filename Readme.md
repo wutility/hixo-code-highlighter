@@ -1,5 +1,13 @@
 # Hixo 
-Simple and Lightweight (<4K) code highlighter with 0 dependencies for modern browsers
+Simple and Lightweight code highlighter with 0 dependencies for modern browsers
+
+<div align="center" style="width:100%; text-align:center;">
+<img src="https://badgen.net/bundlephobia/minzip/hixo" alt="hixo" />
+  <img src="https://badgen.net/bundlephobia/dependency-count/hixo" alt="hixo" />
+  <img src="https://badgen.net/npm/v/hixo" alt="hixo" />
+  <img src="https://badgen.net/npm/dt/hixo" alt="hixo" />
+  <img src="https://data.jsdelivr.com/v1/package/npm/hixo/badge" alt="hixo"/>
+</div> 
 
 Supported Languages check docs: [website](https://hixo.onrender.com/)
 
@@ -48,32 +56,17 @@ hixo.addRegex({
 });
 ```
 
-### How to override the current theme
-```css
-/* css code */
-[data-theme="material"] {
-  --hixo-pre-bg: #263238;
-  --hixo-pre-color: #EEFFFF;
-
-  --hixo-method: #82AAFF;
-  --hixo-num: #FF5370;
-  --hixo-string: #C3E88D;
-  --hixo-comment: #6a737d;
-  --hixo-keyword: #C792EA;
-  --hixo-variable: #dc7c23;
-
-  --hixo-operator:#f92672;
-  --hixo-sp-keys:#d2a8ff;
-  --hixo-data-type:#b65611;
-}
-```
+- **highlightAll(): void**
 ```js
-// javascript code
-preElement.dataset.theme = 'material';
+// highlight all pre elements
+// Html: <pre data-language="javascript"></pre>
+hixo.highlightAll()
 ```
 
 ### Notes
 - All pull requests are welcome, feel free.
+- [Example](https://hixo.onrender.com) of how to override the current theme.
+- Css [themes](https://github.com/wutility/hixo-code-highlighter/tree/main/themes) are not built-in.
 
 # License
 MIT

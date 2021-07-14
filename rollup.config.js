@@ -3,19 +3,19 @@ import { terser } from "rollup-plugin-terser";
 import postcss from "rollup-plugin-postcss";
 
 export default {
-  input: 'src/hixo.js',
+  input: 'src/index.js',
   output: [
     {
       name: 'Hixo',
-      file: 'build/hixo.umd.js',
+      file: 'build/index.umd.js',
       format: 'umd'
     },
     {
-      file: 'build/hixo.esm.js',
+      file: 'build/index.esm.js',
       format: 'esm'
     },
     {
-      file: 'build/hixo.cjs.js',
+      file: 'build/index.cjs.js',
       format: 'cjs',
       sourcemap: false,
     }
@@ -29,9 +29,9 @@ export default {
       minimize: true,
       sourceMap: false,
       babelHelpers: 'runtime',
-      extract: 'hixo.css'
+      extract: 'index.css'
     }),
     nodeResolve(),
-    //terser()
+    terser()
   ]
 };

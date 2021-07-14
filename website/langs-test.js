@@ -1,4 +1,13 @@
 const langsTest = {
+  plaintext: {
+    code: `# Why choosing Hixo SYNTAX HIGHLIGHTER?
+
+Extensible.
+Simple.
+Lightweight < 2KB.
+Fast compared with others syntax highlighters.
+Written in Javascript.
+Zero dependencies.`},
   javascript: {
     code: `// hello world
 /*

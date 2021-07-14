@@ -1,5 +1,5 @@
 import regex from './regex';
-import './hixo.css'
+import './index.css'
 
 export default class Hixo {
   options = {};
@@ -14,7 +14,7 @@ export default class Hixo {
       this.options.language = 'clike'
     }
     else {
-      this.options.language = language || '';
+      this.options.language = language || 'plaintext';
     }
   }
 
@@ -43,6 +43,8 @@ export default class Hixo {
   }
 
   codeToHtml (text) {
+    if(this.options.language === 'plaintext') return `<code>${text.trim()}</code>`;
+
     const setStyle = (rule, match) => {
       let bold = rule.bold ? ' hixo-bold' : '',
         italic = rule.italic ? ' hixo-italic' : '',
@@ -87,21 +89,16 @@ export default class Hixo {
         else {
           return setStyle(rule, match);
         }
-      }
-      );;
+      });
     }
 
     // remove span wrapper from classname: < class=""></>     
     text = text.replace(/<.* .*=".*">.*<\/.*>/g, match => this.stripHtml(match))
 
-    text = text.replace(/hixo=(\[([^\][]*)])/g, v => {
-      if (v.startsWith('hixo=[')) {
-        v = v.match(/\[([^}]*)\]/)[1]
-        return 'class="' + v + '"'
-      }
-    });
+    // replace: hixo=[hixo-string]  by class="hixo-string"
+    text = text.replace(/hixo=\[(hixo\-\w+(\-\w+)?)]/g, 'class="$1"');
 
-    // set line number
+    // set one the left for each line a number
     if (this.options.lineNum) {
       text = text.split(/\n/g).map((line, i) => {
         i = i + 1;
@@ -111,5 +108,15 @@ export default class Hixo {
     }
 
     return `<code>${text.trim()}</code>`;
+  }
+
+  highlightAll() {
+    let allPre = document.querySelectorAll('pre')    
+    for (const pre of allPre) {      
+      if(pre.dataset.language) {
+        this.setLanguage(pre.dataset.language)
+        pre.innerHTML = this.codeToHtml(pre.textContent)
+      }  
+    }
   }
 }
