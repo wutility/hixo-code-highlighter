@@ -4,11 +4,11 @@ const regex = (function () {
   const commonRvw = 'as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     ClikeRsw = '#include|defer|signed|sizeof|volatile|typedef|goto|export|var|delegate',
     JsRsw = 'defer|type|export|constructor|var',
-    sqlRvw = 'TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
+    sqlRvw = 'ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     plsqlRsw = 'HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
     PhpRsw = 'insteadof|yield from|__CLASS__|__DIR__',
     PythonRsw = 'def|except|False|True',
-    RustRsw = 'fn|become|macro';
+    RustRsw = 'fn|become|macro|self|unsized|union';
 
   const comment = {
     sc: { // single comment
@@ -21,17 +21,17 @@ const regex = (function () {
       color: 'comment',
       stripHtml: true
     },
-    hc : { // match: # any comment
+    hc: { // match: # any comment
       pattern: /(^#.*)|[^-'\(]#\s+[^\)'].*/g,
       color: 'comment',
       stripHtml: true
     },
-    dc : { // match: -- any comment
-      pattern: /(^--.*|\s+--.*)\n/g,
+    dc: { // match: -- any comment
+      pattern: /(?:--[^\r\n]*)\n/g,
       color: 'comment',
       stripHtml: true
     },
-    qc :{ // match: ''' any comment '''
+    qc: { // match: ''' any comment '''
       pattern: /("""|''')[\s\S]*?\1/g,
       color: 'comment',
       stripHtml: true
@@ -103,7 +103,7 @@ const regex = (function () {
           stripHtml: true,
           inside: { // operators: ${ } #{ }
             pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/g,
-            color: 'pre-color'
+            color: 'variable'
           },
         },
         quotes,
@@ -115,12 +115,8 @@ const regex = (function () {
       reserved: ClikeRsw,
       rules: [
         {
-          pattern:/#include &lt;.*&gt;/g,
-          color: 'sp-key'
-        },
-        {
-          pattern: /\b(Map|Set|List|Stack|Queue|Tuple|Hashtable|Dictionary|SortedList|ArrayList)(?=[^\w])/g,
-          color: 'data-type'
+          pattern: /#include &lt;.*&gt;/g,
+          color: 'pre-color'
         },
         quotes,
         comment.sc,
@@ -136,13 +132,14 @@ const regex = (function () {
         },
         {
           pattern: /\b(class|package|instanceof|echo|void)(?=\s+\w+)/gi,
-          color: 'sp-key'
+          color: 'method'
         },
         { // match: @Entity   @Get
           pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
-          color: 'variable'
+          color: 'variable',
+          stripHtml: true
         },
-        { // match: 
+        { // match: method name
           pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g,
           color: 'method',
           stripHtml: true
@@ -152,12 +149,12 @@ const regex = (function () {
           color: 'method',
           italic: true
         },
-        { // operators: == ===
-          pattern: /[^\w+](\=|\||&amp;){2,3}[^"]/g,
+        { // operators: => -> <- := ?
+          pattern: /(\=|\-)&gt;|&lt;\-|\:\=|::/g,
           color: 'operator'
         },
-        { // match number: 12 15.2
-          pattern: /\b([0-9]+(?:\.[0-9]+)?)\b/g,
+        { // match number and hexa: 12  15.2  0x878
+          pattern: /\b([0-9]+(?:\.[0-9]+)?|0x[0-9a-f]+)\b/g,
           color: 'num'
         },
         {
@@ -165,8 +162,8 @@ const regex = (function () {
           color: 'num'
         },
         { // match regexp: /.*/gmi
-          pattern: /\s+\/.*\/[gim\)]\s+/g,
-          color: 'sp-key',
+          pattern: /(\/[^*(span)].*\/[gim\)])/g,
+          color: 'string',
           stripHtml: true
         }
       ]

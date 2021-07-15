@@ -1,6 +1,6 @@
 {
   "name": "hixo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Hixo is lightweight, robust, and fast syntax highlighter",
   "main": "build/index.cjs.js",
   "module": "build/index.esm.js",
@@ -8,8 +8,8 @@
   "style": "build/index.css",
   "scripts": {
     "dev": "lite-server",
-    "watch": "rollup -w -c",
-    "build": "rollup -c"
+    "watch": "set NODE_ENV=dev && rollup -w -c",
+    "build": "set NODE_ENV=production rollup /node_modules/.bin/rollup -c"
   },
   "repository": {
     "type": "git",
@@ -29,8 +29,10 @@
   "homepage": "https://github.com/haikelfazzani/hixo-code-highlighter#readme",
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.0.0",
+    "@rollup/plugin-replace": "^2.4.2",
     "lite-server": "^2.6.1",
     "rollup": "^2.52.7",
+    "rollup-plugin-inject-process-env": "^1.3.1",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-terser": "^7.0.2",
     "split-views": "^1.0.7"

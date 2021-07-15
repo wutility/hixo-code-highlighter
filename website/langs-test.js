@@ -8,11 +8,34 @@ Lightweight < 2KB.
 Fast compared with others syntax highlighters.
 Written in Javascript.
 Zero dependencies.`},
+  yaml: {
+    code: `[default]
+# Employee records
+- martin:
+    name: Martin D'vloper
+    job: Developer
+    skills:
+      - python [default]
+      - perl { df }
+      - pascal
+- tabitha:
+    name: Tabitha Bitumen
+    job: Developer
+    skills:
+      - lisp
+      - fortran
+      - erlang
+      
+foo: "{{ variable }}/additional/string/literal"
+foo2: "{{ variable }}\\backslashes\\are\\also\\special\\characters"
+foo3: "even if it's just a string literal it must all be quoted"`
+  },
   javascript: {
     code: `// hello world
 /*
 this is a multi comments
 */
+const me = () => [1, 2, 0x15, '488', "87 //"]
 class Test {
   obj = { name:'miky', num:1 }
   constructor() {

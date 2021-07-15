@@ -16,6 +16,8 @@ const themes = [
   { name: 'hackpot', type: 'dark' },
   { name: 'chroma', type: 'dark' },
   { name: 'blackboard', type: 'dark' },
+  { name: 'tomorrow', type: 'dark' },
+  { name: 'coda', type: 'light' },
   { name: 'playpen', type: 'light' },
   { name: 'eclipse', type: 'light' },
   { name: 'chrome', type: 'light' }

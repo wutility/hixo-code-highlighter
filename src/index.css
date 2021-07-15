@@ -1,6 +1,5 @@
 :root {  
   --hixo-method:#8fcdff;
-  --hixo-sp-key:#8fcdff; /* instanceof echo void .... */
   --hixo-num:#d2a8ff;
   --hixo-comment:#b1b1b1; 
   --hixo-string:#f3e880;  
@@ -27,10 +26,10 @@ pre {
 
 pre code { white-space: pre-wrap; font-family: Consolas; }
 
+.hixo-pre-color {color:var(--hixo-pre-color)}
+
 .hixo-line-num {color: var(--hixo-line-num);}
 .hixo-line-num:hover {color: #f3f3f3;}
-
-.hixo-pre-color {color:var(--hixo-pre-color)}
 
 .hixo-method {color:var(--hixo-method)}
 .hixo-num {color: var(--hixo-num);}
@@ -40,7 +39,7 @@ pre code { white-space: pre-wrap; font-family: Consolas; }
 .hixo-comment {color: var(--hixo-comment);}
 .hixo-variable {color: var(--hixo-variable);}
 
-.hixo-sp-key {color: var(--hixo-sp-key);}
+.hixo-spkey {color: var(--hixo-spkey);}
 .hixo-operator {color: var(--hixo-operator);}
 
 .hixo-data-type {color: var(--hixo-data-type);}
@@ -48,6 +47,6 @@ pre code { white-space: pre-wrap; font-family: Consolas; }
 .hixo-italic {font-style: italic;}
 .hixo-bold {font-weight: bold;}
 
-.mr-1 {margin-right: 17px !important;}
-.mr-2 {margin-right: 12px !important;}
-.mr-3 {margin-right: 7px !important;}
+.mr-1 {margin-right: 23px !important;}
+.mr-2 {margin-right: 14px !important;}
+.mr-3 {margin-right: 6px !important;}
