@@ -1,6 +1,6 @@
 {
   "name": "hixo",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Hixo is lightweight, robust, and fast syntax highlighter",
   "main": "build/index.cjs.js",
   "module": "build/index.esm.js",

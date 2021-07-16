@@ -17,12 +17,6 @@ header {
   margin-bottom: 15px;
 }
 
-section:nth-child(even) {
-  background-color: #16161b;
-  color: #eeedff;
-  /* box-shadow: 0px 3px 7px rgb(0 0 0 / 35%); */
-}
-
 section {min-height: 500px;}
 section,footer {padding: 30px 100px;}
 
@@ -81,14 +75,9 @@ option {
   color: #fff;
 }
 
-a {
-  color: #fff;
-}
-
 button:hover {
   background-color: #32cd31;
 }
-
 /**********************/
 .mac-header {
   padding: 0 10px;
@@ -136,6 +125,7 @@ textarea {
   padding: 16px;
   resize: none;
   outline: none;
+  border: 1px solid #b3b3b3;
 }
 
 .pre-header {
@@ -176,6 +166,8 @@ textarea {
   flex-direction: column;
 }
 
+.flex-wrap {flex-wrap: wrap;}
+
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -188,6 +180,10 @@ textarea {
 
 .mb-2 {
   margin-bottom: 20px;
+}
+
+.mt-2 {
+  margin-top: 20px;
 }
 
 .mr-2 {
@@ -242,13 +238,13 @@ textarea {
 }
 
 @media screen and (max-width: 1140px) {
-  section {
+  footer, section {
     padding: 10px 50px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  section {
+  footer, section {
     padding: 10px;
   }
 }

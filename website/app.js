@@ -23,7 +23,7 @@ const themes = [
   { name: 'chrome', type: 'light' }
 ];
 
-const languages = ['javascript', 'java', 'go', 'rust', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql','plaintext'];
+const languages = ['javascript', 'java', 'go', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql','plaintext'];
 
 languages.forEach(lang => {
   const option = document.createElement('option')

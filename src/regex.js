@@ -87,27 +87,6 @@ const regex = (function () {
         comment.mc
       ]
     },
-    rust: {
-      reserved: RustRsw,
-      rules: [
-        {
-          pattern: /\b[ufi]\d+(?=[^\w])/g,
-          color: 'data-type'
-        },
-        {
-          pattern: /\b(mut|mod|str)(?=\s+\w+)/g,
-          color: 'method'
-        },
-        {
-          pattern: /#!?\[[\s\S]*?\]/g,
-          color: 'variable',
-          stripHtml: true,
-        },
-        quotes,
-        comment.sc,
-        comment.mc
-      ]
-    },
     javascript: {
       reserved: JsRsw,
       rules: [

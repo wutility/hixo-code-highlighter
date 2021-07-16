@@ -65,50 +65,7 @@ func main() {
     </div>
   </section>
 
-  <section class="grid-2">
-    <div class="w-100">
-      <h2># Installation</h2>
-      <pre class="pre-doc mb-2" data-language="javascript">$ npm install hixo
-// or via yarn 
-$ yarn add hixo</pre>
-
-      <h2># Usage</h2>
-      <pre class="pre-doc" data-language="javascript">import Hixo from 'hixo';
-import 'hixo/build/hixo.css';
-
-const options = { language: 'java', lineNum: true }
-
-const hixo = new Hixo(options); 
-const preElement = document.querySelector('pre')
-const codeStr = 'System.out.println("Hello");';
-
-preElement.innerHTML = hixo.codeToHtml(codeStr)</pre>
-    </div>
-
-    <div class="w-100">
-      <h2># Methods</h2>
-      <pre class="pre-doc" data-language="javascript">// code to html string
-hixo.codeToHtml('System.out.println("Hello");')
-
-// add new keywords
-hixo.addKeys('final|struct|range|async');
-
-// add new regular expression
-hixo.addRegex({ 
-  pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g, // required
-  color: 'method', // required
-  italic: true, // optional
-  bold: true, // optional
-  stripHtml: true // optional: remove any html tag
-});
-
-// highlight all pre elements
-// Html: &lt;pre data-language="javascript"&gt;&lt;/pre&gt;
-hixo.highlightAll()</pre>
-    </div>
-  </section>
-
-  <section>
+  <section class="bg-dark">
     <div class="d-flex align-center justify-between">
       <h2># Playground</h2>
 
@@ -142,7 +99,7 @@ hixo.highlightAll()</pre>
     </div>
   </section>
 
-  <footer class="bg-dark d-flex justify-between">
+  <footer class="w-100 d-flex justify-between flex-wrap mt-2">
     <div>
       <h2># Notes</h2>
       <ul>
