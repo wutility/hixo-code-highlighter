@@ -80,11 +80,19 @@ export default class Hixo {
 
     for (let i = 0; i < rules.length; i++) {
       const rule = rules[i];
+
       text = text.replace(rule.pattern, (...args) => {
 
         const matches = Array.from(args);
         let match = matches[0];
         let grp = matches[rule.group];
+
+        // check the start and the end of quotes the same: "" ''
+        if (rule.color === 'string') {
+          let f = match.slice(0, 1)
+          let e = match.slice(-1)
+          if(f !== e) return match
+        }
 
         if (rule.stripHtml) {
           match = this.replaceSpan(match)

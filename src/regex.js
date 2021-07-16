@@ -1,13 +1,13 @@
 const regex = (function () {
   // reserved words
-  const commonRvw = 'as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
-    ClikeRsw = '#include|defer|signed|sizeof|volatile|typedef|goto|export|var|delegate',
-    JsRsw = 'defer|type|export|constructor|var',
-    sqlRvw = 'ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
-    plsqlRsw = 'HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
+  const commonRvw = 'enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+    ClikeRsw = '#include|defer|signed|sizeof|volatile|typedef|var|delegate',
+    JsRsw = 'defer|type|var',
+    sqlRvw = 'FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
+    plsqlRsw = 'OVERRIDING|FORM|HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
     PhpRsw = 'insteadof|yield from|__CLASS__|__DIR__',
-    PythonRsw = 'def|except|False|True',
-    RustRsw = 'fn|become|macro|self|unsized|union';
+    PythonRsw = 'lambda|def|except|False|True',
+    RustRsw = 'virtual|fn|become|macro|self|unsized|offsetof';
 
   const comment = {
     sc: { // single comment
@@ -38,7 +38,9 @@ const regex = (function () {
   };
 
   const quotes = {
-    pattern: /((?<![\\])('|"))((?:.(?!(?<![\\])\1))*.?)\1/g,
+    // pattern: /((?<![\\])('|"))((?:.(?!(?<![\\])\1))*.?)\1/g,
+    // origin pattern from https://github.com/googlearchive/code-prettify/blob/master/src/run_prettify.js
+    pattern: /(?:\'\'\'(?:[^\'\\]|\\[\s\S]|\'{1,2}(?=[^\']))*(?:\'\'\'|$)|\"\"\"(?:[^\"\\]|\\[\s\S]|\"{1,2}(?=[^\"]))*(?:\"\"\"|$)|\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$))/gm,
     color: 'string',
     stripHtml: true
   };
@@ -88,6 +90,19 @@ const regex = (function () {
     rust: {
       reserved: RustRsw,
       rules: [
+        {
+          pattern: /\b[ufi]\d+(?=[^\w])/g,
+          color: 'data-type'
+        },
+        {
+          pattern: /\b(mut|mod|str)(?=\s+\w+)/g,
+          color: 'method'
+        },
+        {
+          pattern: /#!?\[[\s\S]*?\]/g,
+          color: 'variable',
+          stripHtml: true,
+        },
         quotes,
         comment.sc,
         comment.mc
@@ -122,21 +137,21 @@ const regex = (function () {
       reserved: commonRvw,
       rules: [
         {
-          pattern: /\b(char|float|string|bool|boolean|double|long|integer|int|u32)(?=[^\w])/gi,
+          pattern: /\b(char|float|string|bool|boolean|double|long|integer|int)(?=[^\w])/gi,
           color: 'data-type'
         },
         {
-          pattern: /\b(class|package|instanceof|echo|void)(?=\s+\w+)/gi,
+          pattern: /\b(mut|class|package|instanceof|echo|void)(?=\s+\w+)/gi,
           color: 'method'
         },
         { // match: @Entity   @Get
           pattern: /(@\w+\s?)\(.*\)\n|[^/'](@\w+\s?)\n/g,
           color: 'variable',
           stripHtml: true,
-          group:1
+          group: 1
         },
         { // match: method name
-          pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g,
+          pattern: /(?![.])[:$]{0,2}(\w+)(?=[\(!])/g,
           color: 'method',
           stripHtml: true
         },
@@ -146,7 +161,7 @@ const regex = (function () {
           italic: true
         },
         { // operators: => -> <- := ?
-          pattern: /(\=|\-)&gt;|&lt;\-|\:\=|::/g,
+          pattern: /(\=|\-)&gt;|&lt;\-|\:\=/g,
           color: 'operator'
         },
         { // match number and hexa: 12  15.2  0x878

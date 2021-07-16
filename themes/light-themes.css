@@ -44,12 +44,12 @@
 [data-theme="playpen"] {
   --hixo-pre-bg: #f1f1f1;
   --hixo-pre-color: #333;
-  --hixo-method: #6684e1;
-  --hixo-data-type:#b65611;
-  --hixo-num: #b65611;
+  --hixo-method: #0030f2;
+  --hixo-data-type:#b21e00;
+  --hixo-num: #b21e00;
   --hixo-string: #60ac39;
   --hixo-comment: #AAA;
-  --hixo-keyword: #b854d4;
+  --hixo-keyword: #9d00ec;
   --hixo-variable: #333;
   --hixo-operator:#333;  
 }
