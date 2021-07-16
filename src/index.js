@@ -6,7 +6,7 @@ export default class Hixo {
 
   constructor ({ language, lineNum }) {
     this.options.lineNum = lineNum || false;
-    this.setLanguage(language);
+    this.setLanguage(language)
   }
 
   setLanguage (language) {
@@ -39,8 +39,6 @@ export default class Hixo {
   addKeys (keys) { regex.common.reserved += '|' + keys; }
 
   applyRules (text) {
-    if (this.options.language === 'plaintext') return `<code>${text.trim()}</code>`;
-
     const setStyle = (rule, match) => {
       let classN = rule.color;
       if (rule.italic) classN += '+italic';
@@ -110,26 +108,29 @@ export default class Hixo {
   }
 
   codeToHtml (text) {
-    text = this.applyRules(text);
+    if (this.options.language === 'plaintext') return `<code>${text.trim()}</code>`;
+    else {
+      text = this.applyRules(text);
 
-    // remove span wrapper from classname: < class=""></>     
-    text = text.replace(/<.* .*(=|§)".*">.*<\/.*>/g, match => this.replaceSpan(match))
+      // remove span wrapper from classname: < class=""></>     
+      text = text.replace(/<.* .*(=|§)".*">.*<\/.*>/g, match => this.replaceSpan(match))
 
-    // replace: hixo~[string+italic]  by class="hixo-string hixo-italic"
-    text = text.replace(/\<span hixo~\§(\w+[\-\+\w+]*)\§\>/g, (m, g) => {
-      return '<span class="hixo-' + g.replace(/\+/g, ' hixo-') + '">';
-    });
+      // replace: hixo~§string+italic§  by class="hixo-string hixo-italic"
+      text = text.replace(/\<span hixo~\§(\w+[\-\+\w+]*)\§\>/g, (m, g) => {
+        return '<span class="hixo-' + g.replace(/\+/g, ' hixo-') + '">';
+      });
 
-    // Set each line a number (left bar)
-    if (this.options.lineNum) {
-      text = text.split(/\n/g).map((line, i) => {
-        i = i + 1;
-        return `<span class="hixo-line-num mr-${('' + i).length}">${i}</span>${line}`
-      })
-        .join('\n');
+      // Set each line a number (left bar)
+      if (this.options.lineNum) {
+        text = text.split(/\n/g).map((line, i) => {
+          i = i + 1;
+          return `<span class="hixo-line-num mr-${('' + i).length}">${i}</span>${line}`
+        })
+          .join('\n');
+      }
+
+      return `<code>${text.trim()}</code>`;
     }
-
-    return `<code>${text.trim()}</code>`;
   }
 
   highlightAll () {

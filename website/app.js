@@ -23,7 +23,7 @@ const themes = [
   { name: 'chrome', type: 'light' }
 ];
 
-const languages = ['plaintext','javascript', 'java', 'go', 'rust', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql'];
+const languages = ['javascript', 'java', 'go', 'rust', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql','plaintext'];
 
 languages.forEach(lang => {
   const option = document.createElement('option')
@@ -51,7 +51,7 @@ selectThemes.appendChild(optgroupD);
 selectThemes.appendChild(optgroupL);
 
 // 
-let language = 'plaintext';
+let language = 'javascript';
 let languageCode = langsTest[language].code;
 let hixo = new window.Hixo({ language, lineNum: true });
 

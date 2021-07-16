@@ -1,5 +1,4 @@
 const regex = (function () {
-
   // reserved words
   const commonRvw = 'as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     ClikeRsw = '#include|defer|signed|sizeof|volatile|typedef|goto|export|var|delegate',
@@ -98,13 +97,9 @@ const regex = (function () {
       reserved: JsRsw,
       rules: [
         { // match: ` any string here `
-          pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/g,
+          pattern: /((?<![\\])(`))((?:.(?!(?<![\\])\1))*.?)\1/g,
           color: 'string',
-          stripHtml: true,
-          inside: { // operators: ${ } #{ }
-            pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/g,
-            color: 'variable'
-          },
+          stripHtml: true
         },
         quotes,
         comment.sc,
@@ -135,9 +130,10 @@ const regex = (function () {
           color: 'method'
         },
         { // match: @Entity   @Get
-          pattern: /(^|[^.])@\w+(?:\s*\.\s*\w+)*/g,
+          pattern: /(@\w+\s?)\(.*\)\n|[^/'](@\w+\s?)\n/g,
           color: 'variable',
-          stripHtml: true
+          stripHtml: true,
+          group:1
         },
         { // match: method name
           pattern: /(?![.])[:$]{0,2}(\w+)(?=\(.)/g,

@@ -3,12 +3,11 @@
 }
 
 :root {
-  --dark: #2d2d35;
+  --dark: #0c0c0f;
 }
 
 body {
   margin: 0;
-  background-color: #e7e7e7;
   font-size: 14px;
   font-family: 'Noto San';
 }
@@ -18,37 +17,14 @@ header {
   margin-bottom: 15px;
 }
 
-nav {
-  width: 100%;
-  height: 100%;
-  background-color: #2d2d35;
+section:nth-child(even) {
+  background-color: #16161b;
   color: #eeedff;
   /* box-shadow: 0px 3px 7px rgb(0 0 0 / 35%); */
 }
 
-nav ul {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 100%;
-  height: 100%;
-  margin: 20px 0;
-}
-
-.container,
-nav {
-  padding: 10px 150px;
-}
-
-section {
-  margin-bottom: 35px;
-}
+section {min-height: 500px;}
+section,footer {padding: 30px 100px;}
 
 h1,
 h2,
@@ -68,7 +44,7 @@ p {
   margin: 0;
 }
 
-h1 {
+h1>a {
   color: #32cd31;
   font-size: 45px;
 }
@@ -106,7 +82,7 @@ option {
 }
 
 a {
-  text-decoration: none;
+  color: #fff;
 }
 
 button:hover {
@@ -114,6 +90,22 @@ button:hover {
 }
 
 /**********************/
+.mac-header {
+  padding: 0 10px;
+  height: 36px;
+  border-bottom: 1px solid var(--dark);
+  background-color: var(--hixo-pre-bg);
+  position: relative;
+}
+
+.mac-header>span {
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin: 11px 0 6px 8px;
+}
+/***********************/
 .editor {
   height: 520px;
 }
@@ -171,9 +163,10 @@ textarea {
 }
 
 .d-flex {
-  display: flex;
-  align-items: center;
+  display: flex;  
 }
+
+.align-center{align-items: center;}
 
 .justify-between {
   justify-content: space-between;
@@ -186,7 +179,7 @@ textarea {
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 20px;
 }
 
 .mb-3 {
@@ -225,6 +218,10 @@ textarea {
   height: 100%;
 }
 
+.vh-100 {
+  height: 100vh;
+}
+
 .bg-dark {
   background-color: var(--dark);
   color: #fff;
@@ -245,17 +242,13 @@ textarea {
 }
 
 @media screen and (max-width: 1140px) {
-
-  .container,
-  nav {
+  section {
     padding: 10px 50px;
   }
 }
 
 @media screen and (max-width: 600px) {
-
-  .container,
-  nav {
+  section {
     padding: 10px;
   }
 }

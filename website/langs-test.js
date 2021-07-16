@@ -31,7 +31,8 @@ foo2: "{{ variable }}\\backslashes\\are\\also\\special\\characters"
 foo3: "even if it's just a string literal it must all be quoted"`
   },
   javascript: {
-    code: `// hello world
+    code: `import { somthing } from '../somthing/index.js'
+// hello world
 /*
 this is a multi comments
 */
