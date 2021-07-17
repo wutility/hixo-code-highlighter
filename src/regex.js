@@ -1,13 +1,12 @@
 const regex = (function () {
   // reserved words
-  const commonRvw = 'enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
-    ClikeRsw = '#include|defer|signed|sizeof|volatile|typedef|var|delegate',
-    JsRsw = 'defer|type|var',
+  const commonRvw = 'var|enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+    ClikeRsw = 'define|include|fun|val|defer|signed|sizeof|volatile|typedef|delegate|interface',
+    JsRsw = 'defer|type',
     sqlRvw = 'FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     plsqlRsw = 'OVERRIDING|FORM|HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
-    PhpRsw = 'insteadof|yield from|__CLASS__|__DIR__',
-    PythonRsw = 'lambda|def|except|False|True',
-    RustRsw = 'virtual|fn|become|macro|self|unsized|offsetof';
+    PhpRsw = '(include|require)(_once)?|abstract|interface|insteadof|yield from|__CLASS__|__DIR__',
+    PythonRsw = 'lambda|def|except|False|True';
 
   const comment = {
     sc: { // single comment
@@ -34,6 +33,11 @@ const regex = (function () {
       pattern: /("""|''')[\s\S]*?\1/g,
       color: 'comment',
       stripHtml: true
+    },
+    htmlc: {
+      pattern: /(?:<!--.*-->)/g,
+      color: 'comment',
+      stripHtml: true
     }
   };
 
@@ -45,7 +49,7 @@ const regex = (function () {
     stripHtml: true
   };
 
-  return {
+  return {    
     sql: {
       reserved: sqlRvw,
       rules: [
@@ -104,7 +108,11 @@ const regex = (function () {
       reserved: ClikeRsw,
       rules: [
         {
-          pattern: /#include &lt;.*&gt;/g,
+          pattern: /\b(uint(8|16|32|64)|char(8|16|32)_t|wchar_t|short)(?=[^\w])/gi,
+          color: 'data-type'
+        },
+        {
+          pattern: /#include &lt;.*&gt;\n/g,
           color: 'pre-color'
         },
         quotes,
@@ -116,11 +124,11 @@ const regex = (function () {
       reserved: commonRvw,
       rules: [
         {
-          pattern: /\b(char|float|string|bool|boolean|double|long|integer|int)(?=[^\w])/gi,
+          pattern: /\b(float|string|bool|boolean|double|char|long|integer|int)(?=[^\w])/gi,
           color: 'data-type'
         },
         {
-          pattern: /\b(mut|class|package|instanceof|echo|void)(?=\s+\w+)/gi,
+          pattern: /\b(class|package|instanceof|echo|void)(?=\s+\w+)/gi,
           color: 'method'
         },
         { // match: @Entity   @Get

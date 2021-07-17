@@ -53,7 +53,7 @@ selectThemes.appendChild(optgroupL);
 // 
 let language = 'javascript';
 let languageCode = langsTest[language].code;
-let hixo = new window.Hixo({ language, lineNum: true });
+let hixo = new window.Hixo({ language, lineNum: false });
 
 window.SplitViews({
   parent: 'editor',

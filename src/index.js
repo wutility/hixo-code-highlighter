@@ -28,17 +28,16 @@ export default class Hixo {
       '+': '&plus;',
       '&': '&amp;',
       '<': '&lt;',
-      '>': '&gt;',
-      '\\': '\\\\'
+      '>': '&gt;'
     };
-    return text.replace(/[+&<>\\]/g, chr => chars[chr]);
+    return text.replace(/[+&<>]/g, chr => chars[chr]);
   }
 
   addRegex (rule) { regex.common.rules.unshift(rule); }
 
   addKeys (keys) { regex.common.reserved += '|' + keys; }
 
-  applyRules (text) {
+  applyRules (text) {    
     const setStyle = (rule, match) => {
       let classN = rule.color;
       if (rule.italic) classN += '+italic';
@@ -89,9 +88,7 @@ export default class Hixo {
 
         // check the start and the end of quotes the same: "" ''
         if (rule.color === 'string') {
-          let f = match.slice(0, 1)
-          let e = match.slice(-1)
-          if(f !== e) return match
+          if (match.slice(0, 1) !== match.slice(-1)) return match
         }
 
         if (rule.stripHtml) {
