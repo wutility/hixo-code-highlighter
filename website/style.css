@@ -51,10 +51,7 @@ h1>a {
 
 .btn,
 button,
-select,
-input {
-  background: var(--dark);
-  color: #fff;
+select{  
   border-radius: 4px;
   border: solid 2px #666;
   padding: 10px;
@@ -68,9 +65,9 @@ input {
   transition: all .25s;
 }
 
-input,
-select {
-  margin-top: 5px;
+.btn,select {
+  background: var(--dark);
+  color: #fff;
 }
 
 optgroup {
@@ -106,18 +103,15 @@ li,
 pre,
 textarea,
 .bloc {
-  font-size: 16px;
+  font-size: 18px;
   width: 100%;
   border: 0;
 }
 
-.pre-container {
-  background-color: var(--hixo-pre-bg);
-}
-
-.pre-container,
-textarea {
+textarea,.editor>pre {
   height: 100%;
+  border: 1px solid #b3b3b3;
+  border-radius: 7px;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .3);
   overflow: auto;
 }
@@ -127,8 +121,7 @@ textarea {
   color: #000;
   padding: 16px;
   resize: none;
-  outline: none;
-  border: 1px solid #b3b3b3;
+  outline: none;  
 }
 
 .pre-header {
@@ -234,7 +227,7 @@ textarea {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #eeedff;
+  background: #8d8d8d;
   border-radius: 10px;
 }
 

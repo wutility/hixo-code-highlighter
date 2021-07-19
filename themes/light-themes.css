@@ -1,6 +1,36 @@
+[data-theme="horizon-light"] {
+  --hixo-bg: #fdf0ed;
+  --hixo-fg: #333333;
+  --hixo-method: #1d8991;
+  --hixo-num: #dc3318;
+  --hixo-string: #f6661e;
+  --hixo-comment: #33333380;
+  --hixo-keyword: #8a31b9;
+
+  --hixo-variable: #da103f;
+
+  --hixo-operator:#333333;  
+  --hixo-data-type:#dc3318; /* Long, String, int .... */
+}
+
+[data-theme="ayu-light"] {
+  --hixo-bg: #fafafa;
+  --hixo-fg: #575f66;
+  --hixo-method: #f07171;
+  --hixo-num: #ff9940;
+  --hixo-string: #86b300;
+  --hixo-comment: #abb0b6;
+  --hixo-keyword: #fa8d3e;
+
+  --hixo-variable: #916319;
+
+  --hixo-operator:#575f66;  
+  --hixo-data-type:#f07171; /* Long, String, int .... */
+}
+
 [data-theme="coda"] {
-  --hixo-pre-bg: #fff;
-  --hixo-pre-color: #000;
+  --hixo-bg: #fff;
+  --hixo-fg: #000;
   --hixo-method: #881181;
   
   --hixo-num: #0F20F6;
@@ -14,8 +44,8 @@
 }
 
 [data-theme="eclipse"] {
-  --hixo-pre-bg: #fff;
-  --hixo-pre-color: #141414;
+  --hixo-bg: #fff;
+  --hixo-fg: #141414;
   --hixo-method: #6f42c1;
   
   --hixo-num: #005cc5;
@@ -29,8 +59,8 @@
 }
 
 [data-theme="chrome"] {
-  --hixo-pre-bg: #f1f3f4;
-  --hixo-pre-color: #37474f;
+  --hixo-bg: #f1f3f4;
+  --hixo-fg: #37474f;
   --hixo-method: #9c27b0;
   --hixo-num: #c53929;
   --hixo-string: #0d904f;
@@ -42,8 +72,8 @@
 }
 
 [data-theme="playpen"] {
-  --hixo-pre-bg: #f1f1f1;
-  --hixo-pre-color: #333;
+  --hixo-bg: #f1f1f1;
+  --hixo-fg: #333;
   --hixo-method: #0030f2;
   --hixo-data-type:#b21e00;
   --hixo-num: #b21e00;

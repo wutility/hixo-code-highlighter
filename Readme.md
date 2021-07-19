@@ -9,8 +9,7 @@ Simple and Lightweight code highlighter with 0 dependencies for modern browsers.
   <img src="https://data.jsdelivr.com/v1/package/npm/hixo/badge" alt="hixo"/>
 </div> 
 
-[Official Website](https://hixo.onrender.com/)  
-[Demo CodeSandbox](https://codesandbox.io/s/hixo-code-highlighter-cgddx)
+[Demo CodeSandbox](https://codesandbox.io/s/hixo-code-highlighter-cgddx)  
 
 ## Installation
 ```
@@ -27,8 +26,8 @@ import "hixo/build/index.css";
 
 Or include it via jsDelivr CDN (UMD):
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.8/build/index.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.8/build/index.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.9/build/index.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.9/build/index.umd.min.js"></script>
 <!-- Access via global object : window.Hixo -->
 ```
 
@@ -79,8 +78,8 @@ hixo.highlightAll()
   just copy your favorite theme from the folder themes 
 */
 [data-theme="material"] {
-  --hixo-pre-bg: #263238;
-  --hixo-pre-color: #EEFFFF;
+  --hixo-bg: #263238;
+  --hixo-fg: #EEFFFF;
   --hixo-line-num:#b1b1b1;
   --hixo-method: #82AAFF;
   --hixo-num: #FF5370;
@@ -89,7 +88,6 @@ hixo.highlightAll()
   --hixo-keyword: #C792EA;
   --hixo-variable: #dc7c23;
   --hixo-operator:#f92672;
-  --hixo-spkeys:#d2a8ff;
   --hixo-data-type:#b65611;
 }
 ```

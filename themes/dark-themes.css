@@ -1,6 +1,6 @@
 [data-theme="tomorrow"] {
-  --hixo-pre-bg: #2d2d2d;
-  --hixo-pre-color: #ccc;
+  --hixo-bg: #1d1f21;
+  --hixo-fg: #ccc;
   --hixo-method: #f08d49;
   --hixo-spkey:#cc99cd;
   --hixo-num: #f08d49;
@@ -13,22 +13,22 @@
 }
 
 [data-theme="onedark"] {
-  --hixo-pre-bg: #383b40;
-  --hixo-pre-color: #d5d5d5;
+  --hixo-bg: #383b40;
+  --hixo-fg: #d5d5d5;
   --hixo-method: #61aeee;
   --hixo-spkey:#61aeee;
   --hixo-num: #d19a66;
   --hixo-string: #98c379;
   --hixo-comment: #ad937c;
   --hixo-keyword: #c678dd;
-  --hixo-variable: #e6c07b;
+  --hixo-variable: #BE5046;
   --hixo-operator:#d5d5d5;  
   --hixo-data-type:#c678dd;
 }
 
 [data-theme="material"] {
-  --hixo-pre-bg: #1f2937;
-  --hixo-pre-color: #EEFFFF;
+  --hixo-bg: #1f2937;
+  --hixo-fg: #EEFFFF;
   --hixo-method: #82AAFF;
   --hixo-spkey:#82AAFF;
   --hixo-num: #FF5370;
@@ -40,13 +40,27 @@
   --hixo-data-type:#d2a8ff;
 }
 
+[data-theme="monokai-pro"] {
+  --hixo-bg: #2d2a2e;
+  --hixo-fg: #fcfcfa;
+  --hixo-method: #a9dc76;
+  --hixo-spkey:#ab9df2;
+  --hixo-num: #ab9df2;
+  --hixo-string: #ffd866;
+  --hixo-comment: #727072;
+  --hixo-keyword: #78dce8;
+  --hixo-variable: #ff6188;
+  --hixo-operator:#ff6188;  
+  --hixo-data-type:#79c0ff;
+}
+
 [data-theme="github-dark"] {
-  --hixo-pre-bg: #0d1117;
-  --hixo-pre-color: #c9d1d9;
-  --hixo-method: #d2a8ff;
-  --hixo-spkey:#d2a8ff;
+  --hixo-bg: #0d1117;
+  --hixo-fg: #c9d1d9;
+  --hixo-method: #b392f0;
+  --hixo-spkey:#b392f0;
   --hixo-num: #79c0ff;
-  --hixo-string: #a5d6ff;
+  --hixo-string: #9ecbff;
   --hixo-comment: #8b949e;
   --hixo-keyword: #ff7b72;
   --hixo-variable: #c9d1d9;
@@ -55,8 +69,8 @@
 }
 
 [data-theme="vscode-dark"] {
-  --hixo-pre-bg: #1e1e1e;
-  --hixo-pre-color: #D8DEE9;
+  --hixo-bg: #1e1e1e;
+  --hixo-fg: #D8DEE9;
   --hixo-method: #569cd6;
   --hixo-spkey:#569cd6;
   --hixo-num: #b5cea8;
@@ -69,8 +83,8 @@
 }
 
 [data-theme="night"] {
-  --hixo-pre-bg: #2e3440ff;
-  --hixo-pre-color: #D8DEE9;
+  --hixo-bg: #2e3440ff;
+  --hixo-fg: #D8DEE9;
   --hixo-method: #88C0D0;
   --hixo-spkey:#88C0D0;
   --hixo-num: #B48EAD;
@@ -83,8 +97,8 @@
 }
 
 [data-theme="deepdark"] {
-  --hixo-pre-bg: #080808;
-  --hixo-pre-color: #f8f8f2;
+  --hixo-bg: #080808;
+  --hixo-fg: #f8f8f2;
   --hixo-method: #ef5350;
   --hixo-spkey:#ef5350;
   --hixo-num: #d0d0d0;
@@ -97,8 +111,8 @@
 }
 
 [data-theme="hackpot"] {
-  --hixo-pre-bg: #003030;
-  --hixo-pre-color: #b1e7b1;
+  --hixo-bg: #003030;
+  --hixo-fg: #b1e7b1;
   --hixo-method: #32cd32;
   --hixo-spkey:#32cd32;
   --hixo-num: #e56697;
@@ -111,8 +125,8 @@
 }
 
 [data-theme="dracula"] {
-  --hixo-pre-bg: #21222c;
-  --hixo-pre-color: #f8f8f2;
+  --hixo-bg: #21222c;
+  --hixo-fg: #f8f8f2;
   --hixo-method: #8be9fd;
   --hixo-spkey:#8be9fd;
   --hixo-num: #bd93f9;
@@ -125,8 +139,8 @@
 }
 
 [data-theme="chroma"] {
-  --hixo-pre-bg: #202020;
-  --hixo-pre-color: #d0d0d0;
+  --hixo-bg: #202020;
+  --hixo-fg: #d0d0d0;
   --hixo-method: #447fcf;
   --hixo-spkey:#447fcf;
   --hixo-num: #d0d0d0;
@@ -139,8 +153,8 @@
 }
 
 [data-theme="blackboard"] {
-  --hixo-pre-bg: #0C1021;
-  --hixo-pre-color: #F8F8F8;
+  --hixo-bg: #0C1021;
+  --hixo-fg: #F8F8F8;
   --hixo-method: #8DA6CE;
   --hixo-spkey:#8DA6CE;
   --hixo-num: #D8FA3C;

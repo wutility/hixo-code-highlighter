@@ -1,6 +1,6 @@
 {
   "name": "hixo",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Hixo is lightweight, robust, and fast syntax highlighter",
   "main": "build/index.cjs.js",
   "module": "build/index.esm.js",
@@ -35,6 +35,6 @@
     "rollup-plugin-inject-process-env": "^1.3.1",
     "rollup-plugin-postcss": "^3.1.8",
     "rollup-plugin-terser": "^7.0.2",
-    "split-views": "^1.0.8"
+    "split-views": "^1.0.9"
   }
 }

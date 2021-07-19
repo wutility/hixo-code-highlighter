@@ -1,8 +1,8 @@
-const preContainer = document.querySelector('.pre-container')
 const txtArea = document.getElementById('txtcode')
 const preElement = document.getElementById('pre-editor')
 const selectThemes = document.getElementById('themes');
 const selectLanguages = document.getElementById('language');
+const selectFont = document.getElementById('fontsizes');
 
 const themes = [
   { name: 'default', type: 'dark' },
@@ -15,21 +15,33 @@ const themes = [
   { name: 'night', type: 'dark' },
   { name: 'hackpot', type: 'dark' },
   { name: 'chroma', type: 'dark' },
+  { name: 'monokai-pro', type: 'dark' },
   { name: 'blackboard', type: 'dark' },
   { name: 'tomorrow', type: 'dark' },
   { name: 'coda', type: 'light' },
   { name: 'playpen', type: 'light' },
   { name: 'eclipse', type: 'light' },
-  { name: 'chrome', type: 'light' }
+  { name: 'chrome', type: 'light' },
+  { name: 'ayu-light', type: 'light' },
+  { name: 'horizon-light', type: 'light' }
 ];
 
-const languages = ['go','javascript', 'java', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql','plaintext'];
+const languages = ['go', 'javascript', 'java', 'kotlin', 'csharp', 'cpp', 'python', 'php', 'sql', 'plsql', 'plaintext'];
+
+const fontSizes = [8, 10, 12, 14, 16, 18, 20, 22, 24, 26]
 
 languages.forEach(lang => {
   const option = document.createElement('option')
   option.value = lang;
   option.textContent = lang;
   selectLanguages.appendChild(option);
+});
+
+fontSizes.forEach(size => {
+  const option = document.createElement('option')
+  option.value = size;
+  option.textContent = size + ' px';
+  selectFont.appendChild(option);
 });
 
 // select element of themes
@@ -53,7 +65,7 @@ selectThemes.appendChild(optgroupL);
 // 
 let language = 'go';
 let languageCode = langsTest[language].code;
-let hixo = new window.Hixo({ language, lineNum: false });
+let hixo = new window.Hixo({ language, lineNum: true });
 
 window.SplitViews({
   parent: '.editor',
@@ -82,5 +94,8 @@ selectLanguages.addEventListener('change', e => {
 selectThemes.addEventListener('change', e => {
   let theme = e.target.value;
   preElement.dataset.theme = theme
-  preContainer.dataset.theme = theme
+});
+
+selectFont.addEventListener('change', e => {
+  preElement.style.fontSize = e.target.value + 'px'
 });

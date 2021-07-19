@@ -1,7 +1,8 @@
 const regex = (function () {
   // reserved words
   const commonRvw = 'var|enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
-    ClikeRsw = 'define|fun|val|defer|signed|sizeof|volatile|typedef|delegate|interface',
+    ClikeRsw = 'define|fun|defer|signed|sizeof|volatile|typedef|delegate|interface',
+    kotlinRw = 'override|val|by|dynamic|fun|data|is',
     JsRsw = 'defer|type',
     sqlRvw = 'with|FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     plsqlRsw = 'OVERRIDING|FORM|HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
@@ -41,19 +42,25 @@ const regex = (function () {
     }
   };
 
-  const quotes = {
-    // pattern: /((?<![\\])('|"))((?:.(?!(?<![\\])\1))*.?)\1/g,
-    // origin pattern from https://github.com/googlearchive/code-prettify/blob/master/src/run_prettify.js
-    pattern: /(?:\'\'\'(?:[^\'\\]|\\[\s\S]|\'{1,2}(?=[^\']))*(?:\'\'\'|$)|\"\"\"(?:[^\"\\]|\\[\s\S]|\"{1,2}(?=[^\"]))*(?:\"\"\"|$)|\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$))/gm,
-    color: 'string',
-    stripHtml: true
-  };
+  const quotes = [
+    //  { // single line
+    //   pattern: /((?<![\\])('|"))((?:.(?!(?<![\\])\1))*.?)\1/gm,
+    //   color: 'string',
+    //   stripHtml: true
+    // },
+     { // multiple line
+      // origin pattern from https://github.com/googlearchive/code-prettify/blob/master/src/run_prettify.js
+      pattern: /(?:\'\'\'(?:[^\'\\]|\\[\s\S]|\'{1,2}(?=[^\']))*(?:\'\'\'|$)|\"\"\"(?:[^\"\\]|\\[\s\S]|\"{1,2}(?=[^\"]))*(?:\"\"\"|$)|\'(?:[^\\\']|\\[\s\S])*(?:\'|$)|\"(?:[^\\\"]|\\[\s\S])*(?:\"|$))/gm,
+      color: 'string',
+      stripHtml: true
+    }
+  ];
 
   return {
     sql: {
       reserved: sqlRvw,
       rules: [
-        quotes,
+        ...quotes,
         comment.dc,
         comment.sc,
         comment.mc
@@ -62,14 +69,14 @@ const regex = (function () {
     plsql: {
       reserved: plsqlRsw,
       rules: [
-        quotes,
+        ...quotes,
         comment.dc
       ]
     },
     python: {
       reserved: PythonRsw,
       rules: [
-        quotes,
+        ...quotes,
         comment.hc,
         comment.qc
       ]
@@ -85,8 +92,16 @@ const regex = (function () {
           pattern: /(&lt;\?php|\?&gt;)/g,
           color: 'comment'
         },
-        quotes,
+        ...quotes,
         comment.hc,
+        comment.sc,
+        comment.mc
+      ]
+    },
+    kotlin: {
+      reserved: kotlinRw,
+      rules: [
+        ...quotes,
         comment.sc,
         comment.mc
       ]
@@ -100,11 +115,11 @@ const regex = (function () {
           stripHtml: true,
           inside: {
             pattern: /(\$\{.*\})/g,
-            color: 'pre-color',
+            color: 'fg',
             group: { 1: 'variable' }
           }
         },
-        quotes,
+        ...quotes,
         comment.sc,
         comment.mc
       ]
@@ -120,7 +135,7 @@ const regex = (function () {
           pattern: /#include &lt;.*&gt;\n/g,
           color: 'comment'
         },
-        quotes,
+        ...quotes,
         comment.sc,
         comment.mc
       ]

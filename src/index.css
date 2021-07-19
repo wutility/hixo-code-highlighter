@@ -3,6 +3,7 @@
   --hixo-num:#d2a8ff;
   --hixo-comment:#b1b1b1; 
   --hixo-string:#f3e880;  
+  
   --hixo-variable:#ef9b51;
   --hixo-keyword:#f92672;
   --hixo-operator:#f92672;
@@ -10,13 +11,13 @@
 
   --hixo-line-num:#b1b1b1;
 
-  --hixo-pre-bg:#2d2d35;
-  --hixo-pre-color:#eeedff;
+  --hixo-bg:#2d2d35;
+  --hixo-fg:#eeedff;
 }
 
 pre {  
-  background-color: var(--hixo-pre-bg);
-  color: var(--hixo-pre-color);
+  background-color: var(--hixo-bg);
+  color: var(--hixo-fg);
   overflow: auto;
   overflow-wrap: break-word;
   padding: 16px;
@@ -26,7 +27,7 @@ pre {
 
 pre code { white-space: pre-wrap; font-family: Consolas; }
 
-.hixo-pre-color {color:var(--hixo-pre-color)}
+.hixo-fg {color:var(--hixo-fg)}
 
 .hixo-line-num {color: var(--hixo-line-num);}
 .hixo-line-num:hover {color: #f3f3f3;}

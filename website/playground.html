@@ -27,39 +27,40 @@
 
   <div class="playground">
     <header class="m-0 d-flex align-center justify-between">
-      <h1 class="m-0"><a href="index.html">Hixo&gt;</a></h1>
+      <h2 class="m-0">
+        <i class="fa fa-home" class="mr-2"></i>
+        <a href="index.html">Hixo&gt;</a>
+      </h2>
 
       <div class="d-flex">
         <div class="mr-2">
-          <label>Supported languages</label>
-          <select name="language" id="language"></select>
+          <select class="m-0" name="language" id="language"></select>
+        </div>
+
+        <div class="mr-2">
+          <select class="m-0" name="themes" id="themes"></select>
         </div>
 
         <div>
-          <label>Themes</label>
-          <select name="themes" id="themes"></select>
+          <select class="m-0" name="fontsizes" id="fontsizes"></select>
         </div>
       </div>
     </header>
 
-
     <div class="d-flex editor" id="editor">
       <div><textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea></div>
       <span class="sp-gutter"></span>
-      <div class="pre-container d-flex flex-column">
-        <div class="pre-header">
-          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="16" viewBox="0 0 54 14">
-            <g fill="none" transform="translate(1 1)">
-              <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".6"></circle>
-              <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".6"></circle>
-              <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".6"></circle>
-            </g>
-          </svg>
-        </div>
-        <pre id="pre-editor"></pre>
-      </div>
+      <pre id="pre-editor"></pre>
     </div>
   </div>
+
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" width="54" height="16" viewBox="0 0 54 14">
+    <g fill="none" transform="translate(1 1)">
+      <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".6"></circle>
+      <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".6"></circle>
+      <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".6"></circle>
+    </g>
+  </svg> -->
 
   <script src="langs-test.js"></script>
   <script src="../build/index.umd.js"></script>

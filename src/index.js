@@ -115,6 +115,11 @@ export default class Hixo {
   codeToHtml (text) {
     if (this.options.language === 'plaintext') return `<code>${text.trim()}</code>`;
     else {
+      // replace: \' \" by space
+      text = text.replace(/\w+(\\['"])\w+/g, (m, g) => {
+        return m.replace(g, " ")
+      });
+
       text = this.applyRules(text);
 
       // remove span wrapper from classname: < class=""></>     
