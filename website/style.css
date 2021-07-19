@@ -20,6 +20,12 @@ header {
 section {min-height: 500px;}
 section,footer {padding: 30px 100px;}
 
+.playground{height: 100vh; width: 100vw; overflow: hidden;}
+
+.playground header {height: 60px; padding: 10px 20px;}
+
+.playground .editor {height: calc(100vh - 60px); padding: 10px 20px; }
+
 h1,
 h2,
 h4,
@@ -95,9 +101,6 @@ button:hover {
   margin: 11px 0 6px 8px;
 }
 /***********************/
-.editor {
-  height: 520px;
-}
 
 li,
 pre,
@@ -222,6 +225,8 @@ textarea {
   background-color: var(--dark);
   color: #fff;
 }
+
+.txt-center {text-align: center;}
 
 ::-webkit-scrollbar {
   width: 5px;

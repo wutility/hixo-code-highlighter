@@ -1,12 +1,12 @@
 const regex = (function () {
   // reserved words
   const commonRvw = 'var|enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
-    ClikeRsw = 'define|include|fun|val|defer|signed|sizeof|volatile|typedef|delegate|interface',
+    ClikeRsw = 'define|fun|val|defer|signed|sizeof|volatile|typedef|delegate|interface',
     JsRsw = 'defer|type',
-    sqlRvw = 'FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
+    sqlRvw = 'with|FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     plsqlRsw = 'OVERRIDING|FORM|HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
     PhpRsw = '(include|require)(_once)?|abstract|interface|insteadof|yield from|__CLASS__|__DIR__',
-    PythonRsw = 'lambda|def|except|False|True';
+    PythonRsw = 'lambda|def|except|False|True|elif';
 
   const comment = {
     sc: { // single comment
@@ -49,7 +49,7 @@ const regex = (function () {
     stripHtml: true
   };
 
-  return {    
+  return {
     sql: {
       reserved: sqlRvw,
       rules: [
@@ -97,7 +97,12 @@ const regex = (function () {
         { // match: ` any string here `
           pattern: /((?<![\\])(`))((?:.(?!(?<![\\])\1))*.?)\1/g,
           color: 'string',
-          stripHtml: true
+          stripHtml: true,
+          inside: {
+            pattern: /(\$\{.*\})/g,
+            color: 'pre-color',
+            group: { 1: 'variable' }
+          }
         },
         quotes,
         comment.sc,
@@ -113,7 +118,7 @@ const regex = (function () {
         },
         {
           pattern: /#include &lt;.*&gt;\n/g,
-          color: 'pre-color'
+          color: 'comment'
         },
         quotes,
         comment.sc,
@@ -152,7 +157,7 @@ const regex = (function () {
           color: 'operator'
         },
         { // match number and hexa: 12  15.2  0x878
-          pattern: /\b([0-9]+(?:\.[0-9]+)?|0x[0-9a-f]+)\b/g,
+          pattern: /\b([0-9]+(?:\.[0-9]+)?|0x[0-9a-f]+)[jf]?\b/g,
           color: 'num'
         },
         {

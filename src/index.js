@@ -37,7 +37,7 @@ export default class Hixo {
 
   addKeys (keys) { regex.common.reserved += '|' + keys; }
 
-  applyRules (text) {    
+  applyRules (text) {
     const setStyle = (rule, match) => {
       let classN = rule.color;
       if (rule.italic) classN += '+italic';
@@ -67,7 +67,7 @@ export default class Hixo {
           return matches.slice(1, Object.keys(rule.group).length + 1).map((mi, i) => {
             mi = this.replaceSpan(mi);
             rule.color = rule.group[i + 1];
-            return mi.replace(new RegExp(mi, 'g'), v => setStyle(rule, v))
+            return mi.replace(mi, v => setStyle(rule, v))
           }).
             join('');
         }

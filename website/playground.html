@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hixo - Fastest Syntax Highlighter</title>
+
+  <link rel="stylesheet" href="../build/index.css">
+  <link rel="stylesheet" href="../themes/dark-themes.css">
+  <link rel="stylesheet" href="../themes/light-themes.css">
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Syntax Highlighter">
+  <meta name="keywords" content="Syntax, Highlighter, Code, Golang Java, C++, Python, Php, Rust, JavaScript">
+  <meta name="author" content="Haikel Fazzani">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body spellcheck="true">
+  <script src="https://cdn.jsdelivr.net/npm/split-views@2.0.5/build/index.umd.min.js"></script>
+
+  <div class="playground">
+    <header class="m-0 d-flex align-center justify-between">
+      <h1 class="m-0"><a href="index.html">Hixo&gt;</a></h1>
+
+      <div class="d-flex">
+        <div class="mr-2">
+          <label>Supported languages</label>
+          <select name="language" id="language"></select>
+        </div>
+
+        <div>
+          <label>Themes</label>
+          <select name="themes" id="themes"></select>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="d-flex editor" id="editor">
+      <div><textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea></div>
+      <span class="sp-gutter"></span>
+      <div class="pre-container d-flex flex-column">
+        <div class="pre-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="54" height="16" viewBox="0 0 54 14">
+            <g fill="none" transform="translate(1 1)">
+              <circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" stroke-width=".6"></circle>
+              <circle cx="26" cy="6" r="6" fill="#FFBD2E" stroke="#DEA123" stroke-width=".6"></circle>
+              <circle cx="46" cy="6" r="6" fill="#27C93F" stroke="#1AAB29" stroke-width=".6"></circle>
+            </g>
+          </svg>
+        </div>
+        <pre id="pre-editor"></pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="langs-test.js"></script>
+  <script src="../build/index.umd.js"></script>
+  <script src="playground.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG6XH8JT1H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NG6XH8JT1H');
+  </script>
+</body>
+
+</html>

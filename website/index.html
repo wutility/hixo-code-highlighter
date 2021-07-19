@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hixo - Fastest Syntax Highlighter</title>
+
+  <link rel="stylesheet" href="../build/index.css">
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="Syntax Highlighter">
+  <meta name="keywords" content="Syntax, Highlighter, Code, Golang Java, C++, Python, Php, Rust, JavaScript">
+  <meta name="author" content="Haikel Fazzani">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+    integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+
+<body spellcheck="true">
+  <section class="vh-100 grid-2 align-center">
+    <div class="d-flex flex-column">
+      <h1 class="mt-0"><a href="https://github.com/wutility/hixo-code-highlighter">Hixo&gt;</a></h1>
+      <h2 class="mt-0">Syntax Highlighter</h2>
+
+      <div>
+        <img src="https://badgen.net/npm/v/hixo" alt="hixo" />
+        <img src="https://badgen.net/npm/dt/hixo" alt="hixo" />
+        <img src="https://data.jsdelivr.com/v1/package/npm/hixo/badge" alt="hixo" />
+      </div>
+
+      <ul>
+        <li>Extensible.</li>
+        <li>Simple.</li>
+        <li>Lightweight.</li>
+        <li>Fast compared with others syntax highlighters.</li>
+        <li>Written in Javascript.</li>
+        <li>Zero dependencies.</li>
+      </ul>
+
+      <h2><a href="playground.html">try it</a></h2>
+    </div>
+
+    <div>
+      <div class="mac-header">
+        <span style="background-color:#ff5f56"></span>
+        <span style="background-color:#ffbd2e"></span>
+        <span style="background-color:#27c93f"></span>
+      </div>
+      <pre id="pre-doc" data-language="go">package golang
+
+import "fmt"
+
+func main() {
+  s := []int{ 7, 2, 8, -9, 4, 0 }
+
+  c := make(chan int)
+
+  go sum(s[:len(s) / 2], c)
+  go sum(s[len(s) / 2:], c)
+  
+  x, y := <- c, <- c // receive from c
+
+  fmt.Println(x, y, x + y)
+}</pre>
+    </div>
+  </section>
+
+  <footer class="w-100 txt-center">
+    <p class="txt-center">© 2021 <a href="https://github.com/haikelfazzani">Haikel Fazzani</a></p>
+  </footer>
+
+  <script src="../build/index.umd.js"></script>
+  <script src="index.js"></script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG6XH8JT1H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NG6XH8JT1H');
+  </script>
+</body>
+
+</html>
