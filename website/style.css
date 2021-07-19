@@ -86,7 +86,7 @@ button:hover {
   padding: 0 10px;
   height: 36px;
   border-bottom: 1px solid var(--dark);
-  background-color: var(--hixo-pre-bg);
+  background-color: var(--hixo-bg);
   position: relative;
 }
 
