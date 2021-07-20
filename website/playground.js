@@ -65,7 +65,7 @@ selectThemes.appendChild(optgroupL);
 // 
 let language = 'go';
 let languageCode = langsTest[language].code;
-let hixo = new window.Hixo({ language, lineNum: false });
+let hixo = new window.Hixo({ language, lineNum: true });
 
 window.SplitViews({
   parent: '.editor',

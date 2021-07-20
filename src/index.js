@@ -25,7 +25,7 @@ export default class Hixo {
 
   replaceChar (text) {
     const chars = {
-    //  '+': '&plus;',
+      //  '+': '&plus;',
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;'
@@ -53,7 +53,7 @@ export default class Hixo {
 
     if (lrw) {
       rw += '|' + lrw;
-      const nRegx = new RegExp('\\b(' + rw + ')(?=[^\w+])\\b', 'gi');
+      const nRegx = new RegExp('\\b(?<![=$;.])(' + rw + ')(?!(\\(|\\w+))\\b', 'gi');
       text = text.replace(nRegx, '<span hixo~§keyword§>$1</span>');
     }
 
@@ -131,15 +131,16 @@ export default class Hixo {
       });
 
       // Set each line a number (left bar)
+      let lineNumEl = ''
       if (this.options.lineNum) {
-        text = text.split(/\n/g).map((line, i) => {
-          i = i + 1;
-          return `<span class="hixo-line-num mr-${('' + i).length}">${i}</span>${line}`
-        })
-          .join('\n');
+        lineNumEl = '<span class="d-flex flex-column">'
+        text.split(/\n/g).forEach((_, i) => {
+          lineNumEl += `<span class="hixo-line-num">${i + 1}</span>`
+        });
+        lineNumEl += '</span>'
       }
 
-      return `<code>${text.trim()}</code>`;
+      return `${lineNumEl}<code>${text.trim()}</code>`;
     }
   }
 

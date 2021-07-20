@@ -9,7 +9,7 @@
 body {
   margin: 0;
   font-size: 14px;
-  font-family: 'Noto San';
+  font-family: 'Noto Sans';
 }
 
 header {
@@ -83,19 +83,21 @@ button:hover {
 }
 /**********************/
 .mac-header {
-  padding: 0 10px;
-  height: 36px;
-  border-bottom: 1px solid var(--dark);
-  background-color: var(--hixo-bg);
-  position: relative;
+  padding: 0 15px;
+    height: 36px;
+    border-bottom: 1px solid #4a4a4a;
+    border-top: 1px solid transparent;
+    background-color: var(--hixo-bg);
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .mac-header>span {
   border-radius: 50%;
-  width: 12px;
-  height: 12px;
-  display: inline-block;
-  margin: 11px 0 6px 8px;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
 }
 /***********************/
 
@@ -222,8 +224,8 @@ textarea {
 .txt-center {text-align: center;}
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 7px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-thumb {

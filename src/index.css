@@ -18,19 +18,22 @@
 pre {  
   background-color: var(--hixo-bg);
   color: var(--hixo-fg);
+  display: flex;
   overflow: auto;
   overflow-wrap: break-word;
   padding: 16px;
   margin: 0;
-  white-space: pre-wrap;
+  white-space: pre;
 }
 
-pre code { white-space: pre-wrap; font-family: Consolas; }
+.d-flex {display: flex;}
+
+.flex-column {flex-direction: column;}
 
 .hixo-fg {color:var(--hixo-fg)}
 
-.hixo-line-num {color: var(--hixo-line-num);}
-.hixo-line-num:hover {color: #f3f3f3;}
+.hixo-line-num {color: var(--hixo-line-num); margin-right: 12px;}
+.hixo-line-num:hover {color: var(--hixo-comment);}
 
 .hixo-method {color:var(--hixo-method)}
 .hixo-num {color: var(--hixo-num);}
@@ -47,7 +50,3 @@ pre code { white-space: pre-wrap; font-family: Consolas; }
 
 .hixo-italic {font-style: italic;}
 .hixo-bold {font-weight: bold;}
-
-.mr-1 {margin-right: 23px !important;}
-.mr-2 {margin-right: 14px !important;}
-.mr-3 {margin-right: 6px !important;}
