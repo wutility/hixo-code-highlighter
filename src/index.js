@@ -25,12 +25,12 @@ export default class Hixo {
 
   replaceChar (text) {
     const chars = {
-      '+': '&plus;',
+    //  '+': '&plus;',
       '&': '&amp;',
       '<': '&lt;',
       '>': '&gt;'
     };
-    return text.replace(/[+&<>]/g, chr => chars[chr]);
+    return text.replace(/[&<>]/g, chr => chars[chr]);
   }
 
   addRegex (rule) { regex.common.rules.unshift(rule); }
@@ -40,8 +40,8 @@ export default class Hixo {
   applyRules (text) {
     const setStyle = (rule, match) => {
       let classN = rule.color;
-      if (rule.italic) classN += '+italic';
-      if (rule.bold) classN += '+bold';
+      if (rule.italic) classN += ' italic';
+      if (rule.bold) classN += ' bold';
       return `<span hixo~§${classN}§>${match}</span>`
     }
 
@@ -125,9 +125,9 @@ export default class Hixo {
       // remove span wrapper from classname: < class=""></>     
       text = text.replace(/<.* .*(=|§)".*">.*<\/.*>/g, match => this.replaceSpan(match))
 
-      // replace: hixo~§string+italic§  by class="hixo-string hixo-italic"
-      text = text.replace(/\<span hixo~\§(\w+[\-\+\w+]*)\§\>/g, (m, g) => {
-        return '<span class="hixo-' + g.replace(/\+/g, ' hixo-') + '">';
+      // replace: hixo~§string italic§  by class="hixo-string hixo-italic"
+      text = text.replace(/\<span hixo~\§(\w+\-?\w+(\s+\w+)?)\§\>/g, (m, g) => {
+        return '<span class="hixo-' + g.replace(/\s+/g, ' hixo-') + '">';
       });
 
       // Set each line a number (left bar)

@@ -1,8 +1,8 @@
 const regex = (function () {
   // reserved words
-  const commonRvw = 'var|enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
+  const commonRvw = 'is|notvar|enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
     ClikeRsw = 'define|fun|defer|signed|sizeof|volatile|typedef|delegate|interface',
-    kotlinRw = 'override|val|by|dynamic|fun|data|is',
+    kotlinRw = 'override|val|by|dynamic|fun|data',
     JsRsw = 'defer|type',
     sqlRvw = 'with|FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     plsqlRsw = 'OVERRIDING|FORM|HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
@@ -110,7 +110,8 @@ const regex = (function () {
       reserved: JsRsw,
       rules: [
         { // match: ` any string here `
-          pattern: /((?<![\\])(`))((?:.(?!(?<![\\])\1))*.?)\1/g,
+          // pattern origin: https://github.com/PrismJS/prism/blob/master/components/prism-javascript.js
+          pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/g,
           color: 'string',
           stripHtml: true,
           inside: {
@@ -156,9 +157,9 @@ const regex = (function () {
           color: 'variable',
           stripHtml: true,
           group: 1
-        },
+        },        
         { // match: method name
-          pattern: /(?![.])[:$]{0,2}(\w+)(?=[\(!])/g,
+          pattern: /(?<=[^\\][. (\-&gt;)]+)[:$]{0,2}(\w+)(?=[\(!])/g,
           color: 'method',
           stripHtml: true
         },
@@ -168,7 +169,7 @@ const regex = (function () {
           italic: true
         },
         { // operators: => -> <- := ?
-          pattern: /(\=|\-)&gt;|&lt;\-|\:\=/g,
+          pattern: /[\*\+\:\-\/\|]?(&lt;|&gt;)?\={1,3}(&lt;|&gt;)?|(?<=\w)(\+\+|\-\-)|(\+\+|\-\-)(?=\w)/g,
           color: 'operator'
         },
         { // match number and hexa: 12  15.2  0x878
@@ -180,8 +181,8 @@ const regex = (function () {
           color: 'num'
         },
         { // match regexp: /.*/gmi
-          pattern: /(\/[^*(span)].*\/[gim\)])/g,
-          color: 'string',
+          pattern: /(?<=[\s\(])(\/.*\/[gim\)])(?=[.,\(\n\s])/g,
+          color: 'num',
           stripHtml: true
         }
       ]
