@@ -15,7 +15,7 @@ export default {
       format: 'esm'
     },
     {
-      file: 'build/index.cjs.js',
+      file: 'build/index.js',
       format: 'cjs',
       sourcemap: false,
     }

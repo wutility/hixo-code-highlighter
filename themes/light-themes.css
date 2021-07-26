@@ -6,11 +6,9 @@
   --hixo-string: #f6661e;
   --hixo-comment: #33333380;
   --hixo-keyword: #8a31b9;
-
   --hixo-variable: #da103f;
-
   --hixo-operator:#333333;  
-  --hixo-data-type:#dc3318; /* Long, String, int .... */
+  --hixo-data-type:#dc3318;
 }
 
 [data-theme="ayu-light"] {
@@ -21,41 +19,35 @@
   --hixo-string: #86b300;
   --hixo-comment: #abb0b6;
   --hixo-keyword: #fa8d3e;
-
   --hixo-variable: #916319;
-
   --hixo-operator:#575f66;  
-  --hixo-data-type:#f07171; /* Long, String, int .... */
+  --hixo-data-type:#f07171;
 }
 
 [data-theme="coda"] {
   --hixo-bg: #fff;
   --hixo-fg: #000;
   --hixo-method: #881181;
-  
   --hixo-num: #0F20F6;
   --hixo-string: #ED7722;
   --hixo-comment: #3C802C;
   --hixo-keyword: #AA1F63;
   --hixo-variable: #916319;
-
   --hixo-operator:#000000;  
-  --hixo-data-type:#000000; /* Long, String, int .... */
+  --hixo-data-type:#000000;
 }
 
 [data-theme="eclipse"] {
   --hixo-bg: #fff;
   --hixo-fg: #141414;
   --hixo-method: #6f42c1;
-  
   --hixo-num: #005cc5;
   --hixo-string: #17c700;
   --hixo-comment: #6a737d;
   --hixo-keyword: #7F0056;
   --hixo-variable: #dc7c23;
-
   --hixo-operator:#7F0056;  
-  --hixo-data-type:#009688; /* Long, String, int .... */
+  --hixo-data-type:#009688;
 }
 
 [data-theme="chrome"] {

@@ -24,12 +24,7 @@ export default class Hixo {
   }
 
   replaceChar (text) {
-    const chars = {
-      //  '+': '&plus;',
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;'
-    };
+    const chars = { '&': '&amp;', '<': '&lt;', '>': '&gt;' };
     return text.replace(/[&<>]/g, chr => chars[chr]);
   }
 
@@ -137,7 +132,7 @@ export default class Hixo {
         text.split(/\n/g).forEach((_, i) => {
           lineNumEl += `<span class="hixo-line-num">${i + 1}</span>`
         });
-        lineNumEl += '</span>'
+        lineNumEl += '</span>';
       }
 
       return `${lineNumEl}<code>${text.trim()}</code>`;

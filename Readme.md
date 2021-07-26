@@ -4,6 +4,7 @@ Simple and Lightweight code highlighter with 0 dependencies for modern browsers.
 <div align="center" style="width:100%; text-align:center;">
 <img src="https://badgen.net/bundlephobia/minzip/hixo" alt="hixo" />
   <img src="https://badgen.net/bundlephobia/dependency-count/hixo" alt="hixo" />
+   <img src="https://badgen.net/npm/license/hixo" alt="hixo" />
   <img src="https://badgen.net/npm/v/hixo" alt="hixo" />
   <img src="https://badgen.net/npm/dt/hixo" alt="hixo" />
   <img src="https://data.jsdelivr.com/v1/package/npm/hixo/badge" alt="hixo"/>
@@ -26,8 +27,8 @@ import "hixo/build/index.css";
 
 Or include it via jsDelivr CDN (UMD):
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.11/build/index.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.11/build/index.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hixo@1.0.12/build/index.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/hixo@1.0.12/build/index.umd.min.js"></script>
 <!-- Access via global object : window.Hixo -->
 ```
 

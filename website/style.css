@@ -144,7 +144,38 @@ textarea {
   color: #000;
 }
 
+.btn {
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: .6px;
+  line-height: 24px;
+  padding: 10px 24px;
+  pointer-events: auto;
+  text-transform: none;
+  color: #fff;
+  background: #32cd31;
+  border: 0;
+  transform: scale(1);
+  transition: all .3s ease-in-out;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 20%);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.btn:hover {opacity: 0.8;}
 /***********************/
+.mx-auto {margin: auto;}
+
+.w-auto {width: max-content;}
+
+.border-radius {border-radius: 7px;}
+
+.pre-install {
+  padding: 7px 15px;
+  font-size: 14px;
+}
+
 .gutter:hover {
   background-color: #545463;
   cursor: col-resize !important;
@@ -243,8 +274,16 @@ textarea {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
   footer, section {
     padding: 10px;
+    display: block !important;
+    width: 100%;
+    height: auto !important;
+  }
+
+  .editor {
+    display: flex;
+    flex-direction: column;
   }
 }

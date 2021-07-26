@@ -1,12 +1,12 @@
 const regex = (function () {
   // reserved words
   const commonRvw = '!?is|notvar|enum|export|UNION|GOTO|as|endl|final|struct|range|async|await|let|func|default|use|namespace|static|using|implements|case|import|from|try|catch|finally|throw|const|return|private|protected|new|public|if|else|do|function|while|switch|for|foreach|in|continue|break',
-    ClikeRsw = 'define|fun|defer|signed|sizeof|volatile|typedef|delegate|interface',
+    ClikeRsw = '#?(include|define|pragma)|fun|defer|signed|sizeof|volatile|typedef|delegate|interface',
     kotlinRw = 'override|operator|val|by|dynamic|fun|data|when',
     JsRsw = 'defer|type',
     sqlRvw = 'with|FOREIGN|INDEX|TOP|OUTER|PRIMARY|KEY|GRANT|LIMIT|REFERENCE|IMMEDIATE|DESC|EXISTS|DISTINCT|THEN|ALTER|DROP|TRIGGER|BEFORE|EXCEPTION|declare|begin|end|is|cursor|exit|fetch|when|replace|as|body|PROCEDURE|loop|create|select|update|delete|table|where|set|CONSTRAINT|order|by|BETWEEN|and|or|from|right|left|join|on|inner|group|having|full|NOT|NULL|UNIQUE',
     plsqlRsw = 'OVERRIDING|FORM|HIDDEN|OCICOLL|ELSIF|' + sqlRvw,
-    PhpRsw = '(include|require)(_once)?|abstract|interface|insteadof|yield from|__CLASS__|__DIR__',
+    PhpRsw = '#?(include|require)(_once)?|abstract|interface|insteadof|yield from|__CLASS__|__DIR__',
     PythonRsw = 'lambda|def|except|False|True|elif';
 
   const comment = {
@@ -132,10 +132,6 @@ const regex = (function () {
           pattern: /\b(uint(8|16|32|64)|char(8|16|32)_t|wchar_t|short)(?=[^\w])/gi,
           color: 'data-type'
         },
-        {
-          pattern: /#include &lt;.*&gt;\n/g,
-          color: 'comment'
-        },
         ...quotes,
         comment.sc,
         comment.mc
@@ -145,21 +141,15 @@ const regex = (function () {
       reserved: commonRvw,
       rules: [
         {
-          pattern: /\b(float|string|bool|boolean|double|char|long|integer|int)(?=[^\w])/gi,
+          pattern: /\b(float|string|bool(ean)?|double|char|long|integer|int)(?=[^\w])/gi,
           color: 'data-type'
         },
         {
           pattern: /\b(class|package|instanceof|echo|void)(?=\s+\w+)/gi,
           color: 'method'
-        },
-        { // match: @Entity   @Get
-          pattern: /(@\w+\s?)\(.*\)\n|[^/'](@\w+\s?)\n/g,
-          color: 'variable',
-          stripHtml: true,
-          group: 1
         },        
         { // match: method name
-          pattern: /(?<=[.:\n\s+(->)])\w+(?=[\(!])/g,
+          pattern: /\w+(?=\()/g,
           color: 'method',
           stripHtml: true
         },
