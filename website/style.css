@@ -254,6 +254,8 @@ textarea {
   color: #fff;
 }
 
+.overflow {overflow: auto;}
+
 .txt-center {text-align: center;}
 
 ::-webkit-scrollbar {
