@@ -35,14 +35,29 @@
       <div class="d-flex">
         <div class="mr-2"><select class="m-0" name="language" id="language"></select></div>
         <div class="mr-2"><select class="m-0" name="themes" id="themes"></select></div>
-        <div><select class="m-0" name="fontsizes" id="fontsizes"></select></div>
+        <div class="mr-2"><select class="m-0" name="fontsizes" id="fontsizes"></select></div>
+
+        <div class="btn-convert">
+          <button class="mr-1" data-img="auto-height"><i class="fa fa-resize"></i> Auto Height</button>
+          <button class="mr-1" data-img="Svg"><i class="fa fa-download"></i> svg</button>
+          <button class="mr-1" data-img="Png"><i class="fa fa-download"></i> png</button>
+          <button data-img="Jpeg"><i class="fa fa-download"></i> jpeg</button>
+        </div>
       </div>
     </header>
 
     <div class="d-flex editor" id="editor">
       <div><textarea spellcheck="false" name="txtcode" id="txtcode" cols="30" rows="10"></textarea></div>
       <span class="sp-gutter"></span>
-      <pre id="pre-editor"></pre>
+
+      <div>
+        <div class="mac-header">
+          <span style="background-color:#ff5f56"></span>
+          <span style="background-color:#ffbd2e"></span>
+          <span style="background-color:#27c93f"></span>
+        </div>
+        <pre id="pre-editor"></pre>
+      </div>
     </div>
   </div>
 
@@ -65,6 +80,8 @@
     gtag('js', new Date());
     gtag('config', 'G-NG6XH8JT1H');
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.7.0/dist/html-to-image.js" defer></script>
 </body>
 
 </html>

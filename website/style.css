@@ -24,7 +24,9 @@ section,footer {padding: 30px 100px;}
 
 .playground header {height: 60px; padding: 10px 20px;}
 
-.playground .editor {height: calc(100vh - 60px); padding: 10px 20px; }
+.playground .editor {height: calc(100vh - 60px); padding: 10px 20px;  }
+
+#pre-editor {height: calc(100% - 36px);}
 
 h1,
 h2,

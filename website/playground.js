@@ -99,3 +99,39 @@ selectThemes.addEventListener('change', e => {
 selectFont.addEventListener('change', e => {
   preElement.style.fontSize = e.target.value + 'px'
 });
+
+let editorAutoHeight = false;
+
+document.querySelector('.btn-convert').addEventListener('click', (e) => {
+  const imgType = e.target.dataset.img;
+
+  console.log('Conversion start to ' + imgType);
+
+  if (window.htmlToImage && ['Svg', 'Png', 'Jpeg'].includes(imgType)) {
+
+    window.htmlToImage['to' + imgType](document.getElementById('pre-editor'))
+      .then(function (dataUrl) {
+        const img = new Image();
+        img.src = dataUrl;
+
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = "hixo." + (imgType.toLowerCase());
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+  }
+  else {
+    if (imgType === 'auto-height') {
+      editorAutoHeight = !editorAutoHeight
+      document.getElementById('editor').style.height = editorAutoHeight ? '100%' : 'calc(100vh - 60px)'
+      document.querySelector('.playground').style.overflow = editorAutoHeight ? 'visible' : 'hidden'
+      document.querySelector('.playground').style.height = editorAutoHeight ? '100%' : '100vh'
+    }
+  }
+})
