@@ -130,7 +130,7 @@ document.querySelector('.btn-convert').addEventListener('click', (e) => {
     if (imgType === 'auto-height') {
       editorAutoHeight = !editorAutoHeight
       document.getElementById('editor').style.height = editorAutoHeight ? '100%' : 'calc(100vh - 60px)'
-      document.querySelector('.playground').style.overflow = editorAutoHeight ? 'visible' : 'hidden'
+      document.querySelector('.playground').style.overflow = editorAutoHeight ? 'visible' : 'auto'
       document.querySelector('.playground').style.height = editorAutoHeight ? '100%' : '100vh'
     }
   }
