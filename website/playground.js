@@ -109,7 +109,7 @@ document.querySelector('.btn-convert').addEventListener('click', (e) => {
 
   if (window.htmlToImage && ['Svg', 'Png', 'Jpeg'].includes(imgType)) {
 
-    window.htmlToImage['to' + imgType](document.getElementById('pre-editor'))
+    window.htmlToImage[`to${imgType}`](document.querySelector('.pre-output'))
       .then(function (dataUrl) {
         const img = new Image();
         img.src = dataUrl;
